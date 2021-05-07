@@ -1,0 +1,32 @@
+//fonts
+//fonts
+$text-font: "Mulish", sans-serif;
+$marker-font: "Permanent Marker", sans-serif;
+
+//colors
+//colors
+
+$app-background: #171717;
+$nav-bar-background: #242424;
+$main-color: #41b883;
+
+//layouts
+//layouts
+
+@mixin flexRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flexColumn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+@mixin focusAttribute {
+  outline: none;
+  border: 2px solid #41b883;
+  border-radius: 10px;
+}
