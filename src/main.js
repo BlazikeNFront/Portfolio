@@ -32,7 +32,6 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 library.add(
   faPhone,
   faEnvelope,
-
   faIdCard,
   faMapMarkerAlt,
   faFax,
@@ -49,8 +48,12 @@ library.add(
   faTimes,
   faCheck
 );
+//global components
+//global components
+import BaseButton from "./components/common/BaseButton.vue";
 
 const app = createApp(App);
+app.component("base-button", BaseButton);
 app.use(store);
 /* app.use(router); */
 app.component("font-awesome-icon", FontAwesomeIcon);
