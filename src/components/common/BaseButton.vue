@@ -1,0 +1,35 @@
+<template>
+  <button class="baseButton">
+    <span class="baseButton__span"></span>
+    <slot></slot>
+  </button>
+</template>
+<style lang='scss'>
+.baseButton {
+  width: 26rem;
+  height: 7rem;
+  border: 1px solid $main-color;
+  border-radius: 35px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: transparent;
+  cursor: pointer;
+  &:hover {
+    span {
+      left: -4%;
+    }
+  }
+}
+.baseButton__span {
+  position: absolute;
+  left: -110%;
+  background-color: $main-color;
+  width: 107%;
+  height: 7rem;
+  transform: skewX(-10deg);
+  transition: 0.3s ease-out all;
+}
+</style>

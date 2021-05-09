@@ -5,12 +5,13 @@
       <p>Damian</p>
     </div>
     <ul>
-      <li>
+      <li class="acitvePage">
         <font-awesome-icon
           tabindex="1"
           :icon="['fa', 'home']"
-          class="navBar__Icon acitvePage"
+          class="navBar__Icon"
         ></font-awesome-icon>
+        <p>HOME PAGE</p>
       </li>
       <li>
         <font-awesome-icon
@@ -18,6 +19,7 @@
           :icon="['fa', 'user']"
           class="navBar__Icon"
         ></font-awesome-icon>
+        <p>ABOUT ME</p>
       </li>
       <li>
         <font-awesome-icon
@@ -25,6 +27,7 @@
           :icon="['fa', 'briefcase']"
           class="navBar__Icon"
         ></font-awesome-icon>
+        <p>PROJECTS</p>
       </li>
       <li>
         <font-awesome-icon
@@ -32,6 +35,7 @@
           :icon="['fa', 'id-card']"
           class="navBar__Icon"
         ></font-awesome-icon>
+        <p>CONTACT</p>
       </li>
     </ul>
   </nav>
@@ -53,7 +57,26 @@ nav {
     height: 90%;
 
     li {
+      @include flexRow;
+      justify-content: space-evenly;
+      width: 100%;
+      font-weight: 600;
+      letter-spacing: 2px;
       padding: 2rem;
+      cursor: pointer;
+      p {
+        font-size: 1.1rem;
+      }
+      &:hover {
+        p {
+          color: #7cd0aa;
+          text-shadow: 1px 0px 2px #7cd0aa;
+        }
+        .navBar__Icon {
+          color: #7cd0aa;
+          filter: drop-shadow(0px 0px 3px #7cd0aa);
+        }
+      }
     }
   }
 }
@@ -76,6 +99,7 @@ nav {
       @include focusAttribute;
     }
   }
+
   p {
     font-size: 2rem;
     color: White;
@@ -83,21 +107,24 @@ nav {
     font-family: $marker-font;
   }
 }
+.acitvePage {
+  svg {
+    color: $main-color;
+    filter: drop-shadow(0px 0px 3px $main-color);
+  }
+  p {
+    color: $main-color;
+    text-shadow: 2px 0px 3px $main-color;
+  }
+}
 .navBar__Icon {
   padding: 1rem;
   font-size: 3rem;
   cursor: pointer;
-  &:hover {
-    color: #68ca9e;
-    filter: drop-shadow(0px 0px 3px #68ca9e);
-  }
+
   &:focus {
     @include focusAttribute;
   }
-}
-.acitvePage {
-  color: $main-color;
-  filter: drop-shadow(0px 0px 3px $main-color);
 }
 
 @keyframes homePageLink {
