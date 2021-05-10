@@ -6,36 +6,40 @@
     </div>
     <ul>
       <li class="acitvePage">
-        <font-awesome-icon
-          tabindex="1"
-          :icon="['fa', 'home']"
-          class="navBar__Icon"
-        ></font-awesome-icon>
-        <p>HOME PAGE</p>
+        <a tabindex="1">
+          <font-awesome-icon
+            :icon="['fa', 'home']"
+            class="navBar__Icon"
+          ></font-awesome-icon>
+          <p>HOME PAGE</p>
+        </a>
       </li>
       <li>
-        <font-awesome-icon
-          tabindex="1"
-          :icon="['fa', 'user']"
-          class="navBar__Icon"
-        ></font-awesome-icon>
-        <p>ABOUT ME</p>
+        <a tabindex="1">
+          <font-awesome-icon
+            :icon="['fa', 'user']"
+            class="navBar__Icon"
+          ></font-awesome-icon>
+          <p>ABOUT ME</p>
+        </a>
       </li>
       <li>
-        <font-awesome-icon
-          tabindex="1"
-          :icon="['fa', 'briefcase']"
-          class="navBar__Icon"
-        ></font-awesome-icon>
-        <p>PROJECTS</p>
+        <a tabindex="1">
+          <font-awesome-icon
+            :icon="['fa', 'briefcase']"
+            class="navBar__Icon"
+          ></font-awesome-icon>
+          <p>PROJECTS</p>
+        </a>
       </li>
       <li>
-        <font-awesome-icon
-          tabindex="1"
-          :icon="['fa', 'id-card']"
-          class="navBar__Icon"
-        ></font-awesome-icon>
-        <p>CONTACT</p>
+        <a tabindex="1">
+          <font-awesome-icon
+            :icon="['fa', 'id-card']"
+            class="navBar__Icon"
+          ></font-awesome-icon>
+          <p>CONTACT</p>
+        </a>
       </li>
     </ul>
   </nav>
@@ -63,7 +67,14 @@ nav {
       font-weight: 600;
       letter-spacing: 2px;
       padding: 2rem;
-      cursor: pointer;
+      a {
+        position: relative;
+        @include flexRow;
+        z-index: 1000;
+        & > * {
+          pointer-events: none;
+        }
+      }
       p {
         font-size: 1.1rem;
       }
@@ -80,11 +91,12 @@ nav {
     }
   }
 }
+
 .navBar__homePageLink {
   width: 100%;
   height: 20rem;
   @include flexColumn;
-  cursor: pointer;
+
   span {
     font-size: 10rem;
     color: white;
@@ -120,7 +132,6 @@ nav {
 .navBar__Icon {
   padding: 1rem;
   font-size: 3rem;
-  cursor: pointer;
 
   &:focus {
     @include focusAttribute;

@@ -1,18 +1,24 @@
 <template>
+  <custom-cursor></custom-cursor>
   <the-nav-bar></the-nav-bar>,
   <main class="main">
-    <home-page></home-page>
+    <!-- <home-page></home-page> -->
+    <about-page></about-page>
   </main>
 </template>
 
 <script>
 import TheNavBar from "./components/TheNavBar/TheNavBar.vue";
-import HomePage from "./router/homePage.vue";
+/* import HomePage from "./router/homePage.vue"; */
+import AboutPage from "./router/aboutPage.vue";
+import CustomCursor from "./components/common/Cursor.vue";
 export default {
   name: "App",
   components: {
     TheNavBar,
-    HomePage,
+    AboutPage,
+    /* HomePage, */
+    CustomCursor,
   },
 };
 </script>
@@ -26,6 +32,7 @@ html {
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+  cursor: none;
 }
 #app {
   @include flexRow;
