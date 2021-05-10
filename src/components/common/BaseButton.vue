@@ -9,6 +9,7 @@
   width: 26rem;
   height: 7rem;
   border: 1px solid $main-color;
+
   border-radius: 35px;
   position: relative;
   display: flex;
@@ -16,7 +17,8 @@
   justify-content: center;
   overflow: hidden;
   background-color: transparent;
-  cursor: pointer;
+  cursor: none;
+
   &:hover {
     span {
       left: -4%;
@@ -26,7 +28,7 @@
 .baseButton__span {
   position: absolute;
   left: -110%;
-  background-color: $main-color;
+  background-color: #36ff7c;
   width: 107%;
   height: 7rem;
   transform: skewX(-10deg);

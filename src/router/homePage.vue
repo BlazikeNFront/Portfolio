@@ -11,13 +11,13 @@
     </div>
     <div class="homePage__links">
       <base-button class="homePage__link">
-        <p>ABOUT ME</p>
+        <a>ABOUT ME</a>
       </base-button>
       <base-button class="homePage__link">
-        <p>PROJECTS</p>
+        <a>PROJECTS</a>
       </base-button>
       <base-button class="homePage__link">
-        <p>CONTACT</p>
+        <a>CONTACT</a>
       </base-button>
       <div class="homePage__githubLinks">
         <svg
@@ -119,15 +119,19 @@ export default {
 }
 
 .homePage__link {
-  p {
+  a {
+    @include flexRow;
     position: relative;
-    z-index: 2;
+    width: 100%;
+    height: 100%;
     color: White;
     font-size: 2.5rem;
     font-family: $marker-font;
+    z-index: 2;
   }
   &:hover {
-    p {
+    box-shadow: 0 0 10px 10px #0d4220;
+    a {
       color: #242424;
     }
   }
@@ -137,10 +141,10 @@ export default {
   @include flexColumn;
   margin-top: 2rem;
   width: 25rem;
-  cursor: pointer;
+
   &:hover {
     svg {
-      fill: $main-color;
+      fill: #36ff7c;
     }
   }
   svg {
