@@ -94,8 +94,8 @@ export default {
 .hoverCircle {
   border: none;
 
-  /* &::after {
-    /*    content: "";
+  /*  &::after {
+        content: "";
     display: block;
     position: absolute;
     top: -0.1rem;
@@ -108,7 +108,7 @@ export default {
     animation-duration: 1s;
     animation-iteration-count: infinite;
     animation-timing-function: linear; 
-  } */
+  }  */
 }
 .hoverPointer {
   width: 2rem;
