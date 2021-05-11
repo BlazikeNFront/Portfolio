@@ -26,7 +26,7 @@ import {
   faTimes,
   faCheck,
 } from "@fortawesome/free-solid-svg-icons";
-
+import { faSass, faNode } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 library.add(
@@ -46,7 +46,9 @@ library.add(
   faSearch,
   faUser,
   faTimes,
-  faCheck
+  faCheck,
+  faSass,
+  faNode
 );
 //global components
 //global components

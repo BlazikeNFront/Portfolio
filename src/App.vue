@@ -32,7 +32,6 @@ html {
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-  cursor: none;
 }
 #app {
   @include flexRow;
