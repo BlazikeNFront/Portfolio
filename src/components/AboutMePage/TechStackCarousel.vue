@@ -1,32 +1,65 @@
 <template>
   <div class="carousel__wrapper">
-    <div class="center">{{ carouselText }}</div>
+    <p
+      class="carousel__text"
+      :class="{ carousel__textLong: applyLongerTextClass }"
+    >
+      {{ carouselText }}
+    </p>
     <div
       class="carousel__item carousel__item__vue"
-      @mouseover="setCarouselTest('VUE 3 OPTIONS/COMPOSITION API')"
+      @mouseover="setCarouselTest('VUE 3 OPTIONS/COMPOSITION API', true)"
       @mouseleave="setCarouselTest()"
     >
       <vue-icon></vue-icon>
     </div>
-    <div class="carousel__item carousel__item__express">
+    <div
+      class="carousel__item carousel__item__express"
+      @mouseover="setCarouselTest('EXPRESS.JS')"
+      @mouseleave="setCarouselTest()"
+    >
       <express-icon></express-icon>
     </div>
-    <div class="carousel__item carousel__item__router">
+    <div
+      class="carousel__item carousel__item__router"
+      @mouseover="setCarouselTest('VUE-ROUTER')"
+      @mouseleave="setCarouselTest()"
+    >
       <vue-router-icon></vue-router-icon>
     </div>
-    <div class="carousel__item carousel__item__node">
+    <div
+      class="carousel__item carousel__item__node"
+      @mouseover="setCarouselTest('NODE.JS')"
+      @mouseleave="setCarouselTest()"
+    >
       <node-icon></node-icon>
     </div>
-    <div class="carousel__item carousel__item__sass">
+    <div
+      class="carousel__item carousel__item__sass"
+      @mouseover="setCarouselTest('SASS/SCSS')"
+      @mouseleave="setCarouselTest()"
+    >
       <sass-icon></sass-icon>
     </div>
-    <div class="carousel__item carousel__item__mongo">
+    <div
+      class="carousel__item carousel__item__mongo"
+      @mouseover="setCarouselTest('MongoDB')"
+      @mouseleave="setCarouselTest()"
+    >
       <mongodb-icon></mongodb-icon>
     </div>
-    <div class="carousel__item carousel__item__vuex">
+    <div
+      class="carousel__item carousel__item__vuex"
+      @mouseover="setCarouselTest('VUEX')"
+      @mouseleave="setCarouselTest()"
+    >
       <vuex-icon></vuex-icon>
     </div>
-    <div class="carousel__item carousel__item__raspberry">
+    <div
+      class="carousel__item carousel__item__raspberry"
+      @mouseover="setCarouselTest('RASPBERRY PI')"
+      @mouseleave="setCarouselTest()"
+    >
       <raspberry-icon></raspberry-icon>
     </div>
   </div>
@@ -53,11 +86,16 @@ export default {
     VueRouterIcon,
   },
   setup() {
-    const carouselText = ref("TechStack:");
-    function setCarouselTest(text = "TechStack:") {
+    const carouselText = ref("VUE 3 OPTIONS/COMPOSITION API:");
+    const applyLongerTextClass = ref(false);
+    function setCarouselTest(
+      text = "TechStack",
+      applyLongerTextClassBoolen = false
+    ) {
       carouselText.value = text;
+      applyLongerTextClass.value = applyLongerTextClassBoolen;
     }
-    return { carouselText, setCarouselTest };
+    return { carouselText, setCarouselTest, applyLongerTextClass };
   },
 };
 </script>
@@ -67,13 +105,23 @@ export default {
   @include flexRow;
   width: 60%;
   transform: scale(1.5);
+  height: 0; // with height set to '0' text center will not cause animation stop
   &:hover {
     .carousel__item {
       animation-play-state: paused;
     }
   }
 }
-
+.carousel__text {
+  max-width: 22rem;
+  font-size: 3rem;
+  pointer-events: none;
+  text-align: center;
+  font-family: $marker-font;
+}
+.carousel__textLong {
+  font-size: 2rem;
+}
 .carousel__item {
   position: absolute;
   width: 5rem;
@@ -107,6 +155,9 @@ export default {
   svg {
     width: 100%;
   }
+  &:hover {
+    filter: drop-shadow(0px 0px 3px white);
+  }
 }
 .carousel__item__router {
   animation: spin3 20s linear infinite;
@@ -128,6 +179,9 @@ export default {
     width: 100%;
     height: 100%;
   }
+  &:hover {
+    filter: drop-shadow(0px 0px 3px $main-color);
+  }
 }
 .carousel__item__sass {
   width: 7rem;
@@ -139,6 +193,9 @@ export default {
     width: 100%;
     height: 100%;
   }
+  &:hover {
+    filter: drop-shadow(0px 0px 3px #c66394);
+  }
 }
 .carousel__item__express {
   width: 11rem;
@@ -146,6 +203,9 @@ export default {
   transform: rotate(0) translate(142px, -142px) rotate(0);
   svg {
     width: 100%;
+  }
+  &:hover {
+    filter: drop-shadow(0px 0px 3px white);
   }
 }
 .carousel__item__vuex {
@@ -158,6 +218,9 @@ export default {
 .carousel__item__raspberry {
   animation: spin8 20s linear infinite;
   transform: rotate(0) translate(-142px, -142px) rotate(0);
+  &:hover {
+    filter: drop-shadow(0px 0px 3px #c31c4a);
+  }
 }
 @keyframes spin {
   100% {
