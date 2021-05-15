@@ -4,7 +4,7 @@
   <main class="main">
     <!-- <home-page></home-page> -->
     <!-- <about-page></about-page> -->
-    <projects-page></projects-page>
+    <project-details :pickedProject="{ name: 'KEKW MASTER' }"></project-details>
   </main>
 </template>
 
@@ -12,15 +12,17 @@
 import TheNavBar from "./components/TheNavBar/TheNavBar.vue";
 /* import HomePage from "./router/homePage.vue"; */
 /* import AboutPage from "./router/aboutPage.vue"; */
-import ProjectsPage from "./router/projectsPage.vue";
+/* import ProjectsPage from "./router/projectsPage.vue"; */
 /* import CustomCursor from "./components/common/Cursor.vue"; */
+import ProjectDetails from "./router/projectDetailsPage.vue";
 export default {
   name: "App",
   components: {
     TheNavBar,
     /*  AboutPage, */
     /* HomePage, */
-    ProjectsPage,
+    /*   ProjectsPage, */
+    ProjectDetails,
     /* CustomCursor, */
   },
 };
@@ -33,9 +35,10 @@ html {
   font-size: 62.5%;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+
   text-decoration: none;
 }
+
 #app {
   @include flexRow;
   width: 100vw;

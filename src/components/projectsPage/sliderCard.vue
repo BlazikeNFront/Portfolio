@@ -5,7 +5,9 @@
       <transition name="cardButtons">
         <div class="card__buttons" v-if="isActive">
           <base-button><p>LIVE</p></base-button>
-          <base-button><p>GITHUB</p></base-button>
+          <base-button @click="showDetailsAboutProject"
+            ><p>MORE INFO</p></base-button
+          >
         </div>
       </transition>
     </div>
@@ -13,7 +15,7 @@
   </div>
 </template>
 <script>
-import { computed } from "vue";
+import { ref, computed } from "vue";
 import BaseButton from "../common/BaseButton.vue";
 
 export default {
@@ -25,6 +27,7 @@ export default {
     slideNumber: { type: Number, required: true },
   },
   setup(props) {
+    const showDetails = ref(false);
     const slideStyle = computed(() => {
       const { currentActive, slideNumber } = props;
       if (currentActive === slideNumber) {
@@ -43,8 +46,11 @@ export default {
         return false;
       }
     });
+    function showDetailsAboutProject() {
+      showDetails.value = true;
+    }
 
-    return { slideStyle, isActive };
+    return { showDetails, slideStyle, isActive, showDetailsAboutProject };
   },
 };
 </script>

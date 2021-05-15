@@ -46,22 +46,14 @@
           ></slider-card>
         </li>
       </ul>
-
-      <!--  <ul class="projectPage__slider" :style="carouselTranslate">
-        <li
-          class="projectPage__slideElement"
-          v-for="(project, index) in projects"
-          :key="index"
-        >
-          {{ project }}
-        </li>
-      </ul> -->
       <div class="projectPage__sliderButtons">
         <button
           class="projectPage__sliderButton"
           @click="slideAction(activeSlide - 1)"
         >
-          <span class="projectPage__span"> &laquo;</span>
+          <span class="projectPage__span projectPage__span--leftArrow"
+            >&laquo;</span
+          >
         </button>
         <button
           class="projectPage__sliderButton"
@@ -76,6 +68,7 @@
 <script>
 import { ref, computed } from "vue";
 import sliderCard from "../components/projectsPage/sliderCard.vue";
+
 export default {
   components: {
     sliderCard,
@@ -144,7 +137,6 @@ export default {
 }
 .projectPage__slider {
   @include flexRow;
-
   height: 100%;
   transition: all 0.2s ease;
 }
@@ -156,16 +148,20 @@ export default {
   border: 1px solid black;
 }
 .projectPage__sliderButtons {
-  /* button {
+  @include flexRow;
+  position: absolute;
+  width: 100%;
+  height: 0;
+  justify-content: space-between;
+  button {
     @include flexRow;
+    position: relative;
     width: 10rem;
     height: 10rem;
     font-size: 10rem;
     background: rgba(0, 0, 0, 0.5);
     border: none;
     border-radius: 50%;
-
-    position: relative;
     color: white;
 
     &:hover {
@@ -173,17 +169,20 @@ export default {
         color: $main-color;
       }
     }
-  } */
+  }
 }
 .projectPage__span {
   @include flexRow;
   position: absolute;
-  width: inherit;
   top: -7px;
   left: 3px;
+  width: inherit;
   height: inherit;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.projectPage__span--leftArrow {
+  left: 0;
 }
 </style>
