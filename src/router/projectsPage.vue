@@ -4,25 +4,62 @@
     <div class="projectPage__sliderWrapper">
       <ul class="projectPage__slider" :style="carouselTranslate">
         <li>
-          <slider-card></slider-card>
+          <slider-card
+            :currentActive="activeSlide"
+            :slideNumber="1"
+            @slideClick="slideAction($event)"
+          ></slider-card>
+        </li>
+        <li>
+          <slider-card
+            :currentActive="activeSlide"
+            :slideNumber="2"
+            @slideClick="slideAction($event)"
+          ></slider-card>
+        </li>
+        <li>
+          <slider-card
+            :currentActive="activeSlide"
+            :slideNumber="3"
+            @slideClick="slideAction($event)"
+          ></slider-card>
+        </li>
+        <li>
+          <slider-card
+            :currentActive="activeSlide"
+            :slideNumber="4"
+            @slideClick="slideAction($event)"
+          ></slider-card>
+        </li>
+        <li>
+          <slider-card
+            :currentActive="activeSlide"
+            :slideNumber="5"
+            @slideClick="slideAction($event)"
+          ></slider-card>
+        </li>
+        <li>
+          <slider-card
+            :currentActive="activeSlide"
+            :slideNumber="6"
+            @slideClick="slideAction($event)"
+          ></slider-card>
         </li>
       </ul>
-
-      <!--  <ul class="projectPage__slider" :style="carouselTranslate">
-        <li
-          class="projectPage__slideElement"
-          v-for="(project, index) in projects"
-          :key="index"
-        >
-          {{ project }}
-        </li>
-      </ul> -->
       <div class="projectPage__sliderButtons">
-        <button class="projectPage__sliderButton" @click="slideAction(-16.66)">
-          &laquo;
+        <button
+          class="projectPage__sliderButton"
+          @click="slideAction(activeSlide - 1)"
+        >
+          <span class="projectPage__span projectPage__span--leftArrow"
+            >&laquo;</span
+          >
         </button>
-        <button class="projectPage__sliderButton" @click="slideAction(16.66)">
-          &raquo;
+        <button
+          class="projectPage__sliderButton"
+          @click="slideAction(activeSlide + 1)"
+        >
+          <span class="projectPage__span">&raquo;</span>
         </button>
       </div>
     </div>
@@ -31,23 +68,42 @@
 <script>
 import { ref, computed } from "vue";
 import sliderCard from "../components/projectsPage/sliderCard.vue";
+
 export default {
   components: {
     sliderCard,
   },
   setup() {
     const projects = [1, 2, 3, 4, 5, 6];
-
-    const activeSlide = ref(0);
+    const slideProportional = 16.66;
+    const activeSlide = ref(1);
     const carousel = ref(null);
-    const initTranslate = ref(42);
+    const listTranslate = ref(42);
+    slideProportional;
     const carouselTranslate = computed(() => {
-      return `transform:translateX(${initTranslate.value}%)`;
+      return `transform:translateX(${listTranslate.value}%)`;
     });
-    function slideAction(value) {
-      initTranslate.value += value;
+
+    function slideAction(e) {
+      if (e < 1 || e === activeSlide.value || e > projects.length) {
+        return;
+      }
+      const diffrenceBetweenSlides = activeSlide.value - e;
+      if (e > activeSlide.value) {
+        activeSlide.value = e;
+        listTranslate.value += diffrenceBetweenSlides * slideProportional;
+      } else {
+        activeSlide.value = e;
+        listTranslate.value += diffrenceBetweenSlides * slideProportional;
+      }
     }
-    return { carousel, slideAction, carouselTranslate, activeSlide, projects };
+    return {
+      carousel,
+      slideAction,
+      carouselTranslate,
+      activeSlide,
+      projects,
+    };
   },
 };
 </script>
@@ -68,14 +124,19 @@ export default {
 .projectPage__sliderWrapper {
   @include flexRow;
   width: 100%;
-  height: 60rem;
+  height: 64rem;
   position: relative;
-  background-color: darkcyan;
   overflow: hidden;
+  ul {
+    transition: all 1s ease;
+  }
+
+  li {
+    width: 37rem;
+  }
 }
 .projectPage__slider {
   @include flexRow;
-
   height: 100%;
   transition: all 0.2s ease;
 }
@@ -89,8 +150,39 @@ export default {
 .projectPage__sliderButtons {
   @include flexRow;
   position: absolute;
-  width: 90%;
+  width: 100%;
   height: 0;
   justify-content: space-between;
+  button {
+    @include flexRow;
+    position: relative;
+    width: 10rem;
+    height: 10rem;
+    font-size: 10rem;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    color: white;
+
+    &:hover {
+      span {
+        color: $main-color;
+      }
+    }
+  }
+}
+.projectPage__span {
+  @include flexRow;
+  position: absolute;
+  top: -7px;
+  left: 3px;
+  width: inherit;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.projectPage__span--leftArrow {
+  left: 0;
 }
 </style>

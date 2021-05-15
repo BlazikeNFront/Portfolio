@@ -13,6 +13,14 @@ $main-color: #41b883;
 //layouts
 //layouts
 
+//globalStyles
+
+h2 {
+  font-size: 9rem;
+  font-weight: 900;
+  text-align: center;
+}
+
 @mixin flexRow {
   display: flex;
   align-items: center;
