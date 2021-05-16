@@ -1,6 +1,6 @@
 <template>
   <section class="detailsProjectView">
-    <h2>{{ projectDetails.name }}</h2>
+    <h2>PROJECT DETAILS</h2>
 
     <div class="detailsProjectView__content">
       <div class="detailsProjectView__images">
@@ -40,14 +40,9 @@
         </p>
         <div class="detailsProjectView__techStack">
           <span>TECHSTACK:</span>
-          <tech-stack
-            :techStack="[
-              { src: 'vueLogo.svg', alt: 'Vue.js' },
-              { src: 'vuexBadge.svg', alt: 'Vuex' },
-              { src: 'nodeLogo.svg', alt: 'Node.js' },
-            ]"
-          ></tech-stack>
+          <tech-stack :techStack="pickedProject.techstack"></tech-stack>
         </div>
+        <project-links :links="pickedProject.links"></project-links>
       </div>
     </div>
   </section>
@@ -55,22 +50,39 @@
 <script>
 import { computed } from "vue";
 import TechStack from "../components/projectDetailsPage/techStack.vue";
-
+import projectLinks from "../components/projectDetailsPage/projectLinks.vue";
 export default {
   components: {
     TechStack,
+    projectLinks,
   },
-  props: {
+
+  /*   props: {
     pickedProject: {
       required: true,
       type: Object,
     },
-  },
+  }, */
   setup(props) {
+    const pickedProject = {
+      name: "Project RAS",
+      images: [""],
+      description:
+        "Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin",
+      techstack: [
+        { src: "vueLogo.svg", alt: "Vue.js" },
+        { src: "vuexBadge.svg", alt: "Vuex" },
+        { src: "nodeLogo.svg", alt: "Node.js" },
+      ],
+      links: [
+        { version: "npf", links: { github: "NPFkekw", live: "NPFkekm" } },
+        { version: "pf", links: { github: "PFkekw", live: "PFkekm" } },
+      ],
+    };
     const projectDetails = computed(() => {
       return props.pickedProject;
     });
-    return { projectDetails };
+    return { projectDetails, pickedProject };
   },
 };
 </script>
