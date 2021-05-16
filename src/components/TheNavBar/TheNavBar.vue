@@ -81,7 +81,7 @@ nav {
       &:hover {
         p {
           color: #7cd0aa;
-          text-shadow: 1px 0px 2px #7cd0aa;
+          text-shadow: 0px 0px 3px #7cd0aa;
         }
         .navBar__Icon {
           color: #7cd0aa;
@@ -126,7 +126,7 @@ nav {
   }
   p {
     color: $main-color;
-    text-shadow: 2px 0px 3px $main-color;
+    text-shadow: 0px 0px 5px $main-color;
   }
 }
 .navBar__Icon {

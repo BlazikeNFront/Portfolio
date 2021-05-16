@@ -1,0 +1,7 @@
+{
+  "project-name": "string",
+  "project-images": " Array of string - elements need to be names of files in image folder",
+  "project-description": "string",
+  "techstack": "Array of objects with struct = { src:'name of svg icon of used technology',alt:'name of that technology',...}",
+  "project-links": "Array of object - NEED TO CONTAIN AT LEAST 1 OBJECT of struct =[''links':'links for that version',{version(!!!! OPTIONAL- IF THERES MORE THAN ONE PROJECT VERSION ITS NECESSARY):'name of project version',},...]}"
+}

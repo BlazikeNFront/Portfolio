@@ -4,7 +4,8 @@
   <main class="main">
     <!-- <home-page></home-page> -->
     <!-- <about-page></about-page> -->
-    <project-details :pickedProject="{ name: 'KEKW MASTER' }"></project-details>
+    <!--   <project-details :pickedProject="{ name: 'KEKW MASTER' }"></project-details> -->
+    <contact-page></contact-page>
   </main>
 </template>
 
@@ -14,7 +15,8 @@ import TheNavBar from "./components/TheNavBar/TheNavBar.vue";
 /* import AboutPage from "./router/aboutPage.vue"; */
 /* import ProjectsPage from "./router/projectsPage.vue"; */
 /* import CustomCursor from "./components/common/Cursor.vue"; */
-import ProjectDetails from "./router/projectDetailsPage.vue";
+/* import ProjectDetails from "./router/projectDetailsPage.vue"; */
+import ContactPage from "./router/ContactPage.vue";
 export default {
   name: "App",
   components: {
@@ -22,8 +24,9 @@ export default {
     /*  AboutPage, */
     /* HomePage, */
     /*   ProjectsPage, */
-    ProjectDetails,
+    /* ProjectDetails, */
     /* CustomCursor, */
+    ContactPage,
   },
 };
 </script>
@@ -44,7 +47,9 @@ html {
   width: 100vw;
   height: 100vh;
   position: relative;
+
   background-color: $app-background;
+
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
