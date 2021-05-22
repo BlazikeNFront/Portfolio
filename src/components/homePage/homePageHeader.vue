@@ -118,18 +118,9 @@
 import { onMounted, ref } from "vue";
 export default {
   setup() {
+    const headerText = "Hi, I'm Damian";
     const animationEnded = ref(false);
     const lastAnimatedLetters = ref(null);
-
-    onMounted(() => {
-      lastAnimatedLetters.value.addEventListener(
-        "animationend",
-        () => {
-          animationEnded.value = true;
-        },
-        { once: true }
-      );
-    });
 
     function changeClass(e) {
       e.srcElement.addEventListener(
@@ -141,7 +132,17 @@ export default {
       );
       e.srcElement.classList.add("tester");
     }
-    return { animationEnded, lastAnimatedLetters, changeClass };
+
+    onMounted(() => {
+      lastAnimatedLetters.value.addEventListener(
+        "animationend",
+        () => {
+          animationEnded.value = true;
+        },
+        { once: true }
+      );
+    });
+    return { animationEnded, lastAnimatedLetters, changeClass, headerText };
   },
 };
 </script>
@@ -184,7 +185,6 @@ export default {
 }
 .tester {
   color: $main-color;
-
   animation-delay: 0s !important;
   animation-name: letterAnimation;
   animation-duration: 1s;
@@ -192,6 +192,7 @@ export default {
 }
 .letterAppearanceAnimation {
   transform: translateY(-70rem);
+  pointer-events: none;
   animation-name: letterAppearance;
   animation-duration: 1s;
   animation-iteration-count: 1;

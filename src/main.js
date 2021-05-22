@@ -5,7 +5,7 @@ import App from "./App.vue";
 import store from "./store/index.js";
 
 //Vue-router
-
+import router from "./router/router.js";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faPhone,
@@ -57,6 +57,6 @@ import BaseButton from "./components/common/BaseButton.vue";
 const app = createApp(App);
 app.component("base-button", BaseButton);
 app.use(store);
-/* app.use(router); */
+app.use(router);
 app.component("font-awesome-icon", FontAwesomeIcon);
 app.mount("#app");

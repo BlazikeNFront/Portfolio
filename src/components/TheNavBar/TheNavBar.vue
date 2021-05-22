@@ -6,45 +6,58 @@
     </div>
     <ul>
       <li class="acitvePage">
-        <a tabindex="1">
+        <router-link :to="homePageLink" tabindex="1">
           <font-awesome-icon
             :icon="['fa', 'home']"
             class="navBar__Icon"
           ></font-awesome-icon>
           <p>HOME PAGE</p>
-        </a>
+        </router-link>
       </li>
       <li>
-        <a tabindex="1">
+        <router-link :to="aboutPageLink" tabindex="1">
           <font-awesome-icon
             :icon="['fa', 'user']"
             class="navBar__Icon"
           ></font-awesome-icon>
           <p>ABOUT ME</p>
-        </a>
+        </router-link>
       </li>
       <li>
-        <a tabindex="1">
+        <router-link :to="projectsPageLink" tabindex="1">
           <font-awesome-icon
             :icon="['fa', 'briefcase']"
             class="navBar__Icon"
           ></font-awesome-icon>
           <p>PROJECTS</p>
-        </a>
+        </router-link>
       </li>
       <li>
-        <a tabindex="1">
+        <router-link :to="contactPageLink" tabindex="1">
           <font-awesome-icon
             :icon="['fa', 'id-card']"
             class="navBar__Icon"
           ></font-awesome-icon>
           <p>CONTACT</p>
-        </a>
+        </router-link>
       </li>
     </ul>
   </nav>
 </template>
 <script>
+import useRouterLinks from "../hooks/useRouterLinks.js";
+export default {
+  setup() {
+    const {
+      homePageLink,
+      aboutPageLink,
+      projectsPageLink,
+      contactPageLink,
+    } = useRouterLinks();
+
+    return { homePageLink, aboutPageLink, projectsPageLink, contactPageLink };
+  },
+};
 </script>
 <style lang='scss'>
 nav {
@@ -71,6 +84,8 @@ nav {
         position: relative;
         @include flexRow;
         z-index: 1000;
+        color: $app-background;
+        text-decoration: none;
         & > * {
           pointer-events: none;
         }

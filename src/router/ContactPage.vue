@@ -81,11 +81,11 @@ export default {
         nameInput.value.length < 2 ||
         !onlyLettersRegex.test(nameInput.value)
       ) {
-        nameInput.error = "Name sholud contain at least 2 letters";
+        nameInput.error = "Name should contain at least 2 letters";
         return false;
       }
       if (textareaInput.value.length < 10) {
-        textareaInput.error = "Message is to short";
+        textareaInput.error = "Message is too short";
         return false;
       }
 
@@ -100,6 +100,7 @@ export default {
       try {
         loader.value = true;
         if (validateForm() === false) {
+          loader.value = false;
           return;
         }
         console.log("through");
@@ -138,6 +139,8 @@ export default {
   form {
     @include flexColumn;
     position: relative;
+    width: 70rem;
+    height: 70rem;
     border: 1px solid #63d471;
     border-radius: 20px;
   }
@@ -152,6 +155,10 @@ export default {
     p {
       z-index: 1000;
       font-weight: 600;
+    }
+    &:focus {
+      outline: none;
+      border: 3px solid $main-color;
     }
   }
 }

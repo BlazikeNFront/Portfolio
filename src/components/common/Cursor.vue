@@ -40,17 +40,17 @@ export default {
       if (e.target.tagName === "A") {
         hoverClass.value = true;
         setTimeout(() => {
-          currentCircleXPosition.value = e.clientX - 17;
-          currentCircleYPosition.value = e.clientY - 17;
+          currentCircleXPosition.value = e.clientX - 18;
+          currentCircleYPosition.value = e.clientY - 18;
         }, 100);
         return;
       } else {
         hoverClass.value = false;
+        setTimeout(() => {
+          currentCircleXPosition.value = e.clientX - 18;
+          currentCircleYPosition.value = e.clientY - 18;
+        }, 100);
       }
-      setTimeout(() => {
-        currentCircleXPosition.value = e.clientX - 15;
-        currentCircleYPosition.value = e.clientY - 15;
-      }, 100);
     }
 
     onMounted(() => {
@@ -70,8 +70,8 @@ export default {
   top: 0;
   left: 0;
   position: fixed;
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
   border: 2px solid #fff;
   border-radius: 50%;
   z-index: 5555;

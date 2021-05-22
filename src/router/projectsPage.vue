@@ -3,47 +3,13 @@
     <h2>MY PROJECTS</h2>
     <div class="projectPage__sliderWrapper">
       <ul class="projectPage__slider" :style="carouselTranslate">
-        <li>
-          <slider-card
+        <li v-for="(project, index) in projects" :key="project">
+          <project-card
+            :project="project"
             :currentActive="activeSlide"
-            :slideNumber="1"
+            :slideNumber="index"
             @slideClick="slideAction($event)"
-          ></slider-card>
-        </li>
-        <li>
-          <slider-card
-            :currentActive="activeSlide"
-            :slideNumber="2"
-            @slideClick="slideAction($event)"
-          ></slider-card>
-        </li>
-        <li>
-          <slider-card
-            :currentActive="activeSlide"
-            :slideNumber="3"
-            @slideClick="slideAction($event)"
-          ></slider-card>
-        </li>
-        <li>
-          <slider-card
-            :currentActive="activeSlide"
-            :slideNumber="4"
-            @slideClick="slideAction($event)"
-          ></slider-card>
-        </li>
-        <li>
-          <slider-card
-            :currentActive="activeSlide"
-            :slideNumber="5"
-            @slideClick="slideAction($event)"
-          ></slider-card>
-        </li>
-        <li>
-          <slider-card
-            :currentActive="activeSlide"
-            :slideNumber="6"
-            @slideClick="slideAction($event)"
-          ></slider-card>
+          ></project-card>
         </li>
       </ul>
       <div class="projectPage__sliderButtons">
@@ -67,16 +33,26 @@
 </template>
 <script>
 import { ref, computed } from "vue";
-import sliderCard from "../components/projectsPage/sliderCard.vue";
+import projectCard from "../components/projectsPage/projectCard.vue";
 
 export default {
   components: {
-    sliderCard,
+    projectCard,
   },
   setup() {
-    const projects = [1, 2, 3, 4, 5, 6];
+    const projects = [
+      {
+        name: "Data Warehouse",
+        imageUrl: "dataWarehouse.png",
+      },
+      {
+        name: "Weather App",
+        imageUrl: "weatherAppImage.png",
+      },
+    ];
+
     const slideProportional = 16.66;
-    const activeSlide = ref(1);
+    const activeSlide = ref(0);
     const carousel = ref(null);
     const listTranslate = ref(42);
     slideProportional;
@@ -85,7 +61,7 @@ export default {
     });
 
     function slideAction(e) {
-      if (e < 1 || e === activeSlide.value || e > projects.length) {
+      if (e < 0 || e === activeSlide.value || e > projects.length) {
         return;
       }
       const diffrenceBetweenSlides = activeSlide.value - e;
@@ -124,7 +100,7 @@ export default {
 .projectPage__sliderWrapper {
   @include flexRow;
   width: 100%;
-  height: 64rem;
+  height: 70rem;
   position: relative;
   overflow: hidden;
   ul {
