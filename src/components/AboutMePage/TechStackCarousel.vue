@@ -117,7 +117,6 @@ export default {
   font-size: 3rem;
   pointer-events: none;
   text-align: center;
-  font-family: $marker-font;
 }
 .carousel__textLong {
   font-size: 2rem;

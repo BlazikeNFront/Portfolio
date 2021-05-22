@@ -23,5 +23,4 @@ export default {
     margin: 1rem;
   }
 }
-/*  :src="require(`@/assets/img/${filename}`) */
 </style>

@@ -1,13 +1,23 @@
 <template>
   <div class="card" :style="slideStyle">
     <div class="card__leftBorder"></div>
-    <div class="cardImage" @click="$emit('slideClick', slideNumber)">
-      <transition name="cardButtons">
-        <div class="card__buttons" v-if="isActive">
-          <base-button><p>LIVE</p></base-button>
-          <base-button @click="showDetailsAboutProject"
-            ><p>MORE INFO</p></base-button
-          >
+    <div
+      class="cardImage"
+      :style="{
+        backgroundImage:
+          'url(' + require('../../assets/sliderImages/' + imgLink) + ')',
+      }"
+      @click="$emit('slideClick', slideNumber)"
+    >
+      <transition name="cardInformation">
+        <div class="card__informations" v-if="isActive">
+          <h4>{{ project.name }}</h4>
+          <div class="card__buttons">
+            <base-button><p>LIVE</p></base-button>
+            <base-button @click="showDetailsAboutProject"
+              ><p>MORE INFO</p></base-button
+            >
+          </div>
         </div>
       </transition>
     </div>
@@ -23,11 +33,13 @@ export default {
     BaseButton,
   },
   props: {
+    project: { type: Object, required: true },
     currentActive: { type: Number, required: true },
     slideNumber: { type: Number, required: true },
   },
   setup(props) {
     const showDetails = ref(false);
+    const imgLink = ref(props.project.imageUrl);
     const slideStyle = computed(() => {
       const { currentActive, slideNumber } = props;
       if (currentActive === slideNumber) {
@@ -46,11 +58,18 @@ export default {
         return false;
       }
     });
+
     function showDetailsAboutProject() {
       showDetails.value = true;
     }
 
-    return { showDetails, slideStyle, isActive, showDetailsAboutProject };
+    return {
+      showDetails,
+      slideStyle,
+      imgLink,
+      isActive,
+      showDetailsAboutProject,
+    };
   },
 };
 </script>
@@ -70,8 +89,9 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
-  background-image: url("../../assets/sliderImages/tester.jpg");
+  /*  background-image: url("../../assets/sliderImages/dataWarehouse.png"); */
   background-size: cover;
+  background-position: center;
   button {
     margin-bottom: 2rem;
     width: 15rem;
@@ -90,6 +110,22 @@ export default {
     }
   }
 }
+.card__informations {
+  @include flexColumn;
+  position: absolute;
+  top: -7.5rem;
+  width: 100%;
+  height: 135%;
+  justify-content: space-between;
+  h4 {
+    @include flexColumn;
+    width: 100%;
+    height: 6rem;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+  }
+}
 .card__buttons {
   @include flexRow;
   width: 100%;
@@ -98,9 +134,9 @@ export default {
 .card__leftBorder {
   position: absolute;
   top: 0px;
-  left: -49px;
-  width: 100px;
-  height: 500px;
+  left: -4.9rem;
+  width: 10rem;
+  height: 50rem;
   background-color: black;
   transform-style: preserve-3d;
   transition: all 0.2s ease;
@@ -110,25 +146,27 @@ export default {
 .card__rightBorder {
   position: absolute;
   top: 0px;
-  right: -49px;
-  width: 100px;
-  height: 500px;
+  right: -4.9rem;
+  width: 10rem;
+  height: 50rem;
   background-color: black;
   transform-style: preserve-3d;
   transition: all 0.2s ease;
-
   transform: translate3d(0, 0, -5rem) rotateY(90deg);
 }
-.cardButtons-enter-active,
-.cardButtons-leave-active {
+.cardInformation-enter-active {
   transition: all 0.5s ease;
+  transition-delay: 0.3s;
 }
-.cardButtons-leave-from,
-.cardButtons-enter-to {
+.cardInformation-leave-active {
+  transition: all 0.3s ease;
+}
+.cardInformation-leave-from,
+.cardInformation-enter-to {
   opacity: 1;
 }
-.cardButtons-enter-from,
-.cardButtons-leave-to {
+.cardInformation-enter-from,
+.cardInformation-leave-to {
   opacity: 0;
 }
 </style>

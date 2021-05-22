@@ -44,6 +44,11 @@ export default {
       font-weight: 900;
       text-align: center;
     }
+    p {
+      width: 80%;
+      font-size: 1.5rem;
+      line-height: 3rem;
+    }
   }
 }
 </style>

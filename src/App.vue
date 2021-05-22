@@ -1,32 +1,23 @@
 <template>
-  <!-- <custom-cursor></custom-cursor> -->
+  <!--  <custom-cursor></custom-cursor> -->
   <the-nav-bar></the-nav-bar>
   <main class="main">
-    <!-- <home-page></home-page> -->
-    <!-- <about-page></about-page> -->
-    <!--   <project-details :pickedProject="{ name: 'KEKW MASTER' }"></project-details> -->
-    <contact-page></contact-page>
+    <router-view v-slot="{ Component }">
+      <transition mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
   </main>
 </template>
 
 <script>
 import TheNavBar from "./components/TheNavBar/TheNavBar.vue";
-/* import HomePage from "./router/homePage.vue"; */
-/* import AboutPage from "./router/aboutPage.vue"; */
-/* import ProjectsPage from "./router/projectsPage.vue"; */
-/* import CustomCursor from "./components/common/Cursor.vue"; */
-/* import ProjectDetails from "./router/projectDetailsPage.vue"; */
-import ContactPage from "./router/ContactPage.vue";
+/* import customCursor from "./components/common/Cursor.vue"; */
 export default {
   name: "App",
   components: {
     TheNavBar,
-    /*  AboutPage, */
-    /* HomePage, */
-    /*   ProjectsPage, */
-    /* ProjectDetails, */
-    /* CustomCursor, */
-    ContactPage,
+    /*  customCursor, */
   },
 };
 </script>

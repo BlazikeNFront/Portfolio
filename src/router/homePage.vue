@@ -11,13 +11,13 @@
     </div>
     <div class="homePage__links">
       <base-button class="homePage__link">
-        <a>ABOUT ME</a>
+        <router-link :to="aboutPageLink">ABOUT ME</router-link>
       </base-button>
       <base-button class="homePage__link">
-        <a>PROJECTS</a>
+        <router-link :to="projectsPageLink">ABOUT ME</router-link>
       </base-button>
       <base-button class="homePage__link">
-        <a>CONTACT</a>
+        <router-link :to="contactPageLink">ABOUT ME</router-link>
       </base-button>
       <div class="homePage__githubLinks">
         <svg
@@ -58,10 +58,19 @@
 </template>
 <script>
 import HomePageHeader from "../components/homePage/homePageHeader.vue";
-
+import useRouterLinks from "../components/hooks/useRouterLinks.js";
 export default {
   components: {
     HomePageHeader,
+  },
+  setup() {
+    const {
+      aboutPageLink,
+      projectsPageLink,
+      contactPageLink,
+    } = useRouterLinks();
+
+    return { aboutPageLink, projectsPageLink, contactPageLink };
   },
 };
 </script>
