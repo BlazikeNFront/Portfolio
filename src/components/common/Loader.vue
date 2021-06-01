@@ -1,27 +1,28 @@
 <template>
-  <div class="lds-ripple">
-    <div></div>
-    <div></div>
+  <div class="loader">
+    <div class="loader__ripple"></div>
+    <div class="loader__ripple"></div>
   </div>
 </template>
 <style lang="scss">
-.lds-ripple {
+.loader {
   display: inline-block;
   position: relative;
   width: 80px;
   height: 80px;
 }
-.lds-ripple div {
+.loader__ripple {
   position: absolute;
   border: 4px solid $main-color;
   opacity: 1;
   border-radius: 50%;
-  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  animation: loaderRipple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
-.lds-ripple div:nth-child(2) {
-  animation-delay: -0.5s;
+.loader__ripple:nth-child(2) {
+  animation-delay: 0.5s;
 }
-@keyframes lds-ripple {
+
+@keyframes loaderRipple {
   0% {
     top: 36px;
     left: 36px;

@@ -1,45 +1,44 @@
 <template>
   <section class="detailsProjectView">
-    <h2>PROJECT DETAILS</h2>
-
+    <h2>{{ pickedProject.title }}</h2>
+    <button
+      class="detailsProjectView__linkToProjects"
+      @click="navigateToProjects"
+    >
+      <font-awesome-icon :icon="['fa', 'arrow-right']"></font-awesome-icon>
+    </button>
     <div class="detailsProjectView__content">
       <div class="detailsProjectView__images">
         <img
-          src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg"
-          class="detailsProjectView__image"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
-          class="detailsProjectView__image"
-        />
-        <img
-          src="https://wallpapercave.com/wp/wp2670849.jpg"
+          :src="require('../assets/sliderImages/' + pickedProject.images[0])"
           class="detailsProjectView__image"
         />
       </div>
       <div class="detailsProjectView__description">
-        <h3>PROJECT RAS</h3>
-        <p>
-          Where does it come from? Contrary to popular belief, Lorem Ipsum is
-          not simply random text. It has roots in a piece of classical Latin
-          literature from 45 BC, making it over 2000 years old. Richard
-          McClintock, a Latin professor at Hampden-Sydney College in Virginia,
-          looked up one of the more obscure Latin words, consectetur, from a
-          Lorem Ipsum passage, and going through the cites of the word in
-          classical literature, discovered the undoubtable source. Lorem Ipsum
-          comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
-          Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC.
-          This book is a treatise on the theory of ethics, very popular during
-          the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
-          amet..", comes from a line in section 1.10.32. The standard chunk of
-          Lorem Ipsum used since the 1500s is reproduced below for those
-          interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et
-          Malorum" by Cicero are also reproduced in their exact original form,
-          accompanied by English versions from the 1914 translation by H.
-          Rackham.
-        </p>
+        <section class="detailsProjectView__aboutSection">
+          <h3>About</h3>
+          <p>
+            Where does it come from? Contrary to popular belief, Lorem Ipsum is
+            not simply random text. It has roots in a piece of classical Latin
+            literature from 45 BC, making it over 2000 years old. Richard
+            McClintock, a Latin professor at Hampden-Sydney College in Virginia,
+            looked up one of the more obscure Latin words, consectetur, from a
+            Lorem Ipsum passage, and going through the cites of the word in
+            classical literature, discovered the undoubtable source. Lorem Ipsum
+            comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
+            Malorum" (The Extremes of Good and Evil) by Cicero, written in 45
+            BC. This book is a treatise on the theory of ethics, very popular
+            during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum
+            dolor sit amet..", comes from a line in section 1.10.32. The
+            standard chunk of Lorem Ipsum used since the 1500s is reproduced
+            below for those interested. Sections 1.10.32 and 1.10.33 from "de
+            Finibus Bonorum et Malorum" by Cicero are also reproduced in their
+            exact original form, accompanied by English versions from the 1914
+            translation by H. Rackham.
+          </p>
+        </section>
         <div class="detailsProjectView__techStack">
-          <span>TECHSTACK:</span>
+          <h4>TECHSTACK:</h4>
           <tech-stack :techStack="pickedProject.techstack"></tech-stack>
         </div>
         <project-links :links="pickedProject.links"></project-links>
@@ -48,9 +47,12 @@
   </section>
 </template>
 <script>
-import { computed } from "vue";
+import { useStore } from "vuex";
+import { useRoute, useRouter } from "vue-router";
 import TechStack from "../components/projectDetailsPage/techStack.vue";
+
 import projectLinks from "../components/projectDetailsPage/projectLinks.vue";
+
 export default {
   components: {
     TechStack,
@@ -63,62 +65,82 @@ export default {
       type: Object,
     },
   }, */
-  setup(props) {
-    const pickedProject = {
-      name: "Project RAS",
-      images: [""],
-      description:
-        "Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin",
-      techstack: [
-        { src: "vueLogo.svg", alt: "Vue.js" },
-        { src: "vuexBadge.svg", alt: "Vuex" },
-        { src: "nodeLogo.svg", alt: "Node.js" },
-      ],
-      links: [
-        { version: "npf", links: { github: "NPFkekw", live: "NPFkekm" } },
-        { version: "pf", links: { github: "PFkekw", live: "PFkekm" } },
-      ],
-    };
-    const projectDetails = computed(() => {
-      return props.pickedProject;
-    });
-    return { projectDetails, pickedProject };
+  setup() {
+    const store = useStore();
+    const route = useRoute();
+    const router = useRouter();
+
+    const pickedProject = store.getters.getSingleProject(
+      route.params.projectName
+    );
+    function navigateToProjects() {
+      router.push({ name: "myProjects" });
+    }
+
+    return { pickedProject, navigateToProjects };
   },
 };
 </script>
 <style lang="scss">
 .detailsProjectView {
   @include flexColumn;
+  position: relative;
+  width: 90vw;
   height: 100vh;
   padding: 2rem;
+  justify-content: space-around;
   color: White;
-  width: 90vw;
 }
+.detailsProjectView__linkToProjects {
+  position: absolute;
+  top: 5rem;
+  left: 5rem;
+  background: none;
+  border: none;
+  font-size: 5rem;
+  color: $app-background;
+  filter: drop-shadow(0px 0px 3px #7cd0aa);
+  transform: rotate(180deg);
+
+  &:hover {
+    color: $main-color;
+  }
+}
+
 .detailsProjectView__content {
   @include flexRow;
+  width: 90%;
+  height: 80%;
+  justify-content: space-evenly;
 }
-.detailsProjectView__images {
-  position: relative;
-  width: 40%;
-}
+
 .detailsProjectView__image {
   margin: 0.5rem;
   width: 40rem;
-  height: 25rem;
+  height: 56rem;
   object-fit: cover;
 }
 .detailsProjectView__description {
+  @include flexColumn;
   width: 60%;
   height: 100%;
-  h3 {
-    font-size: 3rem;
-    text-align: center;
-  }
+  justify-content: space-evenly;
   p {
     margin: 1rem;
     width: 100%;
     font-size: 1.5rem;
     text-align: justify;
   }
+}
+.detailsProjectView__aboutSection {
+  @include flexColumn;
+  justify-content: space-between;
+  height: 25rem;
+}
+.detailsProjectView__techStack {
+  @include flexColumn;
+  justify-content: space-between;
+  margin-top: 3rem;
+  height: 18rem;
 }
 </style>

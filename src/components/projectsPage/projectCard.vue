@@ -11,10 +11,10 @@
     >
       <transition name="cardInformation">
         <div class="card__informations" v-if="isActive">
-          <h4>{{ project.name }}</h4>
+          <h4>{{ project.title }}</h4>
           <div class="card__buttons">
             <base-button><p>LIVE</p></base-button>
-            <base-button @click="showDetailsAboutProject"
+            <base-button @click="routeToDetailsAboutProject"
               ><p>MORE INFO</p></base-button
             >
           </div>
@@ -26,6 +26,7 @@
 </template>
 <script>
 import { ref, computed } from "vue";
+import { useRouter } from "vue-router";
 import BaseButton from "../common/BaseButton.vue";
 
 export default {
@@ -38,7 +39,7 @@ export default {
     slideNumber: { type: Number, required: true },
   },
   setup(props) {
-    const showDetails = ref(false);
+    const router = useRouter();
     const imgLink = ref(props.project.imageUrl);
     const slideStyle = computed(() => {
       const { currentActive, slideNumber } = props;
@@ -59,16 +60,15 @@ export default {
       }
     });
 
-    function showDetailsAboutProject() {
-      showDetails.value = true;
+    function routeToDetailsAboutProject() {
+      router.push(`/projects/${props.project.name}`);
     }
 
     return {
-      showDetails,
       slideStyle,
       imgLink,
       isActive,
-      showDetailsAboutProject,
+      routeToDetailsAboutProject,
     };
   },
 };
