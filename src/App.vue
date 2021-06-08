@@ -1,5 +1,6 @@
 <template>
   <!--  <custom-cursor></custom-cursor> -->
+  <page-loader></page-loader>
   <the-nav-bar></the-nav-bar>
   <main class="main">
     <router-view v-slot="{ Component }">
@@ -12,12 +13,21 @@
 
 <script>
 import TheNavBar from "./components/TheNavBar/TheNavBar.vue";
+import PageLoader from "./components/common/PageLoader.vue";
 /* import customCursor from "./components/common/Cursor.vue"; */
 export default {
   name: "App",
   components: {
     TheNavBar,
+    PageLoader,
     /*  customCursor, */
+  },
+  data() {
+    return {
+      currentRoute: null,
+      routeIsLoading: null,
+      routeLoaded: null,
+    };
   },
 };
 </script>

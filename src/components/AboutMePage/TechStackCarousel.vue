@@ -66,14 +66,14 @@
 </template>
 <script>
 import { ref } from "vue";
-import VueIcon from "../../assets/logos/vueLogo.vue";
-import RaspberryIcon from "../../assets/logos/raspberryLogo.vue";
-import ExpressIcon from "../../assets/logos/expressLogo.vue";
-import MongodbIcon from "../../assets/logos/mongodbLogo.vue";
-import VuexIcon from "../../assets/logos/vuexLogo.vue";
-import SassIcon from "../../assets/logos/sassLogo.vue";
-import NodeIcon from "../../assets/logos/nodeLogo.vue";
-import VueRouterIcon from "../../assets/logos/vueRouterLogo.vue";
+import VueIcon from "../../assets/logos/vueBadge.vue";
+import RaspberryIcon from "../../assets/logos/raspberryBadge.vue";
+import ExpressIcon from "../../assets/logos/expressBadge.vue";
+import MongodbIcon from "../../assets/logos/mongodbBadge.vue";
+import VuexIcon from "../../assets/logos/vuexBadge.vue";
+import SassIcon from "../../assets/logos/sassBadge.vue";
+import NodeIcon from "../../assets/logos/nodeBadge.vue";
+import VueRouterIcon from "../../assets/logos/vueRouterBadge.vue";
 export default {
   components: {
     VueIcon,

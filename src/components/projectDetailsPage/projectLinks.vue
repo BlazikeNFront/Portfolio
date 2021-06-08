@@ -1,13 +1,17 @@
 <template>
   <div v-if="links.length === 1" class="detailsProjectView__linksWrapper">
     <div
-      class="detailsProjectView__linkWrapper detailsProjectView__linkWrapper--github"
+      class="
+        detailsProjectView__linkWrapper detailsProjectView__linkWrapper--github
+      "
     >
       <github-logo></github-logo>
       <github-name></github-name>
     </div>
     <div
-      class="detailsProjectView__linkWrapper detailsProjectView__linkWrapper--live"
+      class="
+        detailsProjectView__linkWrapper detailsProjectView__linkWrapper--live
+      "
     >
       <a>LIVE</a>
       <loader></loader>
@@ -30,8 +34,8 @@
   </div>
 </template>
 <script>
-import GithubLogo from "../../assets/logos/githubLogo.vue";
-import GithubName from "../../assets/logos/githubName.vue";
+import GithubLogo from "../../assets/logos/githubLogoBadge.vue";
+import GithubName from "../../assets/logos/githubBadge.vue";
 
 export default {
   components: {
@@ -60,6 +64,7 @@ export default {
   }
 }
 .detailsProjectView__linkWrapper {
+  margin-top: 5rem;
   width: 15rem;
   height: 10rem;
 }

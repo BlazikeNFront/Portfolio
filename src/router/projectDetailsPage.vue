@@ -134,13 +134,12 @@ export default {
 }
 .detailsProjectView__aboutSection {
   @include flexColumn;
+  height: 20rem;
   justify-content: space-between;
-  height: 25rem;
 }
 .detailsProjectView__techStack {
   @include flexColumn;
+  height: 20rem;
   justify-content: space-between;
-  margin-top: 3rem;
-  height: 18rem;
 }
 </style>

@@ -49,19 +49,30 @@ export default {
       {
         name: "weatherApp",
         title: "Weather App",
-        imageUrl: "weatherAppImage.png",
+        imageUrl: "weatherApp.png",
       },
       {
         name: "movieApp",
         title: "Movie App",
         imageUrl: "movieApp.png",
       },
+      {
+        name: "projectRAS",
+        title: "Project RAS",
+        imageUrl: "movieApp.png",
+      },
+      {
+        name: "taimenShop",
+        title: "Taimen Shop",
+        imageUrl: "movieApp.png",
+      },
     ];
 
-    const slideProportional = 33.33;
+    const slideProportional = parseInt(100 / projects.length);
     const activeSlide = ref(0);
     const carousel = ref(null);
-    const listTranslate = ref(42);
+    const listTranslate = ref(37);
+
     slideProportional;
     const carouselTranslate = computed(() => {
       return `transform:translateX(${listTranslate.value}%)`;
