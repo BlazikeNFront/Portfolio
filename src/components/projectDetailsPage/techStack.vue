@@ -2,7 +2,7 @@
   <ul class="techStack">
     <li v-for="element in techStack" :key="element">
       <img
-        :src="require(`../../assets/logos/${element.src}`)"
+        :src="require(`../../assets/logos/svg/${element.src}`)"
         :alt="element.alt"
       />
     </li>
@@ -18,6 +18,7 @@ export default {
 <style lang="scss">
 .techStack {
   @include flexRow;
+  width: 60rem;
   flex-wrap: wrap;
   li {
     margin: 1rem;

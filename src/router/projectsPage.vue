@@ -42,26 +42,44 @@ export default {
   setup() {
     const projects = [
       {
-        name: "Data Warehouse",
+        name: "dataWarehouse",
+        title: "Data Warehouse",
         imageUrl: "dataWarehouse.png",
       },
       {
-        name: "Weather App",
-        imageUrl: "weatherAppImage.png",
+        name: "weatherApp",
+        title: "Weather App",
+        imageUrl: "weatherApp.png",
+      },
+      {
+        name: "movieApp",
+        title: "Movie App",
+        imageUrl: "movieApp.png",
+      },
+      {
+        name: "projectRAS",
+        title: "Project RAS",
+        imageUrl: "movieApp.png",
+      },
+      {
+        name: "taimenShop",
+        title: "Taimen Shop",
+        imageUrl: "movieApp.png",
       },
     ];
 
-    const slideProportional = 16.66;
+    const slideProportional = parseInt(100 / projects.length);
     const activeSlide = ref(0);
     const carousel = ref(null);
-    const listTranslate = ref(42);
+    const listTranslate = ref(37);
+
     slideProportional;
     const carouselTranslate = computed(() => {
       return `transform:translateX(${listTranslate.value}%)`;
     });
 
     function slideAction(e) {
-      if (e < 0 || e === activeSlide.value || e > projects.length) {
+      if (e < 0 || e === activeSlide.value || e > projects.length - 1) {
         return;
       }
       const diffrenceBetweenSlides = activeSlide.value - e;

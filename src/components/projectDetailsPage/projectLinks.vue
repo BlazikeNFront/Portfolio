@@ -1,27 +1,42 @@
 <template>
-  <div v-if="links.length === 1" class="detailsProjectView__link">
-    <div class="detailsProjectView__gitHubLink">
+  <div v-if="links.length === 1" class="detailsProjectView__linksWrapper">
+    <div
+      class="
+        detailsProjectView__linkWrapper detailsProjectView__linkWrapper--github
+      "
+    >
       <github-logo></github-logo>
       <github-name></github-name>
     </div>
-    <a>LIVE</a>
+    <div
+      class="
+        detailsProjectView__linkWrapper detailsProjectView__linkWrapper--live
+      "
+    >
+      <a>LIVE</a>
+      <loader></loader>
+    </div>
   </div>
   <div class="detailsProjectView__multipleVersions" v-else>
     <div class="detailsProjectView__version" v-for="link in links" :key="link">
       <h4>{{ link.version }}</h4>
       <div class="detailsProjectView__linksWrapper">
-        <div class="detailsProjectView__gitHubLink">
+        <div class="detailsProjectView__link">
           <github-logo></github-logo>
           <github-name></github-name>
         </div>
-        <a>LIVE</a>
+        <div class="detailsProjectView__link">
+          <a>LIVE</a>
+          <loader></loader>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import GithubLogo from "../../assets/logos/githubLogo.vue";
-import GithubName from "../../assets/logos/githubName.vue";
+import GithubLogo from "../../assets/logos/githubLogoBadge.vue";
+import GithubName from "../../assets/logos/githubBadge.vue";
+
 export default {
   components: {
     GithubLogo,
@@ -48,10 +63,16 @@ export default {
     }
   }
 }
-.detailsProjectView__gitHubLink {
+.detailsProjectView__linkWrapper {
+  margin-top: 5rem;
+  width: 15rem;
+  height: 10rem;
+}
+
+.detailsProjectView__linkWrapper--github {
   @include flexColumn;
-  width: 7rem;
-  height: 7rem;
+  width: 10rem;
+  height: 10rem;
   cursor: pointer;
   svg {
     width: 100%;
@@ -65,7 +86,10 @@ export default {
     }
   }
 }
-
+.detailsProjectView__linkWrapper--live {
+  @include flexRow;
+  justify-content: space-between;
+}
 .detailsProjectView__multipleVersions {
   @include flexRow;
   justify-content: space-evenly;
@@ -83,8 +107,8 @@ export default {
 }
 .detailsProjectView__linksWrapper {
   @include flexRow;
-  width: 100%;
-  justify-content: space-evenly;
+  width: 40rem;
+  justify-content: space-between;
 
   a {
     display: block;
@@ -98,6 +122,14 @@ export default {
       color: $main-color;
       text-shadow: 0px 0px 5px #7cd0aa;
     }
+  }
+}
+.detailsProjectView__linkWrapper--live {
+  .loader {
+    transform: scale(0.7);
+  }
+  .loader__ripple {
+    border: 4px solid red;
   }
 }
 </style>

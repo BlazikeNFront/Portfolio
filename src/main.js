@@ -53,9 +53,11 @@ library.add(
 //global components
 //global components
 import BaseButton from "./components/common/BaseButton.vue";
+import Loader from "./components/common/Loader.vue";
 
 const app = createApp(App);
 app.component("base-button", BaseButton);
+app.component("loader", Loader);
 app.use(store);
 app.use(router);
 app.component("font-awesome-icon", FontAwesomeIcon);
