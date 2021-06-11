@@ -59,22 +59,17 @@ export default {
     projectLinks,
   },
 
-  /*   props: {
-    pickedProject: {
-      required: true,
-      type: Object,
-    },
-  }, */
   setup() {
     const store = useStore();
     const route = useRoute();
     const router = useRouter();
-
+    console.log(route);
     const pickedProject = store.getters.getSingleProject(
       route.params.projectName
     );
+
     function navigateToProjects() {
-      router.push({ name: "myProjects" });
+      router.push({ name: "projectsPage" });
     }
 
     return { pickedProject, navigateToProjects };

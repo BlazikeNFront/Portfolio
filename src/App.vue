@@ -1,12 +1,10 @@
 <template>
   <!--  <custom-cursor></custom-cursor> -->
-  <page-loader></page-loader>
+  <page-loader v-if="pageIsLoading"></page-loader>
   <the-nav-bar></the-nav-bar>
   <main class="main">
     <router-view v-slot="{ Component }">
-      <transition mode="out-in">
-        <component :is="Component" />
-      </transition>
+      <component :is="Component" />
     </router-view>
   </main>
 </template>
@@ -28,6 +26,11 @@ export default {
       routeIsLoading: null,
       routeLoaded: null,
     };
+  },
+  computed: {
+    pageIsLoading() {
+      return this.$store.getters["getRouteIsLoading"];
+    },
   },
 };
 </script>
