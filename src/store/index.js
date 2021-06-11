@@ -77,33 +77,25 @@ const store = createStore({
           links: [{ links: { github: "NPFkekw", live: "NPFkekm" } }],
         },
       ],
-      router: {
-        currentRoute: null,
-        routeIsLoading: null,
-        routeLoaded: null,
+      loadedPages: {
+        homePage: true, //initial request
+        pageLoader: true, //initial request
+        aboutPage: false,
+        projectsPage: false,
+        projectDetailsPage: false,
+        contactPage: false,
       },
     };
   },
   mutations: {
-    setCurrentRoute(state, payload) {
-      state.router.currentRoute = payload;
-    },
-    setRouteIsLoading(state, payload) {
-      state.router.routeIsLoading = payload;
-    },
-    setRouteLoaded(state, payload) {
-      state.router.routeLoaded = payload;
+    setLoadedPage(state, payload) {
+      state.loadedPages[payload] = true;
     },
   },
   actions: {
-    setCurrentRoute(context, payload) {
-      context.dispatch("setCurrentRoute", payload);
-    },
-    setRouteIsLoading(context, payload) {
-      context.dispatch("setRouteIsLoading", payload);
-    },
-    setRouteLoaded(context, payload) {
-      context.dispatch("setRouteLoaded", payload);
+    setLoadedPage(context, payload) {
+      //payload is a name of page in loadedPages object;
+      context.commit("setLoadedPage", payload);
     },
   },
   getters: {
@@ -113,14 +105,9 @@ const store = createStore({
     getSingleProject: (state) => (name) => {
       return state.projects.find((project) => project.name === name);
     },
-    getCurrentRoute(state) {
-      return state.router.currentRoute;
-    },
-    getRouteIsLoading(state) {
-      return state.router.routeIsLoading;
-    },
-    getRouteLoaded(state) {
-      return state.router.routeLoaded;
+
+    getLoadedPage: (state) => (pageName) => {
+      return state.loadedPages[pageName];
     },
   },
 });

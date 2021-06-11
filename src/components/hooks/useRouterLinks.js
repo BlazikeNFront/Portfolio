@@ -2,16 +2,17 @@ import { computed } from "vue";
 
 export default function useNavigationLinks() {
   const homePageLink = computed(() => {
-    return { name: "home" };
+    return { name: "pageLoader", params: { redirectTo: "homePage" } };
   });
   const aboutPageLink = computed(() => {
-    return { name: "about" };
+    return { name: "pageLoader", params: { redirectTo: "aboutPage" } };
   });
   const projectsPageLink = computed(() => {
-    return { name: "myProjects" };
+    return { name: "pageLoader", params: { redirectTo: "projectsPage" } };
   });
   const contactPageLink = computed(() => {
-    return { name: "contact" };
+    return { name: "pageLoader", params: { redirectTo: "contactPage" } };
   });
+
   return { homePageLink, aboutPageLink, projectsPageLink, contactPageLink };
 }

@@ -8,7 +8,7 @@
     </p>
     <div
       class="carousel__item carousel__item__vue"
-      @mouseover="setCarouselTest('VUE 3 OPTIONS/COMPOSITION API', true)"
+      @mouseover="setCarouselTest('VUE 3')"
       @mouseleave="setCarouselTest()"
     >
       <vue-icon></vue-icon>

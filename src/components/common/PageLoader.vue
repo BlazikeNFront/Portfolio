@@ -1,80 +1,142 @@
 <template>
-  <div>{{ kekw }}</div>
-  <!--   <div
-    :class="{
-      'loading-container': true,
-      loading: isLoading,
-      visible: isVisible,
-    }"
-  >
-    <div class="loader" :style="{ width: progress + '%' }">
-      <div class="light"></div>
+  <div class="pageLoaderContainer">
+    <div class="pageLoader__loadingView" v-if="!loadingError">
+      <h3>Loading...</h3>
+      <div class="pageLoader__progressBarContainer">
+        <div
+          class="pageLoader__progressBar"
+          :style="`width:${this.loaderWidth}%`"
+        ></div>
+      </div>
     </div>
-    <div class="glow"></div>
-  </div> -->
+    <div class="pageLoader__errorView" v-else>
+      <h3>Error occured :(</h3>
+      <p>Check your internet connection</p>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  mounted() {
+    if (!this.isPageLoaded) {
+      this.startFetchingPage();
+    }
+    /*  setTimeout(() => {
+      this.loaderWidth = 40;
+    }, 500);
+    setTimeout(() => {
+      this.loaderWidth = 55;
+    }, 700);
+    setTimeout(() => {
+      this.loaderWidth = 90;
+    }, 900); */
+    setTimeout(() => {
+      this.allowPageChange = true;
+    }, 1);
+    setTimeout(() => {
+      this.loadingError === true;
+    }, 15000);
+  },
+  data() {
+    return {
+      allowPageChange: false,
+      fallbackPage: "homePage",
+      redirectTo: this.$route.params.redirectTo,
+
+      loaderWidth: 0,
+      loadingError: false,
+    };
+  },
+  computed: {
+    isPageLoaded() {
+      if (!this.redirectTo) {
+        return true;
+      }
+      return this.$store.getters["getLoadedPage"](this.redirectTo);
+    },
+    redirectPage() {
+      if (this.redirectTo) {
+        return this.redirectTo;
+      }
+      return "homePage";
+    },
+    routerPayload() {
+      const routerPayload = {
+        params: {},
+        name: this.redirectTo,
+      };
+      if (this.$route.params.projectName) {
+        routerPayload.params.projectName = this.$route.params.projectName;
+      }
+      return routerPayload;
+    },
+  },
+  watch: {
+    allowPageChange(boolean) {
+      if (boolean === true && this.isPageLoaded) {
+        this.loaderWidth = 100;
+
+        setTimeout(() => {
+          this.$router.push(this.routerPayload);
+        }, 400);
+      }
+    },
+    isPageLoaded(boolean) {
+      if (boolean === true && this.allowPageChange) {
+        this.loaderWidth = 100;
+        setTimeout(() => {
+          this.$router.push(this.routerPayload);
+        }, 400);
+      }
+    },
+  },
+  methods: {
+    startFetchingPage() {
+      this.$router.push(this.routerPayload);
+    },
+  },
+};
 </script>
 
-<style scoped>
-.loading-container {
-  font-size: 0; /* remove space */
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 5px;
+<style lang='scss'>
+.pageLoaderContainer {
   width: 100%;
-  opacity: 0;
-  display: none;
-  z-index: 100;
-  transition: opacity 200;
+  height: 100vh;
+  color: White;
 }
+.pageLoader__loadingView {
+  @include flexColumn;
+  height: 100%;
+  h3 {
+    margin: 4rem;
+  }
+}
+.pageLoader__progressBarContainer {
+  margin: 0 auto;
+  width: 40rem;
+  height: 3rem;
+  border-radius: 25px;
 
-.loading-container.visible {
+  background-color: $nav-bar-background;
+}
+.pageLoader__progressBar {
   display: block;
-}
-.loading-container.loading {
-  opacity: 1;
-}
-
-.loader {
-  background: #23d6d6;
-  display: inline-block;
+  width: 5%;
   height: 100%;
-  width: 50%;
-  overflow: hidden;
-  border-radius: 0 0 5px 0;
-  transition: 200 width ease-out;
+  border-radius: 25px;
+  background-color: $main-color;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0px 0px 25px $main-color;
 }
-
-.loader > .light {
-  float: right;
+.pageLoader__errorView {
+  @include flexColumn;
   height: 100%;
-  width: 20%;
-  background-image: linear-gradient(to right, #23d6d6, #29ffff, #23d6d6);
-  animation: loading-animation 2s ease-in infinite;
-}
-
-.glow {
-  display: inline-block;
-  height: 100%;
-  width: 30px;
-  margin-left: -30px;
-  border-radius: 0 0 5px 0;
-  box-shadow: 0 0 10px #23d6d6;
-}
-
-@keyframes loading-animation {
-  0% {
-    margin-right: 100%;
+  h3 {
+    margin: 4rem;
   }
-  50% {
-    margin-right: 100%;
-  }
-  100% {
-    margin-right: -10%;
+  p {
+    font-size: 2.5rem;
   }
 }
 </style>
