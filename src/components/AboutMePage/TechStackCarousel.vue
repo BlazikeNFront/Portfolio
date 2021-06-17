@@ -1,9 +1,6 @@
 <template>
   <div class="carousel__wrapper">
-    <p
-      class="carousel__text"
-      :class="{ carousel__textLong: applyLongerTextClass }"
-    >
+    <p class="carousel__text">
       {{ carouselText }}
     </p>
     <div
@@ -86,16 +83,12 @@ export default {
     VueRouterIcon,
   },
   setup() {
-    const carouselText = ref("VUE 3 OPTIONS/COMPOSITION API:");
-    const applyLongerTextClass = ref(false);
-    function setCarouselTest(
-      text = "TechStack",
-      applyLongerTextClassBoolen = false
-    ) {
+    const carouselText = ref("TechStack:");
+
+    function setCarouselTest(text = "TechStack") {
       carouselText.value = text;
-      applyLongerTextClass.value = applyLongerTextClassBoolen;
     }
-    return { carouselText, setCarouselTest, applyLongerTextClass };
+    return { carouselText, setCarouselTest };
   },
 };
 </script>

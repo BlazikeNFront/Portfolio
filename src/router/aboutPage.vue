@@ -13,6 +13,12 @@
         with desktop publishing software like Aldus PageMaker including versions
         of Lorem Ipsum.
       </p>
+      <h3>Codewars</h3>
+      <a href="https://www.codewars.com/users/BlazikenFront"
+        ><img
+          src="https://www.codewars.com/users/BlazikenFront/badges/large"
+          alt="CodeWars Badge"
+      /></a>
     </article>
     <tech-stack-carousel></tech-stack-carousel>
   </section>

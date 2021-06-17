@@ -19,81 +19,49 @@
 <script>
 export default {
   mounted() {
-    if (!this.isPageLoaded) {
-      this.startFetchingPage();
-    }
-    /*  setTimeout(() => {
-      this.loaderWidth = 40;
-    }, 500);
-    setTimeout(() => {
-      this.loaderWidth = 55;
-    }, 700);
-    setTimeout(() => {
-      this.loaderWidth = 90;
-    }, 900); */
-    setTimeout(() => {
-      this.allowPageChange = true;
-    }, 1);
+    this.changeBarProgress();
+
     setTimeout(() => {
       this.loadingError === true;
     }, 15000);
   },
   data() {
     return {
-      allowPageChange: false,
-      fallbackPage: "homePage",
-      redirectTo: this.$route.params.redirectTo,
-
       loaderWidth: 0,
       loadingError: false,
     };
   },
   computed: {
-    isPageLoaded() {
-      if (!this.redirectTo) {
-        return true;
-      }
-      return this.$store.getters["getLoadedPage"](this.redirectTo);
-    },
-    redirectPage() {
-      if (this.redirectTo) {
-        return this.redirectTo;
-      }
-      return "homePage";
-    },
-    routerPayload() {
-      const routerPayload = {
-        params: {},
-        name: this.redirectTo,
-      };
-      if (this.$route.params.projectName) {
-        routerPayload.params.projectName = this.$route.params.projectName;
-      }
-      return routerPayload;
+    isPageLoading() {
+      return this.$store.getters["getIsPageLoading"];
     },
   },
   watch: {
-    allowPageChange(boolean) {
-      if (boolean === true && this.isPageLoaded) {
-        this.loaderWidth = 100;
-
+    isPageLoading(newVal) {
+      if (newVal === false) {
         setTimeout(() => {
-          this.$router.push(this.routerPayload);
-        }, 400);
-      }
-    },
-    isPageLoaded(boolean) {
-      if (boolean === true && this.allowPageChange) {
-        this.loaderWidth = 100;
+          this.loaderWidth = 100;
+        }, 100);
         setTimeout(() => {
-          this.$router.push(this.routerPayload);
-        }, 400);
+          this.$store.dispatch("setShowProgressBar", false);
+        }, 500);
       }
     },
   },
   methods: {
-    startFetchingPage() {
-      this.$router.push(this.routerPayload);
+    changeBarProgress() {
+      setTimeout(() => {
+        this.loaderWidth = 10;
+      }, 10);
+      setTimeout(() => {
+        this.loaderWidth = 35;
+      }, 50);
+      setTimeout(() => {
+        this.loaderWidth = 70;
+      }, 100);
+      setTimeout(() => {
+        this.loaderWidth = 90;
+      }, 700);
     },
   },
 };
@@ -101,9 +69,13 @@ export default {
 
 <style lang='scss'>
 .pageLoaderContainer {
-  width: 100%;
+  position: absolute;
+  right: 0;
+  width: 90vw;
   height: 100vh;
+  background-color: #171717;
   color: White;
+  z-index: 1000;
 }
 .pageLoader__loadingView {
   @include flexColumn;

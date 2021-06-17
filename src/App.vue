@@ -29,7 +29,7 @@ export default {
   },
   computed: {
     pageIsLoading() {
-      return this.$store.getters["getRouteIsLoading"];
+      return this.$store.getters["getIsPageLoading"];
     },
   },
 };
