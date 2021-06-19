@@ -77,6 +77,8 @@ const store = createStore({
           links: [{ links: { github: "NPFkekw", live: "NPFkekm" } }],
         },
       ],
+      isPageLoading: false,
+      showLoaderBar: false,
       loadedPages: {
         homePage: true, //initial request
         pageLoader: true, //initial request
@@ -90,12 +92,25 @@ const store = createStore({
   mutations: {
     setLoadedPage(state, payload) {
       state.loadedPages[payload] = true;
+      console.log(state.loadedPages[payload]);
+    },
+    isPageLoading(state, payload) {
+      state.isPageLoading = payload;
+    },
+    setShowProgressBar(state, payload) {
+      state.showLoaderBar = payload;
     },
   },
   actions: {
     setLoadedPage(context, payload) {
       //payload is a name of page in loadedPages object;
       context.commit("setLoadedPage", payload);
+    },
+    setIsPageLoading(context, payload) {
+      context.commit("isPageLoading", payload);
+    },
+    setShowProgressBar(context, payload) {
+      context.commit("setShowProgressBar", payload);
     },
   },
   getters: {
@@ -108,6 +123,12 @@ const store = createStore({
 
     getLoadedPage: (state) => (pageName) => {
       return state.loadedPages[pageName];
+    },
+    getIsPageLoading(state) {
+      return state.isPageLoading;
+    },
+    getShowProgressBar(state) {
+      return state.showLoaderBar;
     },
   },
 });

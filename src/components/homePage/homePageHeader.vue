@@ -27,7 +27,8 @@
     ]"
     @mouseover="changeClass($event)"
     >,</span
-  ><br />
+  ><br class="desktopLiner" />
+
   <span
     class="homePage__letterAnim--4"
     :class="[
@@ -36,7 +37,8 @@
         : 'letterAppearanceAnimation',
     ]"
     @mouseover="changeClass($event)"
-    >I</span
+  >
+    &nbsp;I</span
   ><span
     class="homePage__letterAnim--5"
     :class="[
@@ -56,7 +58,8 @@
     @mouseover="changeClass($event)"
     >m
   </span>
-  &nbsp;<span
+
+  <br /><span
     class="homePage__letterAnim--7"
     :class="[
       animationEnded
@@ -147,6 +150,9 @@ export default {
 };
 </script>
 <style lang='scss'>
+.desktopLiner {
+  display: none;
+}
 .homePage__letterAnim--1 {
   animation-delay: 0.1s;
 }

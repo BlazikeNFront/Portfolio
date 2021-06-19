@@ -69,7 +69,8 @@ export default {
     const loader = ref(false);
 
     function validateForm() {
-      const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+      const emailRegex =
+        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
       const onlyLettersRegex = /^[A-Z]+$/i;
 
       if (!emailRegex.test(emailInput.value)) {
@@ -213,5 +214,90 @@ export default {
   position: absolute;
   bottom: 2rem;
   right: 4rem;
+}
+@media (min-width: 1440px) {
+  .contactPage {
+    @include flexColumn;
+    width: 100%;
+    height: 100vh;
+    color: White;
+    form {
+      @include flexColumn;
+      position: relative;
+      width: 70rem;
+      height: 70rem;
+      border: 1px solid #63d471;
+      border-radius: 20px;
+    }
+
+    button {
+      font-size: 2.5rem;
+      color: white;
+      cursor: pointer;
+      &:hover {
+        color: black;
+      }
+      p {
+        z-index: 1000;
+        font-weight: 600;
+      }
+      &:focus {
+        outline: none;
+        border: 3px solid $main-color;
+      }
+    }
+  }
+  .contactPage__formControl {
+    @include flexColumn;
+    position: relative;
+    margin: 1.5rem;
+    label {
+      margin: 1rem;
+      font-size: 2rem;
+    }
+    input {
+      width: 30rem;
+      height: 4rem;
+      border: 1px solid $main-color;
+      border-radius: 20px;
+      background: transparent;
+      font-size: 2rem;
+      text-align: center;
+      color: White;
+      outline: none;
+      &:focus {
+        border: 3px solid $main-color;
+      }
+    }
+    textarea {
+      margin-bottom: 3rem;
+      padding: 1rem 2rem;
+      border: 1px solid $main-color;
+      border-radius: 20px;
+      background: none;
+      font-size: 1.5rem;
+      font-family: inherit;
+      color: White;
+      outline: none;
+      resize: none;
+      &:focus {
+        border: 3px solid $main-color;
+      }
+    }
+  }
+  .contactPage__errorMsg {
+    position: absolute;
+    bottom: -2.5rem;
+    color: #de1e00;
+    font-size: 1.7rem;
+  }
+  .contactPage__errorMsg--textarea {
+    bottom: 0;
+  }
+  .contactPage__loader {
+    position: absolute;
+    bottom: 2rem;
+    right: 4rem;
+  }
 }
 </style>

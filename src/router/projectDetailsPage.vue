@@ -137,4 +137,66 @@ export default {
   height: 20rem;
   justify-content: space-between;
 }
+@media (min-width: 1440px) {
+  .detailsProjectView {
+    @include flexColumn;
+    position: relative;
+    width: 90vw;
+    height: 100vh;
+    padding: 2rem;
+    justify-content: space-around;
+    color: White;
+  }
+  .detailsProjectView__linkToProjects {
+    position: absolute;
+    top: 5rem;
+    left: 5rem;
+    background: none;
+    border: none;
+    font-size: 5rem;
+    color: $app-background;
+    filter: drop-shadow(0px 0px 3px #7cd0aa);
+    transform: rotate(180deg);
+
+    &:hover {
+      color: $main-color;
+    }
+  }
+
+  .detailsProjectView__content {
+    @include flexRow;
+    width: 90%;
+    height: 80%;
+    justify-content: space-evenly;
+  }
+
+  .detailsProjectView__image {
+    margin: 0.5rem;
+    width: 40rem;
+    height: 56rem;
+    object-fit: cover;
+  }
+  .detailsProjectView__description {
+    @include flexColumn;
+    width: 60%;
+    height: 100%;
+    justify-content: space-evenly;
+    p {
+      margin: 1rem;
+      width: 100%;
+      font-size: 1.5rem;
+      text-align: justify;
+    }
+  }
+  .detailsProjectView__aboutSection {
+    @include flexColumn;
+    height: 20rem;
+    justify-content: space-between;
+  }
+  .detailsProjectView__techStack {
+    @include flexColumn;
+    height: 20rem;
+    justify-content: space-between;
+  }
+}
 </style>

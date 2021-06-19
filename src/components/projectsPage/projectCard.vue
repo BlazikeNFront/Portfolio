@@ -62,11 +62,8 @@ export default {
 
     function routeToDetailsAboutProject() {
       router.push({
-        name: "pageLoader",
-        params: {
-          redirectTo: "projectDetailsPage",
-          projectName: props.project.name,
-        },
+        name: "projectDetailsPage",
+        params: { projectName: props.project.name },
       });
     }
 
