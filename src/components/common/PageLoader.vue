@@ -44,24 +44,29 @@ export default {
         }, 100);
         setTimeout(() => {
           this.$store.dispatch("setShowProgressBar", false);
-        }, 500);
+        }, 1000);
       }
     },
   },
   methods: {
     changeBarProgress() {
       setTimeout(() => {
-        this.loaderWidth = 10;
+        this.changeWidth(10);
       }, 10);
       setTimeout(() => {
-        this.loaderWidth = 35;
+        this.changeWidth(35);
       }, 50);
       setTimeout(() => {
-        this.loaderWidth = 70;
+        this.changeWidth(60);
       }, 100);
       setTimeout(() => {
-        this.loaderWidth = 90;
+        this.changeWidth(90);
       }, 700);
+    },
+    changeWidth(val) {
+      if (this.loaderWidth < val) {
+        this.loaderWidth = val;
+      }
     },
   },
 };
