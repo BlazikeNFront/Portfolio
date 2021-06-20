@@ -38,12 +38,11 @@ export default {
 <style lang='scss'>
 .aboutMePage {
   @include flexColumn;
-  margin: 5rem 0;
+  margin: 10rem 0 5rem 0;
   width: 100%;
   color: White;
   article {
     @include flexColumn;
-
     width: 90%;
     justify-content: space-evenly;
 
@@ -76,6 +75,13 @@ export default {
   @include flexRow;
   width: 40rem;
   height: 40rem;
+}
+@media (min-width: 425px) {
+  .aboutMePage__codewars {
+    img {
+      width: 40rem;
+    }
+  }
 }
 @media (min-width: 1440px) {
   .aboutMePage {

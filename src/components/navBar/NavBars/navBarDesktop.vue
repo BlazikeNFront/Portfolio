@@ -60,10 +60,12 @@ export default {
 }
 @media (min-width: 768px) {
   .navDesktop {
-    position: relative;
+    position: fixed;
+    display: block;
+    top: 0;
     left: 0;
-    height: 100%;
-    width: 10vw;
+    width: 20vw;
+    height: 100vh;
     background-color: $nav-bar-background;
 
     ul {

@@ -39,12 +39,11 @@ export default {
   watch: {
     isPageLoading(newVal) {
       if (newVal === false) {
-        setTimeout(() => {
-          this.loaderWidth = 100;
-        }, 100);
+        this.loaderWidth = 100;
+
         setTimeout(() => {
           this.$store.dispatch("setShowProgressBar", false);
-        }, 1000);
+        }, 500);
       }
     },
   },
@@ -76,25 +75,27 @@ export default {
 .pageLoaderContainer {
   position: absolute;
   right: 0;
-  width: 90vw;
-  height: 100vh;
+  width: 100vw;
+  height: 100%;
   background-color: #171717;
   color: White;
-  z-index: 1000;
+  z-index: 1500;
 }
 .pageLoader__loadingView {
+  margin-top: 20rem;
   @include flexColumn;
-  height: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 40rem;
   h3 {
     margin: 4rem;
   }
 }
 .pageLoader__progressBarContainer {
   margin: 0 auto;
-  width: 40rem;
+  width: 35rem;
   height: 3rem;
   border-radius: 25px;
-
   background-color: $nav-bar-background;
 }
 .pageLoader__progressBar {
@@ -114,6 +115,50 @@ export default {
   }
   p {
     font-size: 2.5rem;
+  }
+}
+@media (min-width: 768px) {
+  .pageLoaderContainer {
+    position: absolute;
+    right: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: #171717;
+    color: White;
+    z-index: 1000;
+  }
+  .pageLoader__loadingView {
+    @include flexColumn;
+    height: 100%;
+    h3 {
+      margin: 4rem;
+    }
+  }
+  .pageLoader__progressBarContainer {
+    margin: 0 auto;
+    width: 35rem;
+    height: 3rem;
+    border-radius: 25px;
+    background-color: $nav-bar-background;
+  }
+  .pageLoader__progressBar {
+    display: block;
+    width: 5%;
+    height: 100%;
+    border-radius: 25px;
+    background-color: $main-color;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0px 0px 25px $main-color;
+  }
+  .pageLoader__errorView {
+    @include flexColumn;
+    height: 100%;
+    h3 {
+      margin: 4rem;
+    }
+    p {
+      font-size: 2.5rem;
+    }
   }
 }
 </style>

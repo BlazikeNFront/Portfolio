@@ -122,7 +122,7 @@ export default {
   justify-content: space-between;
   h4 {
     @include flexColumn;
-    width: 100%;
+    width: 90%;
     height: 6rem;
     border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.9);
@@ -171,5 +171,102 @@ export default {
 .cardInformation-enter-from,
 .cardInformation-leave-to {
   opacity: 0;
+}
+@media (min-width: 768px) {
+  .card {
+    position: relative;
+    width: 35rem;
+    height: 50rem;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: all 1s ease;
+  }
+  .cardImage {
+    @include flexRow;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /*  background-image: url("../../assets/sliderImages/dataWarehouse.png"); */
+    background-size: cover;
+    background-position: center;
+    button {
+      margin-bottom: 2rem;
+      width: 15rem;
+      height: 5rem;
+      color: white;
+      font-size: 2rem;
+      font-family: $marker-font;
+      background-color: black;
+      opacity: 1;
+
+      &:hover {
+        color: black;
+      }
+      p {
+        z-index: 1000;
+      }
+    }
+  }
+  .card__informations {
+    @include flexColumn;
+    position: absolute;
+    top: -7.5rem;
+    width: 100%;
+    height: 135%;
+    justify-content: space-between;
+    h4 {
+      @include flexColumn;
+      width: 100%;
+      height: 6rem;
+      border-radius: 20px;
+      background-color: rgba(0, 0, 0, 0.9);
+      color: white;
+    }
+  }
+  .card__buttons {
+    @include flexRow;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+  .card__leftBorder {
+    position: absolute;
+    top: 0px;
+    left: -4.9rem;
+    width: 10rem;
+    height: 50rem;
+    background-color: black;
+    transform-style: preserve-3d;
+    transition: all 0.2s ease;
+
+    transform: translate3d(0, 0, -5rem) rotateY(90deg);
+  }
+  .card__rightBorder {
+    position: absolute;
+    top: 0px;
+    right: -4.9rem;
+    width: 10rem;
+    height: 50rem;
+    background-color: black;
+    transform-style: preserve-3d;
+    transition: all 0.2s ease;
+    transform: translate3d(0, 0, -5rem) rotateY(90deg);
+  }
+  .cardInformation-enter-active {
+    transition: all 0.5s ease;
+    transition-delay: 0.3s;
+  }
+  .cardInformation-leave-active {
+    transition: all 0.3s ease;
+  }
+  .cardInformation-leave-from,
+  .cardInformation-enter-to {
+    opacity: 1;
+  }
+  .cardInformation-enter-from,
+  .cardInformation-leave-to {
+    opacity: 0;
+  }
 }
 </style>

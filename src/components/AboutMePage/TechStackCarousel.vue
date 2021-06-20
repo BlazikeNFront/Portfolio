@@ -261,6 +261,11 @@ export default {
     transform: rotate(1turn) translate(-142px, -142px) rotate(-1turn);
   }
 }
+@media (min-width: 425px) {
+  .carousel__wrapper {
+    transform: scale(0.8);
+  }
+}
 @media (min-width: 768px) {
   .carousel__wrapper {
     @include flexRow;
@@ -380,46 +385,6 @@ export default {
     transform: rotate(0) translate(-142px, -142px) rotate(0);
     &:hover {
       filter: drop-shadow(0px 0px 3px #c31c4a);
-    }
-  }
-  @keyframes spin {
-    100% {
-      transform: rotate(1turn) translate(200px) rotate(-1turn);
-    }
-  }
-  @keyframes spin2 {
-    100% {
-      transform: rotate(1turn) translate(-200px) rotate(-1turn);
-    }
-  }
-  @keyframes spin3 {
-    100% {
-      transform: rotate(1turn) translateY(200px) rotate(-1turn);
-    }
-  }
-  @keyframes spin4 {
-    100% {
-      transform: rotate(1turn) translateY(-200px) rotate(-1turn);
-    }
-  }
-  @keyframes spin5 {
-    100% {
-      transform: rotate(1turn) translate(-142px, 142px) rotate(-1turn);
-    }
-  }
-  @keyframes spin6 {
-    100% {
-      transform: rotate(1turn) translate(142px, -142px) rotate(-1turn);
-    }
-  }
-  @keyframes spin7 {
-    100% {
-      transform: rotate(1turn) translate(142px, 142px) rotate(-1turn);
-    }
-  }
-  @keyframes spin8 {
-    100% {
-      transform: rotate(1turn) translate(-142px, -142px) rotate(-1turn);
     }
   }
 }

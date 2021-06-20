@@ -18,10 +18,20 @@ export default {
 <style lang="scss">
 .techStack {
   @include flexRow;
-  width: 60rem;
+  width: 35rem;
   flex-wrap: wrap;
   li {
     margin: 1rem;
+  }
+}
+@media (min-width: 768px) {
+  .techStack {
+    @include flexRow;
+    width: 60rem;
+    flex-wrap: wrap;
+    li {
+      margin: 1rem;
+    }
   }
 }
 </style>
