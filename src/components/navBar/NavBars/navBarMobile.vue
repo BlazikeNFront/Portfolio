@@ -2,13 +2,19 @@
   <div class="nav__mobile">
     <button @click="toggleNavBar">
       <font-awesome-icon
+        v-if="!showNavBar"
         :icon="['fa', 'bars']"
+        class="navMobile__menuTogglerIcon"
+      ></font-awesome-icon>
+      <font-awesome-icon
+        v-else
+        :icon="['fa', 'times']"
         class="navMobile__menuTogglerIcon"
       ></font-awesome-icon>
     </button>
     <transition name="mobileNav">
       <ul v-if="showNavBar">
-        <li class="acitvePage--mobile">
+        <li :class="[activePage === '/' ? 'acitvePageMobile' : '']">
           <router-link :to="homePageLink" tabindex="1" @click="toggleNavBar">
             <font-awesome-icon
               :icon="['fa', 'home']"
@@ -17,7 +23,7 @@
             <p>HOME PAGE</p>
           </router-link>
         </li>
-        <li>
+        <li :class="[activePage === '/aboutMe' ? 'acitvePageMobile' : '']">
           <router-link :to="aboutPageLink" tabindex="1" @click="toggleNavBar">
             <font-awesome-icon
               :icon="['fa', 'user']"
@@ -26,7 +32,7 @@
             <p>ABOUT ME</p>
           </router-link>
         </li>
-        <li>
+        <li :class="[activePage === '/projects' ? 'acitvePageMobile' : '']">
           <router-link
             :to="projectsPageLink"
             tabindex="1"
@@ -39,7 +45,7 @@
             <p>PROJECTS</p>
           </router-link>
         </li>
-        <li>
+        <li :class="[activePage === '/contact' ? 'acitvePageMobile' : '']">
           <router-link :to="contactPageLink" tabindex="1" @click="toggleNavBar">
             <font-awesome-icon
               :icon="['fa', 'id-card']"
@@ -54,12 +60,17 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useRoute } from "vue-router";
 import useRouterLinks from "../../hooks/useRouterLinks.js";
 export default {
   setup() {
     const { homePageLink, aboutPageLink, projectsPageLink, contactPageLink } =
       useRouterLinks();
+    const route = useRoute();
+    const activePage = computed(() => {
+      return route.path;
+    });
     const showNavBar = ref(false);
     function toggleNavBar() {
       showNavBar.value = !showNavBar.value;
@@ -71,6 +82,7 @@ export default {
       aboutPageLink,
       projectsPageLink,
       contactPageLink,
+      activePage,
     };
   },
 };
@@ -93,13 +105,17 @@ export default {
     position: fixed;
     top: 0;
     right: 0;
+    padding-top: 6rem;
+    border: 2px solid #1bf777;
+    border-right: none;
     border-radius: 10px 0 0 10px;
     @include flexColumn;
     justify-content: space-evenly;
-    width: 100vw;
+    width: 20rem;
     height: 50rem;
     background-color: $nav-bar-background;
     z-index: 1500;
+    overflow: hidden;
     li {
       @include flexRow;
       width: 100%;
@@ -139,7 +155,7 @@ export default {
     height: 100%;
     color: white;
   }
-  .acitvePage--mobile {
+  .acitvePageMobile {
     background-color: #141414;
     box-shadow: 0 0 20px #141414;
     .navMobile__Icon {

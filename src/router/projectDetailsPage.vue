@@ -79,17 +79,19 @@ export default {
 <style lang="scss">
 .detailsProjectView {
   @include flexColumn;
-  position: relative;
-  width: 90vw;
-  height: 100vh;
-  padding: 2rem;
+
+  margin: 10rem 0 5rem 0;
+  width: 100%;
   justify-content: space-around;
   color: White;
+  h2 {
+    font-size: 7rem;
+  }
 }
 .detailsProjectView__linkToProjects {
   position: absolute;
-  top: 5rem;
-  left: 5rem;
+  top: 2rem;
+  left: 2rem;
   background: none;
   border: none;
   font-size: 5rem;
@@ -103,22 +105,21 @@ export default {
 }
 
 .detailsProjectView__content {
-  @include flexRow;
-  width: 90%;
-  height: 80%;
+  @include flexColumn;
+  width: 95%;
+
   justify-content: space-evenly;
 }
 
 .detailsProjectView__image {
   margin: 0.5rem;
-  width: 40rem;
+  width: 35rem;
   height: 56rem;
-  object-fit: cover;
+  object-fit: contain;
 }
 .detailsProjectView__description {
   @include flexColumn;
-  width: 60%;
-  height: 100%;
+  width: 95%;
   justify-content: space-evenly;
   p {
     margin: 1rem;
@@ -129,13 +130,17 @@ export default {
 }
 .detailsProjectView__aboutSection {
   @include flexColumn;
-  height: 20rem;
   justify-content: space-between;
 }
 .detailsProjectView__techStack {
   @include flexColumn;
-  height: 20rem;
+  margin: 2rem 0;
+
+  flex-wrap: wrap;
   justify-content: space-between;
+  h4 {
+    margin: 2rem 0;
+  }
 }
 @media (min-width: 1440px) {
   .detailsProjectView {

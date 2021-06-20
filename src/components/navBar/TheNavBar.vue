@@ -18,4 +18,9 @@ export default {
 </script>
 
 <style>
+@media (min-width: 768px) {
+  nav {
+    width: 20vw;
+  }
+}
 </style>

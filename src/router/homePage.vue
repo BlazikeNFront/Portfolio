@@ -74,9 +74,9 @@ export default {
 <style lang='scss'>
 .homePage__view {
   @include flexColumn;
+  margin: 10rem 0 5rem 0;
 }
 .homePage__header {
-  margin-top: 15rem;
   color: white;
 
   @include flexColumn;

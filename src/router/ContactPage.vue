@@ -104,7 +104,7 @@ export default {
           loader.value = false;
           return;
         }
-        console.log("through");
+
         const result = await emailjs.sendForm(
           "service_mpswptc",
           "template_wpt8ey8",
@@ -134,13 +134,17 @@ export default {
 <style lang="scss">
 .contactPage {
   @include flexColumn;
+  margin: 10rem 0 5rem 0;
   width: 100%;
-  height: 100vh;
   color: White;
+  h2 {
+    font-size: 7rem;
+  }
   form {
     @include flexColumn;
     position: relative;
-    width: 70rem;
+    margin-top: 5rem;
+    width: 35rem;
     height: 70rem;
     border: 1px solid #63d471;
     border-radius: 20px;
@@ -187,6 +191,7 @@ export default {
   }
   textarea {
     margin-bottom: 3rem;
+    width: 90%;
     padding: 1rem 2rem;
     border: 1px solid $main-color;
     border-radius: 20px;

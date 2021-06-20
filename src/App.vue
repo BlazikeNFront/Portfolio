@@ -1,6 +1,6 @@
 <template>
   <!-- <custom-cursor></custom-cursor> -->
-  <page-loader v-if="pageLoadingAnimation"></page-loader>
+  <page-loader v-if="pageIsLoading"></page-loader>
   <the-nav-bar></the-nav-bar>
   <main class="main">
     <router-view v-slot="{ Component }">
@@ -20,15 +20,9 @@ export default {
     PageLoader,
     /*   customCursor, */
   },
-  data() {
-    return {
-      currentRoute: null,
-      routeIsLoading: null,
-      routeLoaded: null,
-    };
-  },
+
   computed: {
-    pageLoadingAnimation() {
+    pageIsLoading() {
       return this.$store.getters["getShowProgressBar"];
     },
   },
@@ -53,7 +47,6 @@ body {
   width: 100vw;
   max-width: 192rem;
   height: 100%;
-
   position: relative;
   background-color: $app-background;
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -63,8 +56,15 @@ body {
   overflow: hidden;
 }
 .main {
-  width: 90vw;
+  width: 100vw;
   height: 100%;
+}
+@media (min-width: 768px) {
+  .main {
+    position: relative;
+    right: 0;
+    width: 80vw;
+  }
 }
 @media (min-width: 1440px) {
   #app {

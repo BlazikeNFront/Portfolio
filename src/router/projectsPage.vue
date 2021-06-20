@@ -1,6 +1,6 @@
 <template>
   <section class="projectPage">
-    <h2>MY PROJECTS</h2>
+    <h2>My Projects</h2>
     <div class="projectPage__sliderWrapper">
       <ul class="projectPage__slider" :style="carouselTranslate">
         <li v-for="(project, index) in projects" :key="project">
@@ -71,9 +71,8 @@ export default {
     const slideProportional = parseInt(100 / projects.length);
     const activeSlide = ref(0);
     const carousel = ref(null);
-    const listTranslate = ref(37);
+    const listTranslate = ref(40);
 
-    slideProportional;
     const carouselTranslate = computed(() => {
       return `transform:translateX(${listTranslate.value}%)`;
     });
@@ -104,15 +103,13 @@ export default {
 <style lang="scss">
 .projectPage {
   @include flexColumn;
+  margin: 10rem 0 5rem 0;
   width: 100%;
-  height: 100vh;
-
   justify-content: space-evenly;
   color: White;
 
   h2 {
-    font-size: 3rem;
-    font-family: $marker-font;
+    font-size: 5rem;
   }
 }
 .projectPage__sliderWrapper {
@@ -126,7 +123,7 @@ export default {
   }
 
   li {
-    width: 37rem;
+    width: 35rem;
   }
 }
 .projectPage__slider {
@@ -144,15 +141,15 @@ export default {
 .projectPage__sliderButtons {
   @include flexRow;
   position: absolute;
-  width: 100%;
+  width: 95%;
   height: 0;
   justify-content: space-between;
   button {
     @include flexRow;
     position: relative;
-    width: 10rem;
-    height: 10rem;
-    font-size: 10rem;
+    width: 5rem;
+    height: 5rem;
+    font-size: 5rem;
     background: rgba(0, 0, 0, 0.5);
     border: none;
     border-radius: 50%;
@@ -168,8 +165,8 @@ export default {
 .projectPage__span {
   @include flexRow;
   position: absolute;
-  top: -7px;
-  left: 3px;
+  top: -4px;
+  left: 2px;
   width: inherit;
   height: inherit;
   display: flex;
@@ -177,7 +174,7 @@ export default {
   justify-content: center;
 }
 .projectPage__span--leftArrow {
-  left: 0;
+  left: 0px;
 }
 @media (min-width: 1440px) {
   .projectPage {
