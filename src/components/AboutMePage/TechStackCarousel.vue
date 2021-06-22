@@ -269,8 +269,8 @@ export default {
 @media (min-width: 768px) {
   .carousel__wrapper {
     @include flexRow;
-    width: 60%;
-    transform: scale(1.5);
+
+    transform: scale(1.15);
     height: 0; // with height set to '0' text center will not cause animation stop
     &:hover {
       .carousel__item {
@@ -386,6 +386,11 @@ export default {
     &:hover {
       filter: drop-shadow(0px 0px 3px #c31c4a);
     }
+  }
+}
+@media (min-width: 1440px) {
+  .carousel__wrapper {
+    transform: scale(1.3);
   }
 }
 </style>

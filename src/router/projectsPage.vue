@@ -176,83 +176,29 @@ export default {
 .projectPage__span--leftArrow {
   left: 0px;
 }
+@media (min-width: 768px) {
+  .projectPage {
+    margin: 4rem 0 5rem 0;
+  }
+}
 @media (min-width: 1440px) {
   .projectPage {
-    @include flexColumn;
+    margin: 4rem 0 5rem 0;
     width: 100%;
-    height: 100vh;
-
-    justify-content: space-evenly;
-    color: White;
-
-    h2 {
-      font-size: 3rem;
-      font-family: $marker-font;
-    }
-  }
-  .projectPage__sliderWrapper {
-    @include flexRow;
-    width: 100%;
-    height: 70rem;
-    position: relative;
-    overflow: hidden;
-    ul {
-      transition: all 1s ease;
-    }
-
-    li {
-      width: 37rem;
-    }
-  }
-  .projectPage__slider {
-    @include flexRow;
     height: 100%;
-    transition: all 0.2s ease;
-  }
-  .projectPage__slideElement {
-    margin: 2rem;
-    width: 35rem;
-    height: 80%;
-    background-color: darkgoldenrod;
-    border: 1px solid black;
   }
   .projectPage__sliderButtons {
-    @include flexRow;
-    position: absolute;
-    width: 100%;
-    height: 0;
-    justify-content: space-between;
     button {
-      @include flexRow;
-      position: relative;
       width: 10rem;
       height: 10rem;
-      font-size: 10rem;
-      background: rgba(0, 0, 0, 0.5);
-      border: none;
-      border-radius: 50%;
-      color: white;
-
-      &:hover {
-        span {
-          color: $main-color;
-        }
+      span {
+        top: -8px;
+        font-size: 10rem;
       }
     }
   }
-  .projectPage__span {
-    @include flexRow;
-    position: absolute;
-    top: -7px;
-    left: 3px;
-    width: inherit;
-    height: inherit;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .projectPage__span--leftArrow {
-    left: 0;
-  }
+}
+.projectPage__span--leftArrow {
+  left: -3px;
 }
 </style>

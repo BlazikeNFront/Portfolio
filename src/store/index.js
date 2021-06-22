@@ -11,9 +11,13 @@ const store = createStore({
           description:
             "Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin",
           techstack: [
-            { src: "html5Badge.svg", alt: "HTML" },
-            { src: "cssBadge.svg", alt: "CSS" },
-            { src: "javascriptBadge.svg", alt: "Vanilla javascript" },
+            { src: "html5Badge.svg", alt: "HTML5", dropShadow: "#e44f26" },
+            { src: "cssBadge.svg", alt: "CSS3", dropShadow: "#1572b6" },
+            {
+              src: "javascriptBadge.svg",
+              alt: "Vanilla JavaScript",
+              dropShadow: "#f0db4f",
+            },
           ],
           links: [{ links: { github: "NPFkekw", live: "NPFkekm" } }],
         },
@@ -24,9 +28,13 @@ const store = createStore({
           description:
             "Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin",
           techstack: [
-            { src: "html5Badge.svg", alt: "HTML" },
-            { src: "cssBadge.svg", alt: "CSS" },
-            { src: "javascriptBadge.svg", alt: "Vanilla javascript" },
+            { src: "html5Badge.svg", alt: "HTML5", dropShadow: "#e44f26" },
+            { src: "cssBadge.svg", alt: "CSS3", dropShadow: "#1572b6" },
+            {
+              src: "javascriptBadge.svg",
+              alt: "Vanilla JavaScript",
+              dropShadow: "#f0db4f",
+            },
           ],
           links: [{ links: { github: "NPFkekw", live: "NPFkekm" } }],
         },
@@ -37,10 +45,18 @@ const store = createStore({
           description:
             "Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin",
           techstack: [
-            { src: "vueBadge.svg", alt: "Vue" },
-            { src: "vuexBadge.svg", alt: "Vuex" },
-            { src: "vueRouterBadge.svg", alt: "Vue Router" },
-            { src: "firebaseBadge.svg", alt: "FireBase" },
+            { src: "vueBadge.svg", alt: "Vue", dropShadow: "#41b883" },
+            { src: "vuexBadge.svg", alt: "Vuex", dropShadow: "#41b883" },
+            {
+              src: "vueRouterBadge.svg",
+              alt: "Vue Router",
+              dropShadow: "#41b883",
+            },
+            {
+              src: "firebaseBadge.svg",
+              alt: "FireBase",
+              dropShadow: "#f0db4f",
+            },
           ],
           links: [{ links: { github: "NPFkekw", live: "NPFkekm" } }],
         },
@@ -51,12 +67,16 @@ const store = createStore({
           description:
             "Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin",
           techstack: [
-            { src: "vueBadge.svg", alt: "Vue" },
-            { src: "vuexBadge.svg", alt: "Vuex" },
-            { src: "nodeBadge.svg", alt: "NodeJS" },
-            { src: "expressBadge.svg", alt: "Express" },
-            { src: "mongodbBadge.svg", alt: "MongoDB" },
-            { src: "raspberryPiBadge.svg", alt: "Raspberry Pi" },
+            { src: "vueBadge.svg", alt: "Vue", dropShadow: "#41b883" },
+            { src: "vuexBadge.svg", alt: "Vuex", dropShadow: "#41b883" },
+            { src: "nodeBadge.svg", alt: "NodeJS", dropShadow: "#41b883" },
+            { src: "expressBadge.svg", alt: "Express", dropShadow: "#ffffff" },
+            { src: "mongodbBadge.svg", alt: "MongoDB", dropShadow: "#ffffff" },
+            {
+              src: "raspberryPiBadge.svg",
+              alt: "Raspberry Pi",
+              dropShadow: "#c31c4a",
+            },
           ],
           links: [{ links: { github: "NPFkekw", live: "NPFkekm" } }],
         },
@@ -67,12 +87,16 @@ const store = createStore({
           description:
             "Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin",
           techstack: [
-            { src: "vueBadge.svg", alt: "Vue" },
-            { src: "vuexBadge.svg", alt: "Vuex" },
-            { src: "vueRouterBadge.svg", alt: "Vue Router" },
-            { src: "nodeBadge.svg", alt: "NodeJS" },
-            { src: "expressBadge.svg", alt: "Express" },
-            { src: "mongodbBadge.svg", alt: "MongoDB" },
+            { src: "vueBadge.svg", alt: "Vue", dropShadow: "#41b883" },
+            { src: "vuexBadge.svg", alt: "Vuex", dropShadow: "#41b883" },
+            {
+              src: "vueRouterBadge.svg",
+              alt: "Vue Router",
+              dropShadow: "#41b883",
+            },
+            { src: "nodeBadge.svg", alt: "NodeJS", dropShadow: "#41b883" },
+            { src: "expressBadge.svg", alt: "Express", dropShadow: "#ffffff" },
+            { src: "mongodbBadge.svg", alt: "MongoDB", dropShadow: "#ffffff" },
           ],
           links: [{ links: { github: "NPFkekw", live: "NPFkekm" } }],
         },

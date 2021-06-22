@@ -1,12 +1,16 @@
 <template>
   <div class="navDesktop">
-    <div class="navDesktop__homePageLink">
-      <span tabindex="1">B</span>
+    <router-link :to="homePageLink" class="navDesktop__homePageLink">
+      <initials-logo tabindex="1"></initials-logo>
       <p>Damian</p>
-    </div>
+    </router-link>
     <ul>
-      <li class="acitvePage">
-        <router-link :to="homePageLink" tabindex="1">
+      <li>
+        <router-link
+          :to="homePageLink"
+          tabindex="1"
+          :class="[activePage === '/' ? 'acitvePage' : '']"
+        >
           <font-awesome-icon
             :icon="['fa', 'home']"
             class="navDesktop__Icon"
@@ -15,7 +19,11 @@
         </router-link>
       </li>
       <li>
-        <router-link :to="aboutPageLink" tabindex="1">
+        <router-link
+          :to="aboutPageLink"
+          tabindex="1"
+          :class="[activePage === '/aboutMe' ? 'acitvePage' : '']"
+        >
           <font-awesome-icon
             :icon="['fa', 'user']"
             class="navDesktop__Icon"
@@ -24,7 +32,11 @@
         </router-link>
       </li>
       <li>
-        <router-link :to="projectsPageLink" tabindex="1">
+        <router-link
+          :to="projectsPageLink"
+          tabindex="1"
+          :class="[activePage === '/projects' ? 'acitvePage' : '']"
+        >
           <font-awesome-icon
             :icon="['fa', 'briefcase']"
             class="navDesktop__Icon"
@@ -33,7 +45,11 @@
         </router-link>
       </li>
       <li>
-        <router-link :to="contactPageLink" tabindex="1">
+        <router-link
+          :to="contactPageLink"
+          tabindex="1"
+          :class="[activePage === '/contact' ? 'acitvePage' : '']"
+        >
           <font-awesome-icon
             :icon="['fa', 'id-card']"
             class="navDesktop__Icon"
@@ -45,12 +61,29 @@
   </div>
 </template>
 <script>
+import InitialsLogo from "../../../assets/logos/initialsLogo.vue";
+import { computed } from "vue";
+import { useRoute } from "vue-router";
 import useRouterLinks from "../../hooks/useRouterLinks.js";
+
 export default {
+  components: {
+    InitialsLogo,
+  },
   setup() {
+    const route = useRoute();
     const { homePageLink, aboutPageLink, projectsPageLink, contactPageLink } =
       useRouterLinks();
-    return { homePageLink, aboutPageLink, projectsPageLink, contactPageLink };
+    const activePage = computed(() => {
+      return route.path;
+    });
+    return {
+      homePageLink,
+      aboutPageLink,
+      projectsPageLink,
+      contactPageLink,
+      activePage,
+    };
   },
 };
 </script>
@@ -110,23 +143,27 @@ export default {
   }
 
   .navDesktop__homePageLink {
+    @include flexColumn;
     width: 100%;
     height: 20rem;
-    @include flexColumn;
+    text-decoration: none;
+    &:focus {
+      @include focusAttribute;
+    }
+    &:hover {
+      svg {
+        fill: #36ff7c;
+        filter: drop-shadow(0px 0px 3px $main-color);
+      }
+    }
 
-    span {
-      font-size: 10rem;
-      color: white;
-      font-weight: 600;
-      font-family: sans-serif;
-      text-shadow: -2px -2px 0 $main-color, 2px 2px 0 #0ff;
+    svg {
+      width: 100%;
       animation-name: homePageLink;
       animation-iteration-count: infinite;
       animation-duration: 0.5s;
-
-      &:focus {
-        @include focusAttribute;
-      }
+      fill: #000000;
+      filter: drop-shadow(0px 0px 3px $main-color);
     }
 
     p {
@@ -139,11 +176,11 @@ export default {
   .acitvePage {
     svg {
       color: $main-color;
-      filter: drop-shadow(0px 0px 3px $main-color);
+      filter: drop-shadow(0px 0px 3px $neon-green);
     }
     p {
       color: $main-color;
-      text-shadow: 0px 0px 5px $main-color;
+      text-shadow: 0px 0px 5px $neon-green;
     }
   }
   .navDesktop__Icon {
@@ -161,6 +198,11 @@ export default {
     100% {
       text-shadow: -2px -2px 0 #0ff, 2px 2px 0 $main-color;
     }
+  }
+}
+@media (min-width: 1440px) {
+  .navDesktop {
+    width: 15vw;
   }
 }
 </style>
