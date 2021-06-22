@@ -17,10 +17,15 @@ export default {
 };
 </script>
 
-<style>
+ <style>
 @media (min-width: 768px) {
   nav {
     width: 20vw;
   }
 }
-</style>
+@media (min-width: 1440px) {
+  nav {
+    width: 15vw;
+  }
+}
+</style> 

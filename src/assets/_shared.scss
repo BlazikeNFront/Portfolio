@@ -8,7 +8,8 @@ $marker-font: "Permanent Marker", sans-serif;
 
 $app-background: #171717;
 $nav-bar-background: #242424;
-$main-color: #41b883;
+$main-color: #36ff7c;
+$neon-green: #36ff7c;
 
 //layouts
 //layouts
@@ -36,6 +37,7 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: row;
 }
 
 @mixin flexColumn {

@@ -119,16 +119,18 @@ export default {
 }
 @media (min-width: 768px) {
   .pageLoaderContainer {
-    position: absolute;
+    position: fixed;
+    top: 0;
     right: 0;
-    width: 100vw;
-    height: 100%;
+    width: 80vw;
+    height: 100vh;
     background-color: #171717;
     color: White;
-    z-index: 1000;
   }
+
   .pageLoader__loadingView {
     @include flexColumn;
+    margin-top: 0;
     height: 100%;
     h3 {
       margin: 4rem;

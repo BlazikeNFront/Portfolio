@@ -1,5 +1,5 @@
 <template>
-  <!-- <custom-cursor></custom-cursor> -->
+  <custom-cursor></custom-cursor>
   <page-loader v-if="pageIsLoading"></page-loader>
   <the-nav-bar></the-nav-bar>
   <main class="main">
@@ -12,13 +12,13 @@
 <script>
 import TheNavBar from "./components/navBar/TheNavBar.vue";
 import PageLoader from "./components/common/PageLoader.vue";
-/* import customCursor from "./components/common/Cursor.vue"; */
+import customCursor from "./components/common/Cursor.vue";
 export default {
   name: "App",
   components: {
     TheNavBar,
     PageLoader,
-    /*   customCursor, */
+    customCursor,
   },
 
   computed: {
@@ -63,7 +63,7 @@ body {
   .main {
     position: relative;
     right: 0;
-    width: 80vw;
+    width: 90vw;
   }
 }
 @media (min-width: 1440px) {

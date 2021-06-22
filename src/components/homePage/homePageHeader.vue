@@ -59,7 +59,7 @@
     >m
   </span>
 
-  <br /><span
+  <br class="mobileBreakLine" /><span
     class="homePage__letterAnim--7"
     :class="[
       animationEnded
@@ -68,7 +68,7 @@
     ]"
     @mouseover="changeClass($event)"
   >
-    D</span
+    &nbsp;D</span
   ><span
     class="homePage__letterAnim--8"
     :class="[
@@ -231,6 +231,11 @@ export default {
 
   100% {
     transform: scale(1, 1);
+  }
+}
+@media (min-width: 768px) {
+  .mobileBreakLine {
+    display: none;
   }
 }
 </style>
