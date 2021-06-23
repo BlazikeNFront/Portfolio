@@ -21,23 +21,20 @@ export default {
     const currentCircleXPosition = ref(null);
     const currentCircleYPosition = ref(null);
     const hoverClass = ref(false);
-
     const cursorCircle = computed(() => {
       return `transform: translateX(${
         currentCircleXPosition.value - 2
       }px) translateY(${currentCircleYPosition.value - 2}px)`;
     });
-
     const cursorPointer = computed(() => {
       return `transform: translateX(${
         currentMouseXPos.value - 5
       }px) translateY(${currentMouseYPos.value - 5}px)`;
     });
-
     function moveCursor(e) {
       currentMouseXPos.value = e.clientX;
       currentMouseYPos.value = e.clientY;
-      if (e.target.tagName === "A") {
+      if (e.target.dataset.cursor === "pointer") {
         hoverClass.value = true;
         setTimeout(() => {
           currentCircleXPosition.value = e.clientX - 18;
@@ -52,7 +49,6 @@ export default {
         }, 100);
       }
     }
-
     onMounted(() => {
       document.addEventListener("mousemove", (e) => {
         moveCursor(e);
@@ -64,6 +60,9 @@ export default {
 </script>
 
 <style lang="scss">
+.cursor {
+  display: none;
+}
 .cursor__circle {
   pointer-events: none;
   user-select: none;
@@ -94,28 +93,32 @@ export default {
 .hoverCircle {
   border: none;
 
-  /*  &::after {
-        content: "";
+  &::after {
+    content: "";
     display: block;
     position: absolute;
-    top: -0.1rem;
-    left: -0.1rem;
+    top: 0.3rem;
+    left: 0.3rem;
     width: 3rem;
     height: 3rem;
-    border: 5px solid #dbd800;
+    border: 4px solid #dbd800;
     border-radius: 10px;
     animation-name: testingBefore;
     animation-duration: 1s;
     animation-iteration-count: infinite;
-    animation-timing-function: linear; 
-  }  */
+    animation-timing-function: linear;
+  }
 }
 .hoverPointer {
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   background-color: #dbd800;
 }
-
+@media (min-width: 1024px) {
+  .cursor {
+    display: initial;
+  }
+}
 @keyframes testingBefore {
   0% {
     transform: rotate(0deg);

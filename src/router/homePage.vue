@@ -11,17 +11,24 @@
     </div>
     <div class="homePage__links">
       <base-button class="homePage__link">
-        <router-link :to="aboutPageLink">ABOUT ME</router-link>
+        <router-link :to="aboutPageLink" data-cursor="pointer"
+          >ABOUT ME</router-link
+        >
       </base-button>
       <base-button class="homePage__link">
-        <router-link :to="projectsPageLink">MY PROJECTS</router-link>
+        <router-link :to="projectsPageLink" data-cursor="pointer"
+          >MY PROJECTS</router-link
+        >
       </base-button>
       <base-button class="homePage__link">
-        <router-link :to="contactPageLink">CONTACT</router-link>
+        <router-link :to="contactPageLink" data-cursor="pointer"
+          >CONTACT</router-link
+        >
       </base-button>
-      <div class="homePage__githubLink">
+      <a class="homePage__githubLink" data-cursor="pointer">
         <svg
           class="homePage__githubName"
+          data-cursor="pointer"
           width="512px"
           height="139px"
           viewBox="0 0 512 139"
@@ -38,6 +45,7 @@
         </svg>
         <svg
           class="homePage__githubLogo"
+          data-cursor="pointer"
           width="256px"
           height="250px"
           viewBox="0 0 256 250"
@@ -52,7 +60,7 @@
             ></path>
           </g>
         </svg>
-      </div>
+      </a>
     </div>
   </div>
 </template>
@@ -74,16 +82,12 @@ export default {
 <style lang='scss'>
 .homePage__view {
   @include flexColumn;
-  margin: 10rem 0 5rem 0;
+  margin: 8rem 0 2rem 0;
 }
 .homePage__header {
-  color: white;
-
   @include flexColumn;
   h1 {
-    font-size: 8rem;
-    font-weight: 900;
-    text-align: center;
+    color: white;
 
     span {
       display: inline-block;
@@ -93,7 +97,7 @@ export default {
 }
 .homePage__links {
   @include flexColumn;
-  margin-top: 15rem;
+  margin-top: 2rem;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
@@ -103,23 +107,22 @@ export default {
 .header__paragraphBox {
   p {
     display: block;
-    margin-top: 2rem;
-    font-size: 2.5rem;
+    margin-top: 4rem;
     color: transparent;
-
+    font-size: 5rem;
+    text-align: center;
     background-image: linear-gradient(
       90deg,
-      rgba(65, 184, 131, 1) 0%,
+      rgba(54, 255, 124, 1) 0%,
       rgba(255, 255, 255, 1) 25%,
-      rgba(65, 184, 131, 1) 50%,
+      rgba(54, 255, 124, 1) 50%,
       rgba(255, 255, 255, 1) 75%,
-      rgba(65, 184, 131, 1) 100%
+      rgba(54, 255, 124, 1) 100%
     );
     letter-spacing: 5px;
     background-clip: text;
-
     animation-name: paragraphAnimation;
-    animation-duration: 3s;
+    animation-duration: 2.5s;
     animation-delay: 0ms;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
@@ -135,6 +138,7 @@ export default {
     color: White;
     font-size: 2.5rem;
     font-family: $marker-font;
+    cursor: none;
     z-index: 2;
   }
   &:hover {
@@ -166,101 +170,7 @@ export default {
 .homePage__githubLogo {
   height: 10rem;
 }
-.letterAnimationAfterAppearance {
-  transition: all 0.3s ease-in;
-  animation-name: none;
-  animation-delay: none;
-}
-.tester {
-  color: $main-color;
 
-  animation-name: letterAnimation;
-  animation-delay: 0s;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
-}
-.letterAppearanceAnimation {
-  transform: translateY(-70rem);
-  animation-name: letterAppearance;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-}
-.homePage__letterAnim--1 {
-  animation-delay: 0.1s;
-}
-.homePage__letterAnim--2 {
-  animation-delay: 0.2s;
-}
-.homePage__letterAnim--3 {
-  animation-delay: 0.3s;
-}
-.homePage__letterAnim--4 {
-  animation-delay: 0.4s;
-}
-.homePage__letterAnim--5 {
-  animation-delay: 0.5s;
-}
-.homePage__letterAnim--6 {
-  animation-delay: 0.6s;
-}
-.homePage__letterAnim--7 {
-  animation-delay: 0.7s;
-}
-.homePage__letterAnim--8 {
-  animation-delay: 0.8s;
-}
-.homePage__letterAnim--9 {
-  animation-delay: 0.9s;
-}
-.homePage__letterAnim--10 {
-  animation-delay: 1s;
-}
-.homePage__letterAnim--11 {
-  animation-delay: 1.1s;
-}
-.homePage__letterAnim--12 {
-  animation-delay: 1.2s;
-}
-
-@keyframes paragraphAnimation {
-  0% {
-    background-position: 0rem;
-  }
-
-  100% {
-    background-position: 55rem;
-  }
-}
-
-@keyframes letterAppearance {
-  0% {
-    transform: translateY(-70rem);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes letterAnimation {
-  0% {
-    transform: scale(1, 1);
-  }
-  40% {
-    transform: scale(1.2, 0.8);
-  }
-  60% {
-    transform: scale(1, 1.3);
-  }
-  75% {
-    transform: scale(1.15, 0.85);
-  }
-
-  100% {
-    transform: scale(1, 1);
-  }
-}
 @media (min-width: 768px) {
   .homePage__header {
     margin-top: 10rem;
@@ -279,18 +189,18 @@ export default {
     margin-top: 5rem;
   }
 }
+@media (min-width: 1024px) {
+  .homePage__links {
+    .baseButton {
+      width: 20rem;
+    }
+  }
+}
 @media (min-width: 1440px) {
   .homePage__header {
     margin-top: 15rem;
-    h1 {
-      font-size: 12rem;
-    }
   }
-  .header__paragraphBox {
-    p {
-      font-size: 4rem;
-    }
-  }
+
   .homePage__links {
     .baseButton {
       width: 25rem;
@@ -299,6 +209,15 @@ export default {
     a {
       font-size: 2.6rem;
     }
+  }
+}
+@keyframes paragraphAnimation {
+  0% {
+    background-position: 0rem;
+  }
+
+  100% {
+    background-position: 50rem;
   }
 }
 </style>

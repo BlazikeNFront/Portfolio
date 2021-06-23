@@ -113,9 +113,6 @@ export default {
   h3 {
     margin: 4rem;
   }
-  p {
-    font-size: 2.5rem;
-  }
 }
 @media (min-width: 768px) {
   .pageLoaderContainer {
@@ -161,6 +158,21 @@ export default {
     p {
       font-size: 2.5rem;
     }
+  }
+}
+@media (min-width: 1440px) {
+  .pageLoaderContainer {
+    width: 85vw;
+  }
+
+  .pageLoader__progressBarContainer {
+    width: 45rem;
+    height: 4rem;
+  }
+}
+@media (min-width: 1920px) {
+  .pageLoaderContainer {
+    width: 88vw;
   }
 }
 </style>

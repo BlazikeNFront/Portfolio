@@ -21,7 +21,7 @@
     <div class="detailsProjectView__version" v-for="link in links" :key="link">
       <h4>{{ link.version }}</h4>
       <div class="detailsProjectView__linksWrapper">
-        <div class="detailsProjectView__link">
+        <div class="detailsProjectView__link" data-cursor="pointer">
           <github-logo></github-logo>
           <github-name></github-name>
         </div>
@@ -56,7 +56,7 @@ export default {
     font-size: 3rem;
     font-weight: 600;
     letter-spacing: 3px;
-    cursor: pointer;
+
     &:hover {
       color: $main-color;
       text-shadow: 0px 0px 5px #7cd0aa;
@@ -64,7 +64,7 @@ export default {
   }
 }
 .detailsProjectView__linkWrapper {
-  margin-top: 5rem;
+  margin-top: 1rem;
   width: 15rem;
   height: 10rem;
 }
@@ -73,7 +73,7 @@ export default {
   @include flexColumn;
   width: 15rem;
   height: 10rem;
-  cursor: pointer;
+
   svg {
     width: 100%;
     height: 100%;
@@ -118,7 +118,7 @@ export default {
     font-weight: 600;
     letter-spacing: 3px;
     text-align: center;
-    cursor: pointer;
+
     &:hover {
       color: $main-color;
       text-shadow: 0px 0px 5px #7cd0aa;
@@ -140,7 +140,7 @@ export default {
       font-size: 3rem;
       font-weight: 600;
       letter-spacing: 3px;
-      cursor: pointer;
+
       &:hover {
         color: $main-color;
         text-shadow: 0px 0px 5px #7cd0aa;
@@ -157,7 +157,7 @@ export default {
     @include flexColumn;
     width: 10rem;
     height: 10rem;
-    cursor: pointer;
+
     svg {
       width: 100%;
       height: 100%;
@@ -201,7 +201,7 @@ export default {
       font-weight: 600;
       letter-spacing: 3px;
       text-align: center;
-      cursor: pointer;
+
       &:hover {
         color: $main-color;
         text-shadow: 0px 0px 5px #7cd0aa;
@@ -214,6 +214,54 @@ export default {
     }
     .loader__ripple {
       border: 4px solid red;
+    }
+  }
+}
+@media (min-width: 1024px) {
+  .detailsProjectView__linkWrapper {
+    margin-top: 5rem;
+    width: 10rem;
+    height: 15rem;
+    a {
+      font-size: 4rem;
+    }
+  }
+
+  .detailsProjectView__linkWrapper--github {
+    @include flexColumn;
+    width: 15rem;
+    height: 15rem;
+  }
+  .detailsProjectView__linkWrapper--live {
+    @include flexRow;
+    justify-content: space-between;
+  }
+
+  .detailsProjectView__linkWrapper--live {
+    .loader {
+      transform: scale(0.9);
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .detailsProjectView__linksWrapper {
+    width: 100%;
+    height: 15rem;
+  }
+  .detailsProjectView__linkWrapper {
+    margin: 0;
+    width: 16rem;
+  }
+  .detailsProjectView__linkWrapper--github {
+    height: 13rem;
+  }
+  .detailsProjectView__linkWrapper--live {
+    a {
+      font-size: 3rem;
+    }
+    .loader {
+      transform: scale(1);
     }
   }
 }

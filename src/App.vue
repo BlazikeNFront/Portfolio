@@ -41,6 +41,7 @@ html {
 body {
   background-color: #171717;
 }
+
 #app {
   @include flexRow;
   margin: 0 auto;
@@ -63,15 +64,26 @@ body {
   .main {
     position: relative;
     right: 0;
-    width: 90vw;
+    width: 80vw;
+  }
+}
+@media (min-width: 1024px) {
+  html {
+    cursor: none;
   }
 }
 @media (min-width: 1440px) {
   #app {
     height: 100vh;
+    max-height: 108rem;
   }
   .main {
     width: 85vw;
+  }
+}
+@media (min-width: 1920px) {
+  .main {
+    width: 88vw;
   }
 }
 </style>

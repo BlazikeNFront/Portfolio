@@ -1,8 +1,8 @@
 <template>
   <section class="aboutMePage">
     <div class="aboutMePage__textContent">
+      <h2>About Me</h2>
       <article>
-        <h2>About Me</h2>
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
@@ -16,11 +16,11 @@
         </p>
       </article>
       <div class="aboutMePage__codewars">
-        <h3>Codewars</h3>
         <a href="https://www.codewars.com/users/BlazikenFront" target="_blank"
           ><img
             src="https://www.codewars.com/users/BlazikenFront/badges/large"
             alt="CodeWars Badge"
+            data-cursor="pointer"
         /></a>
       </div>
     </div>
@@ -40,42 +40,38 @@ export default {
 <style lang='scss'>
 .aboutMePage {
   @include flexColumn;
-  margin: 10rem 0 5rem 0;
   width: 100%;
   color: White;
+  h2 {
+    margin: 8rem 0 3rem 0;
+    font-weight: 900;
+    text-align: center;
+  }
   article {
     @include flexColumn;
+    margin: 0 auto;
     width: 90%;
     justify-content: space-evenly;
-
-    h2 {
-      font-size: 7rem;
-      font-weight: 900;
-      text-align: center;
-    }
     p {
       margin: 2rem 0;
-      font-size: 1.5rem;
       line-height: 3rem;
       text-align: justify;
     }
+
     h3 {
       margin: 6rem 0 4rem 0;
-      font-size: 5rem;
     }
   }
 }
 .aboutMePage__codewars {
-  @include flexColumn;
-  margin: 4rem 0;
-  height: 15rem;
-  justify-content: space-between;
+  @include flexRow;
   img {
     width: 35rem;
   }
 }
 .techStackCarouselWrapper {
   @include flexRow;
+  width: 100%;
   height: 40rem;
 }
 @media (min-width: 425px) {
@@ -84,11 +80,22 @@ export default {
       width: 40rem;
     }
   }
+  .techStackCarouselWrapper {
+    margin-top: 3rem;
+  }
 }
 @media (min-width: 768px) {
   .techStackCarouselWrapper {
-    margin-top: 5rem;
+    margin: 5rem 0;
     height: 50rem;
+  }
+}
+@media (min-width: 1024px) {
+  .aboutMePage__codewars {
+    margin-top: 2rem;
+    a {
+      cursor: none;
+    }
   }
 }
 @media (min-width: 1440px) {
@@ -108,28 +115,24 @@ export default {
       justify-content: space-evenly;
 
       h2 {
-        font-size: 7rem;
         font-weight: 900;
         text-align: center;
       }
       p {
         margin: 2rem 0;
-        font-size: 1.5rem;
+
         line-height: 3rem;
         text-align: justify;
       }
       h3 {
         margin: 6rem 0 4rem 0;
-        font-size: 5rem;
       }
     }
   }
 
   .aboutMePage__codewars {
     @include flexColumn;
-    margin: 4rem 0;
-    height: 15rem;
-    justify-content: space-between;
+    margin-top: 5rem;
     img {
       width: 35rem;
     }
@@ -138,6 +141,13 @@ export default {
     @include flexRow;
     width: 60%;
     height: 40rem;
+  }
+}
+@media (min-width: 1920px) {
+  .aboutMePage__codewars {
+    img {
+      width: 40rem;
+    }
   }
 }
 </style>

@@ -107,13 +107,12 @@ export default {
 }
 .carousel__text {
   max-width: 22rem;
-  font-size: 3rem;
+  font-size: 3.5rem;
+  font-family: $marker-font;
   pointer-events: none;
   text-align: center;
 }
-.carousel__textLong {
-  font-size: 2rem;
-}
+
 .carousel__item {
   position: absolute;
 
@@ -221,46 +220,7 @@ export default {
     filter: drop-shadow(0px 0px 3px #c31c4a);
   }
 }
-@keyframes spin {
-  100% {
-    transform: rotate(1turn) translate(200px) rotate(-1turn);
-  }
-}
-@keyframes spin2 {
-  100% {
-    transform: rotate(1turn) translate(-200px) rotate(-1turn);
-  }
-}
-@keyframes spin3 {
-  100% {
-    transform: rotate(1turn) translateY(200px) rotate(-1turn);
-  }
-}
-@keyframes spin4 {
-  100% {
-    transform: rotate(1turn) translateY(-200px) rotate(-1turn);
-  }
-}
-@keyframes spin5 {
-  100% {
-    transform: rotate(1turn) translate(-142px, 142px) rotate(-1turn);
-  }
-}
-@keyframes spin6 {
-  100% {
-    transform: rotate(1turn) translate(142px, -142px) rotate(-1turn);
-  }
-}
-@keyframes spin7 {
-  100% {
-    transform: rotate(1turn) translate(142px, 142px) rotate(-1turn);
-  }
-}
-@keyframes spin8 {
-  100% {
-    transform: rotate(1turn) translate(-142px, -142px) rotate(-1turn);
-  }
-}
+
 @media (min-width: 425px) {
   .carousel__wrapper {
     transform: scale(0.8);
@@ -269,9 +229,8 @@ export default {
 @media (min-width: 768px) {
   .carousel__wrapper {
     @include flexRow;
-
     transform: scale(1.15);
-    height: 0; // with height set to '0' text center will not cause animation stop
+
     &:hover {
       .carousel__item {
         animation-play-state: paused;
@@ -280,18 +239,15 @@ export default {
   }
   .carousel__text {
     max-width: 22rem;
-    font-size: 3rem;
+
     pointer-events: none;
     text-align: center;
   }
-  .carousel__textLong {
-    font-size: 2rem;
-  }
+
   .carousel__item {
     position: absolute;
     width: 5rem;
     height: 5rem;
-
     animation: spin 20s linear infinite;
     animation-fill-mode: forwards;
     transform: rotate(0) translate(200px) rotate(0);
@@ -391,6 +347,51 @@ export default {
 @media (min-width: 1440px) {
   .carousel__wrapper {
     transform: scale(1.3);
+  }
+}
+@media (min-width: 1920px) {
+  .carousel__wrapper {
+    transform: scale(1.5);
+  }
+}
+@keyframes spin {
+  100% {
+    transform: rotate(1turn) translate(200px) rotate(-1turn);
+  }
+}
+@keyframes spin2 {
+  100% {
+    transform: rotate(1turn) translate(-200px) rotate(-1turn);
+  }
+}
+@keyframes spin3 {
+  100% {
+    transform: rotate(1turn) translateY(200px) rotate(-1turn);
+  }
+}
+@keyframes spin4 {
+  100% {
+    transform: rotate(1turn) translateY(-200px) rotate(-1turn);
+  }
+}
+@keyframes spin5 {
+  100% {
+    transform: rotate(1turn) translate(-142px, 142px) rotate(-1turn);
+  }
+}
+@keyframes spin6 {
+  100% {
+    transform: rotate(1turn) translate(142px, -142px) rotate(-1turn);
+  }
+}
+@keyframes spin7 {
+  100% {
+    transform: rotate(1turn) translate(142px, 142px) rotate(-1turn);
+  }
+}
+@keyframes spin8 {
+  100% {
+    transform: rotate(1turn) translate(-142px, -142px) rotate(-1turn);
   }
 }
 </style>

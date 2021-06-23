@@ -1,8 +1,8 @@
 <template>
-  <section class="contactPage">
+  <section class="contactPage" @click="clearFormErrors">
     <h2>CONTACT</h2>
     <form @submit.prevent="sendEmail">
-      <div class="contactPage__formControl" @click="clearFormErrors">
+      <div class="contactPage__formControl">
         <label for="email"> Email</label>
         <input
           type="email"
@@ -10,12 +10,13 @@
           name="user_email"
           placeholder="Email"
           v-model="emailInput.value"
+          data-cursor="pointer"
         />
         <p class="contactPage__errorMsg" v-if="emailInput.error">
           {{ emailInput.error }}
         </p>
       </div>
-      <div class="contactPage__formControl" @click="clearFormErrors">
+      <div class="contactPage__formControl">
         <label for="contactTypeName"> Name:</label>
         <input
           type="text"
@@ -23,12 +24,16 @@
           name="from_name"
           placeholder="Name"
           v-model="nameInput.value"
+          data-cursor="pointer"
         />
-        <p class="contactPage__errorMsg" v-if="nameInput.error">
+        <p
+          class="contactPage__errorMsg contactPage__errorMsg--name"
+          v-if="nameInput.error"
+        >
           {{ nameInput.error }}
         </p>
       </div>
-      <div class="contactPage__formControl" @click="clearFormErrors">
+      <div class="contactPage__formControl">
         <label for="contactPagetextarea"> Write message:</label>
         <textarea
           id="contactPagetextarea"
@@ -37,6 +42,7 @@
           cols="55"
           placeholder="Write Your message..."
           v-model="textareaInput.value"
+          data-cursor="pointer"
         ></textarea>
         <p
           class="contactPage__errorMsg contactPage__errorMsg--textarea"
@@ -45,11 +51,18 @@
           {{ textareaInput.error }}
         </p>
       </div>
-      <base-button><p>Send message</p></base-button>
-      <div class="contactPage__loader">
-        <loader v-if="loader"></loader>
+      <base-button><span data-cursor="pointer">Send message</span></base-button>
+      <div class="contactPage__loader" v-if="loader">
+        <loader></loader>
       </div>
     </form>
+    <transition name="contactResult">
+      <div class="contactPage__requestResult" v-if="requestResult">
+        <p>
+          {{ requestResult }}
+        </p>
+      </div></transition
+    >
   </section>
 </template>
 <script>
@@ -67,11 +80,11 @@ export default {
     const nameInput = reactive({ value: "", error: null });
     const textareaInput = reactive({ value: "", error: null });
     const loader = ref(false);
-
+    const requestResult = ref(null);
     function validateForm() {
       const emailRegex =
         /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-      const onlyLettersRegex = /^[A-Z]+$/i;
+      const onlyLettersRegex = /^[a-zA-Z\s]*$/;
 
       if (!emailRegex.test(emailInput.value)) {
         emailInput.error = "Invalid email address";
@@ -96,6 +109,7 @@ export default {
       emailInput.error = null;
       nameInput.error = null;
       textareaInput.error = null;
+      requestResult.value = null;
     }
     async function sendEmail(e) {
       try {
@@ -114,9 +128,15 @@ export default {
 
         if (result) {
           loader.value = false;
+          requestResult.value =
+            "Message sent ! I'll try to respond as quick as possible :) Have a good day !";
         }
+        emailInput.value = "";
+        nameInput.value = "";
+        textareaInput.value = "";
       } catch (err) {
         loader.value = false;
+        requestResult.value = "Error occured  :( Try again Later";
       }
     }
     return {
@@ -127,6 +147,7 @@ export default {
       sendEmail,
       clearFormErrors,
       loader,
+      requestResult,
     };
   },
 };
@@ -134,30 +155,32 @@ export default {
 <style lang="scss">
 .contactPage {
   @include flexColumn;
-  margin: 10rem 0 5rem 0;
+  margin: 6rem 0 2rem 0;
   width: 100%;
   color: White;
-  h2 {
-    font-size: 7rem;
-  }
+
   form {
     @include flexColumn;
     position: relative;
-    margin-top: 5rem;
+    margin: 2rem 0;
+    padding: 2rem 0 8rem 0;
     width: 35rem;
     height: 70rem;
     border: 1px solid #63d471;
     border-radius: 20px;
+    justify-content: space-evenly;
   }
-
+  .baseButton {
+    height: 5rem;
+  }
   button {
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: white;
-    cursor: pointer;
+
     &:hover {
       color: black;
     }
-    p {
+    span {
       z-index: 1000;
       font-weight: 600;
     }
@@ -170,7 +193,7 @@ export default {
 .contactPage__formControl {
   @include flexColumn;
   position: relative;
-  margin: 1.5rem;
+  margin: 1rem;
   label {
     margin: 1rem;
     font-size: 2rem;
@@ -188,6 +211,9 @@ export default {
     &:focus {
       border: 3px solid $main-color;
     }
+    &:hover {
+      cursor: none;
+    }
   }
   textarea {
     margin-bottom: 3rem;
@@ -204,33 +230,91 @@ export default {
     &:focus {
       border: 3px solid $main-color;
     }
+    &:hover {
+      cursor: none;
+    }
   }
 }
 .contactPage__errorMsg {
   position: absolute;
   bottom: -2.5rem;
   color: #de1e00;
-  font-size: 1.7rem;
+}
+.contactPage__errorMsg--name {
+  bottom: -2.5rem;
+  width: 32rem;
 }
 .contactPage__errorMsg--textarea {
   bottom: 0;
 }
 .contactPage__loader {
   position: absolute;
-  bottom: 2rem;
-  right: 4rem;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translate(-50%);
+}
+.contactPage__requestResult {
+  @include flexColumn;
+  position: fixed;
+  bottom: 0rem;
+  width: 100%;
+  height: 7rem;
+  border-radius: 15px 15px 0 0;
+  background-color: $main-color;
+  justify-content: space-evenly;
+  z-index: 2000;
+
+  p {
+    margin: 0 auto;
+    width: 90%;
+    color: black;
+    font-size: 2.1rem;
+    text-align: center;
+  }
+}
+@media (min-width: 425px) {
+  .contactPage {
+    form {
+      width: 40rem;
+    }
+  }
 }
 @media (min-width: 768px) {
   .contactPage {
-    margin: 4rem 0 5rem 0;
+    margin-top: 4rem;
     form {
-      margin-top: 2rem;
+      padding: 2rem 0 1rem 0;
       width: 55rem;
       height: 65rem;
     }
     button {
       width: 30rem;
+      padding: 1rem;
     }
+  }
+  .contactPage__loader {
+    position: absolute;
+    bottom: 0;
+    left: auto;
+    right: 2rem;
+    transform: translate(0);
+  }
+  .contactPage__requestResult {
+    bottom: 0rem;
+    width: 55rem;
+    height: 6rem;
+    border-radius: 50px 50px 0 0;
+    background-color: $main-color;
+    z-index: 2000;
+    p {
+      color: black;
+      font-size: 2.5rem;
+    }
+  }
+}
+@media (min-width: 1024px) {
+  .contactPage__requestResult {
+    width: 70rem;
   }
 }
 @media (min-width: 1440px) {
@@ -240,9 +324,7 @@ export default {
     margin: 2rem 1rem;
     width: 100%;
     height: 100%;
-    h2 {
-      font-size: 10rem;
-    }
+
     form {
       width: 90rem;
       height: 75rem;
@@ -254,15 +336,38 @@ export default {
     }
     input {
       width: 40rem;
-      height: 6rem;
+      height: 5rem;
       font-size: 2.5rem;
     }
     textarea {
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
       width: 60rem;
       height: 25rem;
       font-size: 2rem;
     }
   }
+  .contactPage__errorMsg--textarea {
+    bottom: -1rem;
+  }
+  .contactPage__loader {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 18rem;
+  }
+}
+
+.contactResult-enter-active {
+  transition: all 0.5s ease-out;
+}
+.contactResult-leave-active {
+  transition: all 0.5s ease-in;
+}
+.contactResult-enter-from,
+.contactResult-leave-to {
+  transform: translateY(100%);
+}
+.contactResult-leave-from,
+.contactResult-enter-to {
+  transform: translateY(0%);
 }
 </style>

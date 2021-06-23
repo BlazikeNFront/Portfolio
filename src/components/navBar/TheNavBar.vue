@@ -28,4 +28,9 @@ export default {
     width: 15vw;
   }
 }
+@media (min-width: 1920px) {
+  nav {
+    width: 12vw;
+  }
+}
 </style> 

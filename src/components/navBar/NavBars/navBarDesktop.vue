@@ -2,7 +2,7 @@
   <div class="navDesktop">
     <router-link :to="homePageLink" class="navDesktop__homePageLink">
       <initials-logo tabindex="1"></initials-logo>
-      <p>Damian</p>
+      <span data-cursor="pointer">Damian</span>
     </router-link>
     <ul>
       <li>
@@ -23,6 +23,7 @@
           :to="aboutPageLink"
           tabindex="1"
           :class="[activePage === '/aboutMe' ? 'acitvePage' : '']"
+          data-cursor="pointer"
         >
           <font-awesome-icon
             :icon="['fa', 'user']"
@@ -36,6 +37,7 @@
           :to="projectsPageLink"
           tabindex="1"
           :class="[activePage === '/projects' ? 'acitvePage' : '']"
+          data-cursor="pointer"
         >
           <font-awesome-icon
             :icon="['fa', 'briefcase']"
@@ -49,6 +51,7 @@
           :to="contactPageLink"
           tabindex="1"
           :class="[activePage === '/contact' ? 'acitvePage' : '']"
+          data-cursor="pointer"
         >
           <font-awesome-icon
             :icon="['fa', 'id-card']"
@@ -113,7 +116,7 @@ export default {
         width: 100%;
         font-weight: 600;
         letter-spacing: 2px;
-        padding: 2rem;
+        padding: 2rem 0;
         a {
           @include flexRow;
           width: 20rem;
@@ -121,12 +124,13 @@ export default {
           z-index: 1000;
           color: $app-background;
           text-decoration: none;
+          cursor: none;
           & > * {
             pointer-events: none;
           }
         }
         p {
-          font-size: 1.1rem;
+          font-size: 1.3rem;
         }
         &:hover {
           p {
@@ -145,29 +149,23 @@ export default {
   .navDesktop__homePageLink {
     @include flexColumn;
     width: 100%;
-    height: 20rem;
+    height: 25rem;
     text-decoration: none;
     &:focus {
       @include focusAttribute;
     }
-    &:hover {
-      svg {
-        fill: #36ff7c;
-        filter: drop-shadow(0px 0px 3px $main-color);
-      }
-    }
 
     svg {
       width: 100%;
-      animation-name: homePageLink;
+      animation-name: initailsAnimation;
       animation-iteration-count: infinite;
-      animation-duration: 0.5s;
+      animation-duration: 40s;
       fill: #000000;
       filter: drop-shadow(0px 0px 3px $main-color);
     }
 
-    p {
-      font-size: 2rem;
+    span {
+      font-size: 3rem;
       color: White;
       letter-spacing: 1px;
       font-family: $marker-font;
@@ -176,11 +174,11 @@ export default {
   .acitvePage {
     svg {
       color: $main-color;
-      filter: drop-shadow(0px 0px 3px $neon-green);
+      filter: drop-shadow(0px 0px 3px $main-color);
     }
     p {
       color: $main-color;
-      text-shadow: 0px 0px 5px $neon-green;
+      text-shadow: 0px 0px 5px $main-color;
     }
   }
   .navDesktop__Icon {
@@ -200,9 +198,48 @@ export default {
     }
   }
 }
+@media (min-width: 1024px) {
+  .navDesktop {
+    a {
+      cursor: none;
+    }
+  }
+}
 @media (min-width: 1440px) {
   .navDesktop {
     width: 15vw;
+    ul {
+      li {
+        height: 10rem;
+        padding: 0;
+      }
+    }
+    p {
+      font-size: 1.5rem;
+    }
+  }
+}
+@media (min-width: 1920px) {
+  .navDesktop {
+    width: 12vw;
+
+    p {
+      font-size: 1.8rem;
+    }
+  }
+}
+@keyframes initailsAnimation {
+  0% {
+    fill: $main-color;
+    filter: drop-shadow(0px 0px 5px $main-color);
+  }
+  50% {
+    fill: #000;
+    filter: drop-shadow(0px 0px 0px #000);
+  }
+  100% {
+    fill: $main-color;
+    filter: drop-shadow(0px 0px 5px $main-color);
   }
 }
 </style>

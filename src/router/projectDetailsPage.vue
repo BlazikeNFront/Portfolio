@@ -9,14 +9,18 @@
     </button>
 
     <div class="detailsProjectView__content">
-      <div class="detailsProjectView__images">
+      <div class="detailsProjectView__imagesAndLink">
         <img
           :src="require('../assets/sliderImages/' + pickedProject.images[0])"
           class="detailsProjectView__image"
         />
+        <project-links
+          class="detailsProjectView__desktopLinks"
+          :links="pickedProject.links"
+        ></project-links>
       </div>
       <div class="detailsProjectView__description">
-        <section class="detailsProjectView__aboutSection">
+        <article>
           <h3>About</h3>
           <p>
             Where does it come from? Contrary to popular belief, Lorem Ipsum is
@@ -37,12 +41,15 @@
             exact original form, accompanied by English versions from the 1914
             translation by H. Rackham.
           </p>
-        </section>
+        </article>
         <div class="detailsProjectView__techStack">
           <h4>TECHSTACK:</h4>
           <tech-stack :techStack="pickedProject.techstack"></tech-stack>
         </div>
-        <project-links :links="pickedProject.links"></project-links>
+        <project-links
+          class="detailsProjectView__mobileLinks"
+          :links="pickedProject.links"
+        ></project-links>
       </div>
     </div>
   </section>
@@ -84,9 +91,6 @@ export default {
   width: 100%;
   justify-content: space-around;
   color: White;
-  h2 {
-    font-size: 7rem;
-  }
 }
 .detailsProjectView__linkToProjects {
   position: absolute;
@@ -117,22 +121,25 @@ export default {
   height: 56rem;
   object-fit: contain;
 }
+.detailsProjectView__desktopLinks {
+  display: none;
+}
 .detailsProjectView__description {
   @include flexColumn;
   width: 95%;
   justify-content: space-evenly;
-}
-
-.detailsProjectView__aboutSection {
-  @include flexColumn;
-  justify-content: space-between;
-  p {
-    margin: 1rem;
-    width: 100%;
-    font-size: 1.5rem;
-    text-align: justify;
+  article {
+    @include flexColumn;
+    justify-content: space-between;
+    p {
+      margin: 1rem;
+      font-size: 1.8rem;
+      width: 100%;
+      text-align: justify;
+    }
   }
 }
+
 .detailsProjectView__techStack {
   @include flexColumn;
   margin: 2rem 0;
@@ -142,7 +149,14 @@ export default {
   h4 {
     margin: 2rem 0;
   }
+  span {
+    @include flexRow;
+    margin-top: 2rem;
+    width: 100%;
+    font-size: 4rem;
+  }
 }
+
 @media (min-width: 1440px) {
   .detailsProjectView {
     @include flexColumn;
@@ -151,24 +165,6 @@ export default {
     height: 100%;
     justify-content: space-around;
     color: White;
-    h2 {
-      font-size: 7rem;
-    }
-  }
-  .detailsProjectView__linkToProjects {
-    position: absolute;
-    top: 2rem;
-    left: 2rem;
-    background: none;
-    border: none;
-    font-size: 5rem;
-    color: $app-background;
-    filter: drop-shadow(0px 0px 3px #7cd0aa);
-    transform: rotate(180deg);
-
-    &:hover {
-      color: $main-color;
-    }
   }
 
   .detailsProjectView__content {
@@ -176,12 +172,15 @@ export default {
     width: 95%;
     justify-content: space-evenly;
   }
-
+  .detailsProjectView__imagesAndLink {
+    @include flexColumn;
+    height: 100%;
+    justify-content: space-between;
+  }
   .detailsProjectView__image {
     margin: 0.5rem;
-    width: 35rem;
-    height: 56rem;
-    object-fit: contain;
+    width: 40rem;
+    height: 57rem;
   }
   .detailsProjectView__description {
     @include flexColumn;
@@ -195,19 +194,34 @@ export default {
     p {
       margin: 1rem;
       width: 100%;
-      font-size: 1.5rem;
       text-align: justify;
     }
   }
   .detailsProjectView__techStack {
     @include flexColumn;
     margin: 2rem 0;
-
     flex-wrap: wrap;
     justify-content: space-between;
     h4 {
       margin: 2rem 0;
     }
+    span {
+      margin: 0;
+      font-size: 5rem;
+    }
+  }
+  .detailsProjectView__mobileLinks {
+    display: none;
+  }
+  .detailsProjectView__desktopLinks {
+    @include flexRow;
+    justify-content: space-between;
+  }
+}
+@media (min-width: 1920px) {
+  .detailsProjectView__image {
+    width: 43rem;
+    height: 61rem;
   }
 }
 </style>

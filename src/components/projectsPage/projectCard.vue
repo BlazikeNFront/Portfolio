@@ -3,6 +3,7 @@
     <div class="card__leftBorder"></div>
     <div
       class="cardImage"
+      data-cursor="pointer"
       :style="{
         backgroundImage:
           'url(' + require('../../assets/sliderImages/' + imgLink) + ')',
@@ -10,12 +11,12 @@
       @click="$emit('slideClick', slideNumber)"
     >
       <transition name="cardInformation">
-        <div class="card__informations" v-if="isActive">
+        <div class="card__informations" data-cursor="pointer" v-if="isActive">
           <h4>{{ project.title }}</h4>
           <div class="card__buttons">
-            <base-button><p>LIVE</p></base-button>
+            <base-button><p data-cursor="pointer">LIVE</p></base-button>
             <base-button @click="routeToDetailsAboutProject"
-              ><p>MORE INFO</p></base-button
+              ><p data-cursor="pointer">MORE INFO</p></base-button
             >
           </div>
         </div>
@@ -81,7 +82,7 @@ export default {
   position: relative;
   width: 35rem;
   height: 50rem;
-  cursor: pointer;
+
   transform-style: preserve-3d;
   transition: all 1s ease;
 }
@@ -177,7 +178,7 @@ export default {
     position: relative;
     width: 35rem;
     height: 50rem;
-    cursor: pointer;
+
     transform-style: preserve-3d;
     transition: all 1s ease;
   }
@@ -268,5 +269,7 @@ export default {
   .cardInformation-leave-to {
     opacity: 0;
   }
+}
+@media (min-width: 1024px) {
 }
 </style>

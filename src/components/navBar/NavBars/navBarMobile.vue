@@ -127,7 +127,6 @@ export default {
       a {
         @include flexRow;
         width: 20rem;
-
         justify-content: space-evenly;
         z-index: 1000;
         color: $app-background;
@@ -137,18 +136,17 @@ export default {
         }
       }
       p {
-        font-size: 1.1rem;
+        font-size: 1.5rem;
         color: #7cd0aa;
         text-shadow: 0px 0px 3px #7cd0aa;
       }
-
-      .navMobile__Icon {
-        width: 5rem;
-        height: 5rem;
-        color: #7cd0aa;
-        filter: drop-shadow(0px 0px 3px #7cd0aa);
-      }
     }
+  }
+  .navMobile__Icon {
+    width: 4rem;
+    height: 4rem;
+    color: #7cd0aa;
+    filter: drop-shadow(0px 0px 3px #7cd0aa);
   }
   .navMobile__menuTogglerIcon {
     width: 100%;
