@@ -11,26 +11,26 @@ $nav-bar-background: #242424;
 $main-color: #36ff7c;
 $neon-green: #36ff7c;
 
-//global styles 
+//global styles
 h1 {
-  font-size: 8rem;
-  font-weight: 900;
-    text-align: center;
-}
-h2 {
   font-size: 7rem;
   font-weight: 900;
-    text-align: center;
+  text-align: center;
 }
-h3 {
+h2 {
   font-size: 6rem;
   font-weight: 900;
-    text-align: center;
+  text-align: center;
+}
+h3 {
+  font-size: 5rem;
+  font-weight: 900;
+  text-align: center;
 }
 h4 {
   font-size: 3rem;
   font-weight: 900;
-    text-align: center;
+  text-align: center;
 }
 p {
   font-size: 1.8rem;
@@ -47,9 +47,8 @@ p {
   }
   p {
     font-size: 2rem;
-  }}
-
-
+  }
+}
 
 @mixin flexRow {
   display: flex;
@@ -66,6 +65,5 @@ p {
 }
 @mixin focusAttribute {
   outline: none;
-  border: 2px solid #41b883;
-  border-radius: 10px;
+  box-shadow: 0 0 0 2px #41b883;
 }

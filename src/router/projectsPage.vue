@@ -35,6 +35,7 @@
 </template>
 <script>
 import { ref, computed } from "vue";
+import { useStore } from "vuex";
 import projectCard from "../components/projectsPage/projectCard.vue";
 
 export default {
@@ -42,33 +43,8 @@ export default {
     projectCard,
   },
   setup() {
-    const projects = [
-      {
-        name: "dataWarehouse",
-        title: "Data Warehouse",
-        imageUrl: "dataWarehouse.png",
-      },
-      {
-        name: "weatherApp",
-        title: "Weather App",
-        imageUrl: "weatherApp.png",
-      },
-      {
-        name: "movieApp",
-        title: "Movie App",
-        imageUrl: "movieApp.png",
-      },
-      {
-        name: "projectRAS",
-        title: "Project RAS",
-        imageUrl: "movieApp.png",
-      },
-      {
-        name: "taimenShop",
-        title: "Taimen Shop",
-        imageUrl: "movieApp.png",
-      },
-    ];
+    const store = useStore();
+    const projects = store.getters["getAllProjects"];
 
     const slideProportional = parseInt(100 / projects.length);
     const activeSlide = ref(0);
@@ -158,6 +134,9 @@ export default {
       span {
         color: $main-color;
       }
+    }
+    &:focus {
+      @include focusAttribute;
     }
   }
 }

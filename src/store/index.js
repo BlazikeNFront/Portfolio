@@ -7,7 +7,7 @@ const store = createStore({
         {
           name: "dataWarehouse",
           title: "Data Warehouse",
-          images: ["dataWarehouse.png"],
+          images: ["dataWarehouse.webp"],
           description:
             "Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin",
           techstack: [
@@ -19,12 +19,17 @@ const store = createStore({
               dropShadow: "#f0db4f",
             },
           ],
-          links: [{ links: { github: "NPFkekw", live: "NPFkekm" } }],
+          links: [
+            {
+              github: "https://github.com/BlazikeNFront/Data-warehouse",
+              live: "https://datawarehouse-e8491.web.app",
+            },
+          ],
         },
         {
           name: "weatherApp",
           title: "Weather App",
-          images: ["weatherApp.png"],
+          images: ["weatherApp.webp"],
           description:
             "Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin",
           techstack: [
@@ -36,12 +41,17 @@ const store = createStore({
               dropShadow: "#f0db4f",
             },
           ],
-          links: [{ links: { github: "NPFkekw", live: "NPFkekm" } }],
+          links: [
+            {
+              github: "https://github.com/BlazikeNFront/WeatherApp",
+              live: "https://weatherapp-28b2d.web.app",
+            },
+          ],
         },
         {
           name: "movieApp",
           title: "Movie App",
-          images: ["movieApp.png"],
+          images: ["movieApp.webp"],
           description:
             "Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin",
           techstack: [
@@ -58,12 +68,17 @@ const store = createStore({
               dropShadow: "#f0db4f",
             },
           ],
-          links: [{ links: { github: "NPFkekw", live: "NPFkekm" } }],
+          links: [
+            {
+              github: "https://github.com/BlazikeNFront/MovieApp",
+              live: "https://movieapp-vueimdb.herokuapp.com",
+            },
+          ],
         },
         {
           name: "projectRAS",
           title: "Project RAS",
-          images: ["movieApp.png"],
+          images: ["projectRAS.webp"],
           description:
             "Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin",
           techstack: [
@@ -78,12 +93,17 @@ const store = createStore({
               dropShadow: "#c31c4a",
             },
           ],
-          links: [{ links: { github: "NPFkekw", live: "NPFkekm" } }],
+          links: [
+            {
+              github: "https://github.com/BlazikeNFront/ProjectRAS--NPF",
+              live: "https://project-ras.herokuapp.com/",
+            },
+          ],
         },
         {
           name: "taimenShop",
           title: "Taimen Shop",
-          images: ["movieApp.png"],
+          images: ["taimenShop.webp"],
           description:
             "Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin",
           techstack: [
@@ -98,7 +118,24 @@ const store = createStore({
             { src: "expressBadge.svg", alt: "Express", dropShadow: "#ffffff" },
             { src: "mongodbBadge.svg", alt: "MongoDB", dropShadow: "#ffffff" },
           ],
-          links: [{ links: { github: "NPFkekw", live: "NPFkekm" } }],
+          links: [
+            {
+              version: "Options API",
+              github: "https://github.com/BlazikeNFront/VueShop",
+              live: "https://taimen-shop-options.herokuapp.com/",
+            },
+            {
+              version: "Composition API",
+              github:
+                "https://github.com/BlazikeNFront/VueShop--CompositionApi",
+              live: "https://taimenshopcomposition.web.app/",
+            },
+            {
+              version: "BackEnd",
+              github:
+                "https://github.com/BlazikeNFront/VueShop--CompositionApi",
+            },
+          ],
         },
       ],
       isPageLoading: false,

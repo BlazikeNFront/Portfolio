@@ -4,8 +4,9 @@
     <button
       class="detailsProjectView__linkToProjects"
       @click="navigateToProjects"
+      data-cursor="pointer"
     >
-      <font-awesome-icon :icon="['fa', 'arrow-right']"></font-awesome-icon>
+      <back-arrow></back-arrow>
     </button>
 
     <div class="detailsProjectView__content">
@@ -58,13 +59,14 @@
 import { useStore } from "vuex";
 import { useRoute, useRouter } from "vue-router";
 import TechStack from "../components/projectDetailsPage/techStack.vue";
-
+import BackArrow from "../assets/logos/backArrow.vue";
 import projectLinks from "../components/projectDetailsPage/projectLinks.vue";
 
 export default {
   components: {
     TechStack,
     projectLinks,
+    BackArrow,
   },
 
   setup() {
@@ -102,6 +104,7 @@ export default {
   color: $app-background;
   filter: drop-shadow(0px 0px 3px #7cd0aa);
   transform: rotate(180deg);
+  cursor: none;
 
   &:hover {
     color: $main-color;
@@ -160,13 +163,15 @@ export default {
 @media (min-width: 1440px) {
   .detailsProjectView {
     @include flexColumn;
-    margin: 2rem 1rem;
+    margin: 3rem 0;
     width: 100%;
     height: 100%;
     justify-content: space-around;
     color: White;
   }
-
+  .detailsProjectView__linkToProjects {
+    top: 9rem;
+  }
   .detailsProjectView__content {
     @include flexRow;
     width: 95%;
@@ -174,13 +179,14 @@ export default {
   }
   .detailsProjectView__imagesAndLink {
     @include flexColumn;
+    width: 45%;
     height: 100%;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
   .detailsProjectView__image {
     margin: 0.5rem;
     width: 40rem;
-    height: 57rem;
+    height: 55rem;
   }
   .detailsProjectView__description {
     @include flexColumn;
@@ -215,7 +221,8 @@ export default {
   }
   .detailsProjectView__desktopLinks {
     @include flexRow;
-    justify-content: space-between;
+
+    justify-content: space-evenly;
   }
 }
 @media (min-width: 1920px) {

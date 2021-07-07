@@ -23,6 +23,9 @@
       left: -4%;
     }
   }
+  &:focus {
+    @include focusAttribute;
+  }
 }
 .baseButton__span {
   position: absolute;

@@ -1,13 +1,18 @@
 <template>
   <div class="navDesktop">
-    <router-link :to="homePageLink" class="navDesktop__homePageLink">
-      <initials-logo tabindex="1"></initials-logo>
+    <router-link
+      :to="homePageLink"
+      class="navDesktop__homePageLink"
+      tabindex="1"
+    >
+      <initials-logo></initials-logo>
       <span data-cursor="pointer">Damian</span>
     </router-link>
     <ul>
       <li>
         <router-link
           :to="homePageLink"
+          data-cursor="pointer"
           tabindex="1"
           :class="[activePage === '/' ? 'acitvePage' : '']"
         >
@@ -36,7 +41,7 @@
         <router-link
           :to="projectsPageLink"
           tabindex="1"
-          :class="[activePage === '/projects' ? 'acitvePage' : '']"
+          :class="[applyActiveClassOnProjectsSection ? 'acitvePage' : '']"
           data-cursor="pointer"
         >
           <font-awesome-icon
@@ -80,12 +85,19 @@ export default {
     const activePage = computed(() => {
       return route.path;
     });
+    const applyActiveClassOnProjectsSection = computed(() => {
+      if (route.path.includes("projects")) {
+        return true;
+      }
+      return false;
+    });
     return {
       homePageLink,
       aboutPageLink,
       projectsPageLink,
       contactPageLink,
       activePage,
+      applyActiveClassOnProjectsSection,
     };
   },
 };
@@ -127,6 +139,11 @@ export default {
           cursor: none;
           & > * {
             pointer-events: none;
+          }
+          &:focus {
+            @include focusAttribute;
+            box-shadow: 0 0 4px 2px #41b883;
+            border-radius: 10px;
           }
         }
         p {
@@ -221,6 +238,7 @@ export default {
 }
 @media (min-width: 1920px) {
   .navDesktop {
+    position: relative;
     width: 12vw;
 
     p {

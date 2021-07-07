@@ -65,6 +65,7 @@ export default {
 }
 .aboutMePage__codewars {
   @include flexRow;
+
   img {
     width: 35rem;
   }
@@ -95,6 +96,9 @@ export default {
     margin-top: 2rem;
     a {
       cursor: none;
+      &:focus {
+        @include focusAttribute;
+      }
     }
   }
 }
