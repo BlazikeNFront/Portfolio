@@ -2,9 +2,7 @@
   <span
     class="homePage__letterAnim--1"
     :class="[
-      animationEnded
-        ? 'letterAnimationAfterAppearance'
-        : 'letterAppearanceAnimation',
+      animationEnded ? 'animationClassReset' : 'letterAppearanceAnimation',
     ]"
     @mouseover="changeClass($event)"
     >H</span
@@ -12,18 +10,14 @@
   <span
     class="homePage__letterAnim--2"
     :class="[
-      animationEnded
-        ? 'letterAnimationAfterAppearance'
-        : 'letterAppearanceAnimation',
+      animationEnded ? 'animationClassReset' : 'letterAppearanceAnimation',
     ]"
     @mouseover="changeClass($event)"
     >i</span
   ><span
     class="homePage__letterAnim--3"
     :class="[
-      animationEnded
-        ? 'letterAnimationAfterAppearance'
-        : 'letterAppearanceAnimation',
+      animationEnded ? 'animationClassReset' : 'letterAppearanceAnimation',
     ]"
     @mouseover="changeClass($event)"
     >,</span
@@ -32,9 +26,7 @@
   <span
     class="homePage__letterAnim--4"
     :class="[
-      animationEnded
-        ? 'letterAnimationAfterAppearance'
-        : 'letterAppearanceAnimation',
+      animationEnded ? 'animationClassReset' : 'letterAppearanceAnimation',
     ]"
     @mouseover="changeClass($event)"
   >
@@ -42,18 +34,14 @@
   ><span
     class="homePage__letterAnim--5"
     :class="[
-      animationEnded
-        ? 'letterAnimationAfterAppearance'
-        : 'letterAppearanceAnimation',
+      animationEnded ? 'animationClassReset' : 'letterAppearanceAnimation',
     ]"
     @mouseover="changeClass($event)"
     >'</span
   ><span
     class="homePage__letterAnim--6"
     :class="[
-      animationEnded
-        ? 'letterAnimationAfterAppearance'
-        : 'letterAppearanceAnimation',
+      animationEnded ? 'animationClassReset' : 'letterAppearanceAnimation',
     ]"
     @mouseover="changeClass($event)"
     >m
@@ -62,9 +50,7 @@
   <br class="mobileBreakLine" /><span
     class="homePage__letterAnim--7"
     :class="[
-      animationEnded
-        ? 'letterAnimationAfterAppearance'
-        : 'letterAppearanceAnimation',
+      animationEnded ? 'animationClassReset' : 'letterAppearanceAnimation',
     ]"
     @mouseover="changeClass($event)"
   >
@@ -72,44 +58,34 @@
   ><span
     class="homePage__letterAnim--8"
     :class="[
-      animationEnded
-        ? 'letterAnimationAfterAppearance'
-        : 'letterAppearanceAnimation',
+      animationEnded ? 'animationClassReset' : 'letterAppearanceAnimation',
     ]"
     @mouseover="changeClass($event)"
     >a</span
   ><span
     class="homePage__letterAnim--9"
     :class="[
-      animationEnded
-        ? 'letterAnimationAfterAppearance'
-        : 'letterAppearanceAnimation',
+      animationEnded ? 'animationClassReset' : 'letterAppearanceAnimation',
     ]"
     @mouseover="changeClass($event)"
     >m</span
   ><span
     class="homePage__letterAnim--10"
     :class="[
-      animationEnded
-        ? 'letterAnimationAfterAppearance'
-        : 'letterAppearanceAnimation',
+      animationEnded ? 'animationClassReset' : 'letterAppearanceAnimation',
     ]"
     @mouseover="changeClass($event)"
     >i</span
   ><span
     class="homePage__letterAnim--11"
     :class="[
-      animationEnded
-        ? 'letterAnimationAfterAppearance'
-        : 'letterAppearanceAnimation',
+      animationEnded ? 'animationClassReset' : 'letterAppearanceAnimation',
     ]"
     @mouseover="changeClass($event)"
     >a</span
   ><span
     :class="[
-      animationEnded
-        ? 'letterAnimationAfterAppearance'
-        : 'letterAppearanceAnimation',
+      animationEnded ? 'animationClassReset' : 'letterAppearanceAnimation',
       'homePage__letterAnim--12',
     ]"
     @mouseover="changeClass($event)"
@@ -129,11 +105,11 @@ export default {
       e.srcElement.addEventListener(
         "animationend",
         () => {
-          e.srcElement.classList.remove("tester");
+          e.srcElement.classList.remove("mouseOverAnim");
         },
         { once: true }
       );
-      e.srcElement.classList.add("tester");
+      e.srcElement.classList.add("mouseOverAnim");
     }
 
     onMounted(() => {
@@ -189,13 +165,7 @@ export default {
 .homePage__letterAnim--12 {
   animation-delay: 1.2s;
 }
-.tester {
-  color: $main-color;
-  animation-delay: 0s !important;
-  animation-name: letterAnimation;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
-}
+
 .letterAppearanceAnimation {
   transform: translateY(-70rem);
   pointer-events: none;
@@ -204,7 +174,18 @@ export default {
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
-
+.animationClassReset {
+  transition: all 0.3s ease-in;
+  animation-name: none;
+  animation-delay: none;
+}
+.mouseOverAnim {
+  color: $main-color;
+  animation-name: letterAnimation;
+  animation-delay: 0s !important;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
 @keyframes letterAppearance {
   0% {
     transform: translateY(-70rem);

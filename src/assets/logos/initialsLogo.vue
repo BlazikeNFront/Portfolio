@@ -6,12 +6,14 @@
     height="800.000000pt"
     viewBox="0 0 900.000000 800.000000"
     preserveAspectRatio="xMidYMid meet"
+    data-cursor="pointer"
   >
     <g
       transform="translate(0.000000,800.000000) scale(0.100000,-0.100000)"
       stroke="none"
     >
       <path
+        data-cursor="pointer"
         d="M2540 5580 l0 -80 260 0 260 0 0 -1780 0 -1780 -260 0 -260 0 0 -80
 0 -80 1008 0 c828 0 1028 3 1125 15 437 54 817 230 1123 518 308 291 489 657
 548 1112 30 225 17 580 -29 795 -108 511 -389 905 -824 1160 -162 94 -385 180

@@ -17,7 +17,9 @@
           class="projectPage__sliderButton"
           @click="slideAction(activeSlide - 1)"
         >
-          <span class="projectPage__span projectPage__span--leftArrow"
+          <span
+            class="projectPage__span projectPage__span--leftArrow"
+            data-cursor="pointer"
             >&laquo;</span
           >
         </button>
@@ -25,7 +27,7 @@
           class="projectPage__sliderButton"
           @click="slideAction(activeSlide + 1)"
         >
-          <span class="projectPage__span">&raquo;</span>
+          <span class="projectPage__span" data-cursor="pointer">&raquo;</span>
         </button>
       </div>
     </div>
@@ -33,6 +35,7 @@
 </template>
 <script>
 import { ref, computed } from "vue";
+import { useStore } from "vuex";
 import projectCard from "../components/projectsPage/projectCard.vue";
 
 export default {
@@ -40,33 +43,8 @@ export default {
     projectCard,
   },
   setup() {
-    const projects = [
-      {
-        name: "dataWarehouse",
-        title: "Data Warehouse",
-        imageUrl: "dataWarehouse.png",
-      },
-      {
-        name: "weatherApp",
-        title: "Weather App",
-        imageUrl: "weatherApp.png",
-      },
-      {
-        name: "movieApp",
-        title: "Movie App",
-        imageUrl: "movieApp.png",
-      },
-      {
-        name: "projectRAS",
-        title: "Project RAS",
-        imageUrl: "movieApp.png",
-      },
-      {
-        name: "taimenShop",
-        title: "Taimen Shop",
-        imageUrl: "movieApp.png",
-      },
-    ];
+    const store = useStore();
+    const projects = store.getters["getAllProjects"];
 
     const slideProportional = parseInt(100 / projects.length);
     const activeSlide = ref(0);
@@ -103,14 +81,10 @@ export default {
 <style lang="scss">
 .projectPage {
   @include flexColumn;
-  margin: 10rem 0 5rem 0;
+  margin-top: 1rem;
   width: 100%;
   justify-content: space-evenly;
   color: White;
-
-  h2 {
-    font-size: 5rem;
-  }
 }
 .projectPage__sliderWrapper {
   @include flexRow;
@@ -154,11 +128,15 @@ export default {
     border: none;
     border-radius: 50%;
     color: white;
+    cursor: none;
 
     &:hover {
       span {
         color: $main-color;
       }
+    }
+    &:focus {
+      @include focusAttribute;
     }
   }
 }
@@ -176,14 +154,29 @@ export default {
 .projectPage__span--leftArrow {
   left: 0px;
 }
+@media (min-width: 425px) {
+  .projectPage {
+    h2 {
+      margin-top: 7rem;
+    }
+  }
+}
 @media (min-width: 768px) {
   .projectPage {
     margin: 4rem 0 5rem 0;
   }
 }
+@media (min-width: 768px) {
+  .projectPage {
+    margin: 2rem 0 2rem 0;
+    h2 {
+      margin: 3rem 0;
+    }
+  }
+}
 @media (min-width: 1440px) {
   .projectPage {
-    margin: 4rem 0 5rem 0;
+    margin: 0;
     width: 100%;
     height: 100%;
   }

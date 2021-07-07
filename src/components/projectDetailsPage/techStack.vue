@@ -15,7 +15,7 @@
         />
       </li>
     </ul>
-    <p>{{ techName }}</p>
+    <span>{{ techName }}</span>
   </div>
 </template>
 <script>
@@ -44,11 +44,7 @@ export default {
   li {
     margin: 1rem;
   }
-  p {
-    margin-top: 2rem;
-    width: 100%;
-    font-size: 3rem;
-
+  span {
     font-family: $marker-font;
     text-align: center;
   }
@@ -65,9 +61,10 @@ export default {
     }
   }
 }
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
   .techStack {
-    p {
+    span {
+      @include flexRow;
       font-size: 5rem;
     }
   }

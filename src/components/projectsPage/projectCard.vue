@@ -3,6 +3,7 @@
     <div class="card__leftBorder"></div>
     <div
       class="cardImage"
+      data-cursor="pointer"
       :style="{
         backgroundImage:
           'url(' + require('../../assets/sliderImages/' + imgLink) + ')',
@@ -10,13 +11,18 @@
       @click="$emit('slideClick', slideNumber)"
     >
       <transition name="cardInformation">
-        <div class="card__informations" v-if="isActive">
+        <div class="card__informations" data-cursor="pointer" v-if="isActive">
           <h4>{{ project.title }}</h4>
           <div class="card__buttons">
-            <base-button><p>LIVE</p></base-button>
-            <base-button @click="routeToDetailsAboutProject"
-              ><p>MORE INFO</p></base-button
+            <base-button data-cursor="pointer" @click="openNewTabWithProject"
+              ><p>LIVE</p></base-button
             >
+            <base-button
+              @click="routeToDetailsAboutProject"
+              data-cursor="pointer"
+            >
+              <p>MORE INFO</p>
+            </base-button>
           </div>
         </div>
       </transition>
@@ -40,7 +46,7 @@ export default {
   },
   setup(props) {
     const router = useRouter();
-    const imgLink = ref(props.project.imageUrl);
+    const imgLink = ref(props.project.images[0]);
     const slideStyle = computed(() => {
       const { currentActive, slideNumber } = props;
       if (currentActive === slideNumber) {
@@ -59,19 +65,27 @@ export default {
         return false;
       }
     });
-
+    function openNewTabWithProject() {
+      window.open(props.project.links[0].live, "_blank");
+    }
+    /*  const routeToDetailsAboutProject = computed(() => {
+      return {
+        name: "projectDetailsPage",
+        params: { projectName: props.project.name },
+      };
+    }); */
     function routeToDetailsAboutProject() {
       router.push({
         name: "projectDetailsPage",
         params: { projectName: props.project.name },
       });
     }
-
     return {
       slideStyle,
       imgLink,
       isActive,
       routeToDetailsAboutProject,
+      openNewTabWithProject,
     };
   },
 };
@@ -81,7 +95,7 @@ export default {
   position: relative;
   width: 35rem;
   height: 50rem;
-  cursor: pointer;
+
   transform-style: preserve-3d;
   transition: all 1s ease;
 }
@@ -108,8 +122,11 @@ export default {
     &:hover {
       color: black;
     }
-    p {
+    a {
+      color: white;
+      text-decoration: none;
       z-index: 1000;
+      cursor: none;
     }
   }
 }
@@ -177,7 +194,7 @@ export default {
     position: relative;
     width: 35rem;
     height: 50rem;
-    cursor: pointer;
+
     transform-style: preserve-3d;
     transition: all 1s ease;
   }
@@ -268,5 +285,7 @@ export default {
   .cardInformation-leave-to {
     opacity: 0;
   }
+}
+@media (min-width: 1024px) {
 }
 </style>

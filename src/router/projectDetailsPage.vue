@@ -4,19 +4,24 @@
     <button
       class="detailsProjectView__linkToProjects"
       @click="navigateToProjects"
+      data-cursor="pointer"
     >
-      <font-awesome-icon :icon="['fa', 'arrow-right']"></font-awesome-icon>
+      <back-arrow></back-arrow>
     </button>
 
     <div class="detailsProjectView__content">
-      <div class="detailsProjectView__images">
+      <div class="detailsProjectView__imagesAndLink">
         <img
           :src="require('../assets/sliderImages/' + pickedProject.images[0])"
           class="detailsProjectView__image"
         />
+        <project-links
+          class="detailsProjectView__desktopLinks"
+          :links="pickedProject.links"
+        ></project-links>
       </div>
       <div class="detailsProjectView__description">
-        <section class="detailsProjectView__aboutSection">
+        <article>
           <h3>About</h3>
           <p>
             Where does it come from? Contrary to popular belief, Lorem Ipsum is
@@ -37,12 +42,15 @@
             exact original form, accompanied by English versions from the 1914
             translation by H. Rackham.
           </p>
-        </section>
+        </article>
         <div class="detailsProjectView__techStack">
           <h4>TECHSTACK:</h4>
           <tech-stack :techStack="pickedProject.techstack"></tech-stack>
         </div>
-        <project-links :links="pickedProject.links"></project-links>
+        <project-links
+          class="detailsProjectView__mobileLinks"
+          :links="pickedProject.links"
+        ></project-links>
       </div>
     </div>
   </section>
@@ -51,13 +59,14 @@
 import { useStore } from "vuex";
 import { useRoute, useRouter } from "vue-router";
 import TechStack from "../components/projectDetailsPage/techStack.vue";
-
+import BackArrow from "../assets/logos/backArrow.vue";
 import projectLinks from "../components/projectDetailsPage/projectLinks.vue";
 
 export default {
   components: {
     TechStack,
     projectLinks,
+    BackArrow,
   },
 
   setup() {
@@ -84,9 +93,6 @@ export default {
   width: 100%;
   justify-content: space-around;
   color: White;
-  h2 {
-    font-size: 7rem;
-  }
 }
 .detailsProjectView__linkToProjects {
   position: absolute;
@@ -98,6 +104,7 @@ export default {
   color: $app-background;
   filter: drop-shadow(0px 0px 3px #7cd0aa);
   transform: rotate(180deg);
+  cursor: none;
 
   &:hover {
     color: $main-color;
@@ -117,22 +124,25 @@ export default {
   height: 56rem;
   object-fit: contain;
 }
+.detailsProjectView__desktopLinks {
+  display: none;
+}
 .detailsProjectView__description {
   @include flexColumn;
   width: 95%;
   justify-content: space-evenly;
-}
-
-.detailsProjectView__aboutSection {
-  @include flexColumn;
-  justify-content: space-between;
-  p {
-    margin: 1rem;
-    width: 100%;
-    font-size: 1.5rem;
-    text-align: justify;
+  article {
+    @include flexColumn;
+    justify-content: space-between;
+    p {
+      margin: 1rem;
+      font-size: 1.8rem;
+      width: 100%;
+      text-align: justify;
+    }
   }
 }
+
 .detailsProjectView__techStack {
   @include flexColumn;
   margin: 2rem 0;
@@ -142,46 +152,41 @@ export default {
   h4 {
     margin: 2rem 0;
   }
+  span {
+    @include flexRow;
+    margin-top: 2rem;
+    width: 100%;
+    font-size: 4rem;
+  }
 }
+
 @media (min-width: 1440px) {
   .detailsProjectView {
     @include flexColumn;
-    margin: 2rem 1rem;
+    margin: 3rem 0;
     width: 100%;
     height: 100%;
     justify-content: space-around;
     color: White;
-    h2 {
-      font-size: 7rem;
-    }
   }
   .detailsProjectView__linkToProjects {
-    position: absolute;
-    top: 2rem;
-    left: 2rem;
-    background: none;
-    border: none;
-    font-size: 5rem;
-    color: $app-background;
-    filter: drop-shadow(0px 0px 3px #7cd0aa);
-    transform: rotate(180deg);
-
-    &:hover {
-      color: $main-color;
-    }
+    top: 9rem;
   }
-
   .detailsProjectView__content {
     @include flexRow;
     width: 95%;
     justify-content: space-evenly;
   }
-
+  .detailsProjectView__imagesAndLink {
+    @include flexColumn;
+    width: 45%;
+    height: 100%;
+    justify-content: space-evenly;
+  }
   .detailsProjectView__image {
     margin: 0.5rem;
-    width: 35rem;
-    height: 56rem;
-    object-fit: contain;
+    width: 40rem;
+    height: 55rem;
   }
   .detailsProjectView__description {
     @include flexColumn;
@@ -195,19 +200,35 @@ export default {
     p {
       margin: 1rem;
       width: 100%;
-      font-size: 1.5rem;
       text-align: justify;
     }
   }
   .detailsProjectView__techStack {
     @include flexColumn;
     margin: 2rem 0;
-
     flex-wrap: wrap;
     justify-content: space-between;
     h4 {
       margin: 2rem 0;
     }
+    span {
+      margin: 0;
+      font-size: 5rem;
+    }
+  }
+  .detailsProjectView__mobileLinks {
+    display: none;
+  }
+  .detailsProjectView__desktopLinks {
+    @include flexRow;
+
+    justify-content: space-evenly;
+  }
+}
+@media (min-width: 1920px) {
+  .detailsProjectView__image {
+    width: 43rem;
+    height: 61rem;
   }
 }
 </style>

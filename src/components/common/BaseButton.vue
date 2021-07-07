@@ -1,6 +1,6 @@
 <template>
-  <button class="baseButton">
-    <span class="baseButton__span"></span>
+  <button class="baseButton" data-cursor="pointer">
+    <span class="baseButton__span" data-cursor="pointer"></span>
     <slot></slot>
   </button>
 </template>
@@ -9,7 +9,6 @@
   width: 26rem;
   height: 7rem;
   border: 1px solid $main-color;
-
   border-radius: 35px;
   position: relative;
   display: flex;
@@ -23,6 +22,9 @@
     span {
       left: -4%;
     }
+  }
+  &:focus {
+    @include focusAttribute;
   }
 }
 .baseButton__span {

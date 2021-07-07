@@ -1,5 +1,5 @@
 <template>
-  <custom-cursor></custom-cursor>
+  <custom-cursor v-if="allowCustomCursor"></custom-cursor>
   <page-loader v-if="pageIsLoading"></page-loader>
   <the-nav-bar></the-nav-bar>
   <main class="main">
@@ -13,6 +13,8 @@
 import TheNavBar from "./components/navBar/TheNavBar.vue";
 import PageLoader from "./components/common/PageLoader.vue";
 import customCursor from "./components/common/Cursor.vue";
+import { useStore } from "vuex";
+import { ref, computed, onMounted } from "vue";
 export default {
   name: "App",
   components: {
@@ -20,11 +22,38 @@ export default {
     PageLoader,
     customCursor,
   },
+  setup() {
+    const store = useStore();
+    //since cursor computes position on every move, it is better to delete curosr from DOM in smaller devices
+    const allowCustomCursor = ref(true);
+    const pageIsLoading = computed(() => {
+      return store.getters["getShowProgressBar"];
+    });
 
-  computed: {
-    pageIsLoading() {
-      return this.$store.getters["getShowProgressBar"];
-    },
+    function customCursorVisibility() {
+      const screenWidth = window.innerWidth;
+      //first statement checks if device have touch options - but it is not decisive, by that i mean even without those options below device can have tochscreen
+      if (
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0 ||
+        navigator.msMaxTouchPoints > 0
+      ) {
+        return false;
+      } else if (screenWidth >= 1024) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    onMounted(() => {
+      allowCustomCursor.value = customCursorVisibility();
+
+      window.onresize = () => {
+        allowCustomCursor.value = customCursorVisibility();
+      };
+    });
+
+    return { allowCustomCursor, pageIsLoading };
   },
 };
 </script>
@@ -41,6 +70,7 @@ html {
 body {
   background-color: #171717;
 }
+
 #app {
   @include flexRow;
   margin: 0 auto;
@@ -63,15 +93,27 @@ body {
   .main {
     position: relative;
     right: 0;
-    width: 90vw;
+    width: 80vw;
+  }
+}
+@media (min-width: 1024px) {
+  html {
+    cursor: none;
   }
 }
 @media (min-width: 1440px) {
   #app {
     height: 100vh;
+    max-height: 108rem;
   }
   .main {
+    margin-bottom: 5rem;
     width: 85vw;
+  }
+}
+@media (min-width: 1920px) {
+  .main {
+    width: 88vw;
   }
 }
 </style>
