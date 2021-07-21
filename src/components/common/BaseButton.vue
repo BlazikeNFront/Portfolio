@@ -8,7 +8,7 @@
 .baseButton {
   width: 26rem;
   height: 7rem;
-  border: 1px solid $main-color;
+  border: 1px solid $neon-green;
   border-radius: 35px;
   position: relative;
   display: flex;

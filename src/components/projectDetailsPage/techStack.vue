@@ -40,6 +40,7 @@ export default {
     @include flexRow;
     width: 35rem;
     flex-wrap: wrap;
+    transform: scale(0.9);
   }
   li {
     margin: 1rem;
@@ -55,6 +56,7 @@ export default {
       @include flexRow;
       width: 60rem;
       flex-wrap: wrap;
+      transform: none;
     }
     li {
       margin: 1rem;

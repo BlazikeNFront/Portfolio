@@ -8,7 +8,7 @@ $marker-font: "Permanent Marker", sans-serif;
 
 $app-background: #171717;
 $nav-bar-background: #242424;
-$main-color: #36ff7c;
+
 $neon-green: #36ff7c;
 
 //global styles
@@ -31,6 +31,9 @@ h4 {
   font-size: 3rem;
   font-weight: 900;
   text-align: center;
+}
+a {
+  cursor: none;
 }
 p {
   font-size: 1.8rem;

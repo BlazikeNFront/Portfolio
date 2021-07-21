@@ -4,7 +4,9 @@
   <the-nav-bar></the-nav-bar>
   <main class="main">
     <router-view v-slot="{ Component }">
-      <component :is="Component" />
+      <transition mode="out-in" name="pageChange">
+        <component :is="Component" />
+      </transition>
     </router-view>
   </main>
 </template>
@@ -32,7 +34,7 @@ export default {
 
     function customCursorVisibility() {
       const screenWidth = window.innerWidth;
-      //first statement checks if device have touch options - but it is not decisive, by that i mean even without those options below device can have tochscreen
+      //first statement checks if device have touch options - but it is not decisive, by that i mean even without those options below, device still can have tochscreen
       if (
         "ontouchstart" in window ||
         navigator.maxTouchPoints > 0 ||
@@ -88,12 +90,32 @@ body {
 .main {
   width: 100vw;
   height: 100%;
+  z-index: 1000;
 }
+.pageChange-enter-active,
+.pageChange-leave-active {
+  transition: all 0.4s;
+}
+
+.pageChange-enter-from {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.pageChange-leave-to {
+  transform: translateX(100%);
+}
+
+.pageChange-enter-to,
+.pageChange-leave-from {
+  transform: translateX(0%);
+}
+
 @media (min-width: 768px) {
   .main {
     position: relative;
     right: 0;
     width: 80vw;
+    overflow: hidden;
   }
 }
 @media (min-width: 1024px) {

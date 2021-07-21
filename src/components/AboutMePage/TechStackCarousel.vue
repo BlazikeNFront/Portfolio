@@ -97,7 +97,7 @@ export default {
 .carousel__wrapper {
   @include flexRow;
   width: 100%;
-  transform: scale(0.7);
+  transform: scale(0.6);
   height: 0; // with height set to '0' text center will not cause animation stop
   &:hover {
     .carousel__item {
@@ -138,7 +138,7 @@ export default {
     height: 7rem;
   }
   &:hover {
-    filter: drop-shadow(0px 0px 3px $main-color);
+    filter: drop-shadow(0px 0px 3px $neon-green);
   }
 }
 .carousel__item__mongo {
@@ -160,7 +160,7 @@ export default {
     height: 11rem;
   }
   &:hover {
-    filter: drop-shadow(0px 0px 3px $main-color);
+    filter: drop-shadow(0px 0px 3px $neon-green);
   }
 }
 .carousel__item__node {
@@ -171,7 +171,7 @@ export default {
     height: 8rem;
   }
   &:hover {
-    filter: drop-shadow(0px 0px 3px $main-color);
+    filter: drop-shadow(0px 0px 3px $neon-green);
   }
 }
 .carousel__item__sass {
@@ -206,7 +206,7 @@ export default {
     height: 8rem;
   }
   &:hover {
-    filter: drop-shadow(0px 0px 3px $main-color);
+    filter: drop-shadow(0px 0px 3px $neon-green);
   }
 }
 .carousel__item__raspberry {
@@ -220,7 +220,11 @@ export default {
     filter: drop-shadow(0px 0px 3px #c31c4a);
   }
 }
-
+@media (min-width: 375px) {
+  .carousel__wrapper {
+    transform: scale(0.7);
+  }
+}
 @media (min-width: 425px) {
   .carousel__wrapper {
     transform: scale(0.8);
@@ -266,7 +270,7 @@ export default {
   }
   .carousel__item__vue {
     &:hover {
-      filter: drop-shadow(0px 0px 3px $main-color);
+      filter: drop-shadow(0px 0px 3px $neon-green);
     }
   }
   .carousel__item__mongo {
@@ -288,7 +292,7 @@ export default {
       height: 7rem;
     }
     &:hover {
-      filter: drop-shadow(0px 0px 3px $main-color);
+      filter: drop-shadow(0px 0px 3px $neon-green);
     }
   }
   .carousel__item__node {
@@ -301,7 +305,7 @@ export default {
       height: 100%;
     }
     &:hover {
-      filter: drop-shadow(0px 0px 3px $main-color);
+      filter: drop-shadow(0px 0px 3px $neon-green);
     }
   }
   .carousel__item__sass {
@@ -333,7 +337,7 @@ export default {
     animation: spin7 20s linear infinite;
     transform: rotate(0) translate(142px, 142px) rotate(0);
     &:hover {
-      filter: drop-shadow(0px 0px 3px $main-color);
+      filter: drop-shadow(0px 0px 3px $neon-green);
     }
   }
   .carousel__item__raspberry {

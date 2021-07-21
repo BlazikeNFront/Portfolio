@@ -4,18 +4,26 @@
       <h2>About Me</h2>
       <article>
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
+          Hi, my name is Damian. My journey with programming started when i was
+          working at aquaculture object. After some time i realized that almost
+          all of the work can be automated and it would be great to be able to
+          create that types of apps by myself. I decided to start with
+          JavaScript since it actually have good support on Raspberry Pi. So i
+          started learning, gaining most of the knowledge from Google. Some time
+          later i realised that i really enjoy it. Therefore i put away my
+          original goal and went deeper into Front-End developement and some
+          time later also Back-End. Main technologies i use, are shown in
+          carousel. In my free time, besides discovering web technologies, i
+          like fishing and play around with Raspberry PI. I'm currently looking
+          for a job, that will allow further development in Web Developement
+          field.
         </p>
       </article>
       <div class="aboutMePage__codewars">
+        <p>
+          Some time passed since i last touched codewars kata, but it may have
+          value to someone...
+        </p>
         <a href="https://www.codewars.com/users/BlazikenFront" target="_blank"
           ><img
             src="https://www.codewars.com/users/BlazikenFront/badges/large"
@@ -50,7 +58,7 @@ export default {
   article {
     @include flexColumn;
     margin: 0 auto;
-    width: 90%;
+    width: 85%;
     justify-content: space-evenly;
     p {
       margin: 2rem 0;
@@ -64,16 +72,36 @@ export default {
   }
 }
 .aboutMePage__codewars {
-  @include flexRow;
-
+  @include flexColumn;
+  p {
+    margin: 2rem;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    text-align: center;
+  }
   img {
-    width: 35rem;
+    width: 30rem;
+  }
+  a {
+    border-radius: 10px;
   }
 }
 .techStackCarouselWrapper {
   @include flexRow;
   width: 100%;
   height: 40rem;
+}
+@media (min-width: 350px) {
+  .aboutMePage {
+    article {
+      width: 90%;
+    }
+  }
+  .aboutMePage__codewars {
+    img {
+      width: 35rem;
+    }
+  }
 }
 @media (min-width: 425px) {
   .aboutMePage__codewars {

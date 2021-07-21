@@ -32,7 +32,9 @@
             <p>ABOUT ME</p>
           </router-link>
         </li>
-        <li :class="[activePage === '/projects' ? 'acitvePageMobile' : '']">
+        <li
+          :class="[applyActiveClassOnProjectsSection ? 'acitvePageMobile' : '']"
+        >
           <router-link
             :to="projectsPageLink"
             tabindex="1"
@@ -71,6 +73,12 @@ export default {
     const activePage = computed(() => {
       return route.path;
     });
+    const applyActiveClassOnProjectsSection = computed(() => {
+      if (route.path.includes("projects")) {
+        return true;
+      }
+      return false;
+    });
     const showNavBar = ref(false);
     function toggleNavBar() {
       showNavBar.value = !showNavBar.value;
@@ -81,6 +89,7 @@ export default {
       homePageLink,
       aboutPageLink,
       projectsPageLink,
+      applyActiveClassOnProjectsSection,
       contactPageLink,
       activePage,
     };
@@ -138,7 +147,6 @@ export default {
       p {
         font-size: 1.5rem;
         color: #7cd0aa;
-        text-shadow: 0px 0px 3px #7cd0aa;
       }
     }
   }
@@ -146,7 +154,6 @@ export default {
     width: 4rem;
     height: 4rem;
     color: #7cd0aa;
-    filter: drop-shadow(0px 0px 3px #7cd0aa);
   }
   .navMobile__menuTogglerIcon {
     width: 100%;
@@ -160,11 +167,11 @@ export default {
       width: 5rem;
       height: 5rem;
       color: #1bf777;
-      filter: drop-shadow(0px 0px 3px #1bf777);
+      filter: drop-shadow(0px 0px 2px #1bf777);
     }
     p {
       color: #1bf777;
-      text-shadow: 0px 0px 3px #1bf777;
+      text-shadow: 0px 0px 2px #1bf777;
     }
   }
 }

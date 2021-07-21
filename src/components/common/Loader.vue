@@ -13,7 +13,7 @@
 }
 .loader__ripple {
   position: absolute;
-  border: 4px solid $main-color;
+  border: 4px solid $neon-green;
   opacity: 1;
   border-radius: 50%;
   animation: loaderRipple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;

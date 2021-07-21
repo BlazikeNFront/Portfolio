@@ -180,7 +180,7 @@ export default {
   animation-delay: none;
 }
 .mouseOverAnim {
-  color: $main-color;
+  color: $neon-green;
   animation-name: letterAnimation;
   animation-delay: 0s !important;
   animation-duration: 1s;

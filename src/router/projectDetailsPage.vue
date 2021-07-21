@@ -23,24 +23,12 @@
       <div class="detailsProjectView__description">
         <article>
           <h3>About</h3>
-          <p>
-            Where does it come from? Contrary to popular belief, Lorem Ipsum is
-            not simply random text. It has roots in a piece of classical Latin
-            literature from 45 BC, making it over 2000 years old. Richard
-            McClintock, a Latin professor at Hampden-Sydney College in Virginia,
-            looked up one of the more obscure Latin words, consectetur, from a
-            Lorem Ipsum passage, and going through the cites of the word in
-            classical literature, discovered the undoubtable source. Lorem Ipsum
-            comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
-            Malorum" (The Extremes of Good and Evil) by Cicero, written in 45
-            BC. This book is a treatise on the theory of ethics, very popular
-            during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum
-            dolor sit amet..", comes from a line in section 1.10.32. The
-            standard chunk of Lorem Ipsum used since the 1500s is reproduced
-            below for those interested. Sections 1.10.32 and 1.10.33 from "de
-            Finibus Bonorum et Malorum" by Cicero are also reproduced in their
-            exact original form, accompanied by English versions from the 1914
-            translation by H. Rackham.
+          <p
+            :class="[
+              lineHeightAdjustment ? 'bigLineHeight' : 'smallLineHeight',
+            ]"
+          >
+            {{ pickedProject.description }}
           </p>
         </article>
         <div class="detailsProjectView__techStack">
@@ -56,6 +44,7 @@
   </section>
 </template>
 <script>
+import { computed } from "vue";
 import { useStore } from "vuex";
 import { useRoute, useRouter } from "vue-router";
 import TechStack from "../components/projectDetailsPage/techStack.vue";
@@ -73,31 +62,49 @@ export default {
     const store = useStore();
     const route = useRoute();
     const router = useRouter();
-    console.log(route);
+
     const pickedProject = store.getters.getSingleProject(
       route.params.projectName
     );
+    const lineHeightAdjustment = computed(() => {
+      if (pickedProject.description.split(" ").length > 70) {
+        return true;
+      }
+      return false;
+    });
 
     function navigateToProjects() {
-      router.push({ name: "projectsPage" });
+      const indexOfCurrentProject = store.getters.getSingleProjectIndex(
+        route.params.projectName
+      );
+      console.log(indexOfCurrentProject);
+      router.push({
+        name: "projectsPage",
+        params: { indexOfActive: indexOfCurrentProject },
+      });
     }
 
-    return { pickedProject, navigateToProjects };
+    return { pickedProject, navigateToProjects, lineHeightAdjustment };
   },
 };
 </script>
 <style lang="scss">
 .detailsProjectView {
   @include flexColumn;
-  margin: 10rem 0 5rem 0;
+
+  margin-bottom: 5rem;
   width: 100%;
   justify-content: space-around;
   color: White;
+  h2 {
+    margin: 9rem 0 1rem 0;
+  }
 }
 .detailsProjectView__linkToProjects {
   position: absolute;
   top: 2rem;
   left: 2rem;
+  border-radius: 5px;
   background: none;
   border: none;
   font-size: 5rem;
@@ -107,21 +114,23 @@ export default {
   cursor: none;
 
   &:hover {
-    color: $main-color;
+    color: $neon-green;
+  }
+  &:focus {
+    @include focusAttribute;
   }
 }
 
 .detailsProjectView__content {
   @include flexColumn;
   width: 95%;
-
   justify-content: space-evenly;
 }
 
 .detailsProjectView__image {
   margin: 0.5rem;
-  width: 35rem;
-  height: 56rem;
+  width: 25rem;
+  height: 40rem;
   object-fit: contain;
 }
 .detailsProjectView__desktopLinks {
@@ -133,11 +142,13 @@ export default {
   justify-content: space-evenly;
   article {
     @include flexColumn;
-    justify-content: space-between;
+    min-height: 20rem;
+    justify-content: space-evenly;
     p {
       margin: 1rem;
-      font-size: 1.8rem;
       width: 100%;
+      font-size: 1.8rem;
+
       text-align: justify;
     }
   }
@@ -146,7 +157,6 @@ export default {
 .detailsProjectView__techStack {
   @include flexColumn;
   margin: 2rem 0;
-
   flex-wrap: wrap;
   justify-content: space-between;
   h4 {
@@ -156,14 +166,32 @@ export default {
     @include flexRow;
     margin-top: 2rem;
     width: 100%;
+    height: 10rem;
     font-size: 4rem;
   }
 }
+.bigLineHeight {
+  line-height: 2.2rem;
+}
+.smallLineHeight {
+  line-height: 3rem;
+}
+@media (min-width: 768px) {
+  .detailsProjectView {
+    h2 {
+      margin: 3rem 0;
+    }
+  }
 
+  .detailsProjectView__image {
+    width: 33rem;
+    height: 50rem;
+  }
+}
 @media (min-width: 1440px) {
   .detailsProjectView {
     @include flexColumn;
-    margin: 3rem 0;
+
     width: 100%;
     height: 100%;
     justify-content: space-around;
@@ -227,8 +255,8 @@ export default {
 }
 @media (min-width: 1920px) {
   .detailsProjectView__image {
-    width: 43rem;
-    height: 61rem;
+    width: 40rem;
+    height: 55rem;
   }
 }
 </style>

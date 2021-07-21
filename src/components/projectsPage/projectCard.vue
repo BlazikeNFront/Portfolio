@@ -11,17 +11,21 @@
       @click="$emit('slideClick', slideNumber)"
     >
       <transition name="cardInformation">
-        <div class="card__informations" data-cursor="pointer" v-if="isActive">
+        <div
+          class="card__informations"
+          :data-cursor="isActive ? '' : 'pointer'"
+          v-if="isActive"
+        >
           <h4>{{ project.title }}</h4>
           <div class="card__buttons">
             <base-button data-cursor="pointer" @click="openNewTabWithProject"
-              ><p>LIVE</p></base-button
+              ><p data-cursor="pointer">LIVE</p></base-button
             >
             <base-button
               @click="routeToDetailsAboutProject"
               data-cursor="pointer"
             >
-              <p>MORE INFO</p>
+              <p data-cursor="pointer">MORE INFO</p>
             </base-button>
           </div>
         </div>

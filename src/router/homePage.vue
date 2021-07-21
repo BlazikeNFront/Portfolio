@@ -15,23 +15,29 @@
         @click="this.$router.push(aboutPageLink)"
         data-cursor="pointer"
       >
-        <p>About me</p>
+        <p data-cursor="pointer">About me</p>
       </base-button>
       <base-button
         class="homePage__link"
         @click="this.$router.push(projectsPageLink)"
         data-cursor="pointer"
       >
-        <p>MY PROJECTS</p>
+        <p data-cursor="pointer">PROJECTS</p>
       </base-button>
       <base-button
         class="homePage__link"
         @click="this.$router.push(contactPageLink)"
         data-cursor="pointer"
       >
-        <p>CONTACT</p>
+        <p data-cursor="pointer">CONTACT</p>
       </base-button>
-      <a class="homePage__githubLink" data-cursor="pointer" tabindex="1">
+      <a
+        href="https://github.com/BlazikeNFront"
+        class="homePage__githubLink"
+        target="_blank"
+        data-cursor="pointer"
+        tabindex="1"
+      >
         <svg
           class="homePage__githubName"
           data-cursor="pointer"
@@ -92,6 +98,7 @@ export default {
 .homePage__view {
   @include flexColumn;
   margin: 8rem 0 2rem 0;
+  width: 100%;
 }
 .homePage__header {
   @include flexColumn;
@@ -118,7 +125,7 @@ export default {
     display: block;
     margin-top: 4rem;
     color: transparent;
-    font-size: 5rem;
+    font-size: 4.5rem;
     text-align: center;
     background-image: linear-gradient(
       90deg,
@@ -171,6 +178,8 @@ export default {
   @include flexColumn;
   margin: 2rem 0 4rem 0;
   width: 25rem;
+  border-radius: 10px;
+
   &:focus {
     @include focusAttribute;
   }
@@ -180,7 +189,7 @@ export default {
     }
   }
   svg {
-    filter: drop-shadow(0px 0px 3px $main-color);
+    filter: drop-shadow(0px 0px 3px $neon-green);
   }
 }
 .homePage__githubName {
@@ -190,7 +199,13 @@ export default {
 .homePage__githubLogo {
   height: 10rem;
 }
-
+@media (min-width: 340px) {
+  .header__paragraphBox {
+    p {
+      font-size: 5rem;
+    }
+  }
+}
 @media (min-width: 768px) {
   .homePage__header {
     margin-top: 10rem;

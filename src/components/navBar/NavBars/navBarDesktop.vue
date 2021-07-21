@@ -168,6 +168,7 @@ export default {
     width: 100%;
     height: 25rem;
     text-decoration: none;
+    border-radius: 10px;
     &:focus {
       @include focusAttribute;
     }
@@ -178,7 +179,7 @@ export default {
       animation-iteration-count: infinite;
       animation-duration: 40s;
       fill: #000000;
-      filter: drop-shadow(0px 0px 3px $main-color);
+      filter: drop-shadow(0px 0px 3px $neon-green);
     }
 
     span {
@@ -190,12 +191,12 @@ export default {
   }
   .acitvePage {
     svg {
-      color: $main-color;
-      filter: drop-shadow(0px 0px 3px $main-color);
+      color: $neon-green;
+      filter: drop-shadow(0px 0px 3px $neon-green);
     }
     p {
-      color: $main-color;
-      text-shadow: 0px 0px 5px $main-color;
+      color: $neon-green;
+      text-shadow: 0px 0px 5px $neon-green;
     }
   }
   .navDesktop__Icon {
@@ -208,10 +209,10 @@ export default {
   }
   @keyframes homePageLink {
     0% {
-      text-shadow: -2px -2px 0 $main-color, 2px 2px 0 #0ff;
+      text-shadow: -2px -2px 0 $neon-green, 2px 2px 0 #0ff;
     }
     100% {
-      text-shadow: -2px -2px 0 #0ff, 2px 2px 0 $main-color;
+      text-shadow: -2px -2px 0 #0ff, 2px 2px 0 $neon-green;
     }
   }
 }
@@ -248,16 +249,16 @@ export default {
 }
 @keyframes initailsAnimation {
   0% {
-    fill: $main-color;
-    filter: drop-shadow(0px 0px 5px $main-color);
+    fill: $neon-green;
+    filter: drop-shadow(0px 0px 5px $neon-green);
   }
   50% {
     fill: #000;
     filter: drop-shadow(0px 0px 0px #000);
   }
   100% {
-    fill: $main-color;
-    filter: drop-shadow(0px 0px 5px $main-color);
+    fill: $neon-green;
+    filter: drop-shadow(0px 0px 5px $neon-green);
   }
 }
 </style>

@@ -3,12 +3,12 @@
     <div
       class="cursor__circle"
       :style="cursorCircle"
-      :class="{ hoverCircle: hoverClass }"
+      :class="[{ hoverCircle: hoverClass }, { circleHidden: hideCursor }]"
     ></div>
     <div
       class="cursor__pointer"
       :style="cursorPointer"
-      :class="{ hoverPointer: hoverClass }"
+      :class="[{ hoverPointer: hoverClass }, { cursorHidden: hideCursor }]"
     ></div>
   </div>
 </template>
@@ -21,6 +21,7 @@ export default {
     const currentCircleXPosition = ref(null);
     const currentCircleYPosition = ref(null);
     const hoverClass = ref(false);
+    const hideCursor = ref(false);
     const cursorCircle = computed(() => {
       return `transform: translateX(${
         currentCircleXPosition.value - 2
@@ -53,8 +54,14 @@ export default {
       document.addEventListener("mousemove", (e) => {
         moveCursor(e);
       });
+      document.addEventListener("mouseleave", () => {
+        hideCursor.value = true;
+      });
+      document.addEventListener("mouseenter", () => {
+        hideCursor.value = false;
+      });
     });
-    return { hoverClass, cursorCircle, cursorPointer };
+    return { hoverClass, hideCursor, cursorCircle, cursorPointer };
   },
 };
 </script>
@@ -71,7 +78,7 @@ export default {
   position: fixed;
   width: 4rem;
   height: 4rem;
-  border: 2px solid #fff;
+  border: 2px solid $neon-green;
   border-radius: 50%;
   z-index: 5555;
   backface-visibility: hidden;
@@ -85,7 +92,7 @@ export default {
   position: fixed;
   width: 1rem;
   height: 1rem;
-  background-color: White;
+  background-color: $neon-green;
   border-radius: 100%;
   z-index: 5555;
   backface-visibility: hidden;
@@ -103,7 +110,7 @@ export default {
     height: 3rem;
     border: 4px solid #dbd800;
     border-radius: 10px;
-    animation-name: testingBefore;
+    animation-name: hoverCircleAnimation;
     animation-duration: 1s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
@@ -114,25 +121,24 @@ export default {
   height: 1.5rem;
   background-color: #dbd800;
 }
+.circleHidden {
+  opacity: 0;
+  width: 60px;
+  height: 60px;
+  transition: all 0.2s ease-out;
+}
+.cursorHidden {
+  opacity: 0;
+}
 @media (min-width: 1024px) {
   .cursor {
     display: initial;
   }
 }
-@keyframes testingBefore {
+@keyframes hoverCircleAnimation {
   0% {
     transform: rotate(0deg);
   }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@keyframes testingAfter {
-  0% {
-    transform: rotate(0deg);
-  }
-
   100% {
     transform: rotate(360deg);
   }

@@ -82,7 +82,7 @@ export default {
   z-index: 1500;
 }
 .pageLoader__loadingView {
-  margin-top: 20rem;
+  margin-top: 9rem;
   @include flexColumn;
   align-items: center;
   justify-content: center;
@@ -93,7 +93,7 @@ export default {
 }
 .pageLoader__progressBarContainer {
   margin: 0 auto;
-  width: 35rem;
+  width: 30rem;
   height: 3rem;
   border-radius: 25px;
   background-color: $nav-bar-background;
@@ -103,15 +103,20 @@ export default {
   width: 5%;
   height: 100%;
   border-radius: 25px;
-  background-color: $main-color;
+  background-color: $neon-green;
   transition: all 0.4s ease-in-out;
-  box-shadow: 0px 0px 25px $main-color;
+  box-shadow: 0px 0px 25px $neon-green;
 }
 .pageLoader__errorView {
   @include flexColumn;
   height: 100%;
   h3 {
     margin: 4rem;
+  }
+}
+@media (min-width: 350px) {
+  .pageLoader__progressBarContainer {
+    width: 35rem;
   }
 }
 @media (min-width: 768px) {
@@ -145,9 +150,9 @@ export default {
     width: 5%;
     height: 100%;
     border-radius: 25px;
-    background-color: $main-color;
+    background-color: $neon-green;
     transition: all 0.4s ease-in-out;
-    box-shadow: 0px 0px 25px $main-color;
+    box-shadow: 0px 0px 25px $neon-green;
   }
   .pageLoader__errorView {
     @include flexColumn;

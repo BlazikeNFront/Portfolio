@@ -8,49 +8,29 @@ import store from "./store/index.js";
 import router from "./router/router.js";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
-  faPhone,
-  faEnvelope,
-  faMapMarkerAlt,
-  faFax,
   faIdCard,
   faBriefcase,
-  faShoppingCart,
-  faCartArrowDown,
   faArrowRight,
-  faTruck,
-  faStar,
   faHome,
-  faCoins,
-  faSearch,
   faUser,
   faTimes,
-  faCheck,
   faBars,
+  faSmileBeam,
 } from "@fortawesome/free-solid-svg-icons";
 import { faSass, faNode } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 library.add(
-  faPhone,
-  faEnvelope,
   faIdCard,
-  faMapMarkerAlt,
-  faFax,
   faBriefcase,
-  faShoppingCart,
   faHome,
-  faCartArrowDown,
   faArrowRight,
-  faTruck,
-  faStar,
-  faCoins,
-  faSearch,
   faUser,
   faTimes,
-  faCheck,
   faSass,
   faNode,
-  faBars
+  faBars,
+  faSmileBeam
 );
 //global components
 //global components

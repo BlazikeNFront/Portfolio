@@ -9,7 +9,7 @@ const store = createStore({
           title: "Data Warehouse",
           images: ["dataWarehouse.webp"],
           description:
-            "Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin",
+            "Simple landing page, that is based on figma free template. It's my first project, so i used most basic Front-End technologies. I played a little bit with slider animation on mobile - don't hesitate to check it out.",
           techstack: [
             { src: "html5Badge.svg", alt: "HTML5", dropShadow: "#e44f26" },
             { src: "cssBadge.svg", alt: "CSS3", dropShadow: "#1572b6" },
@@ -31,7 +31,7 @@ const store = createStore({
           title: "Weather App",
           images: ["weatherApp.webp"],
           description:
-            "Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin",
+            "Application for checking the weather,but in addition to basic information, it can create temperatures charts for the next 3 days. Charts are created with help of JavaScript and CSS (no canvas).",
           techstack: [
             { src: "html5Badge.svg", alt: "HTML5", dropShadow: "#e44f26" },
             { src: "cssBadge.svg", alt: "CSS3", dropShadow: "#1572b6" },
@@ -44,7 +44,7 @@ const store = createStore({
           links: [
             {
               github: "https://github.com/BlazikeNFront/WeatherApp",
-              live: "https://weatherapp-28b2d.web.app",
+              live: "http://weatherapp-28b2d.web.app/",
             },
           ],
         },
@@ -53,7 +53,7 @@ const store = createStore({
           title: "Movie App",
           images: ["movieApp.webp"],
           description:
-            "Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin",
+            "My first application based on the Vue environment. It is a mobile web application that allows  users to get basic information about movies, TV shows and celebrities.  Users can also create an account (through Firebase REST API) and rate shows and actors. Only mobile view",
           techstack: [
             { src: "vueBadge.svg", alt: "Vue", dropShadow: "#41b883" },
             { src: "vuexBadge.svg", alt: "Vuex", dropShadow: "#41b883" },
@@ -80,7 +80,7 @@ const store = createStore({
           title: "Project RAS",
           images: ["projectRAS.webp"],
           description:
-            "Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin",
+            "After some time of studying Web technologies, I came back to the idea of ​​creating an IoT application that would allow user to control Recirculating Aquaculture Systems with Raspberry PI. It took some time to create it and i  work on it, but the basic version is out and it works pretty well (at least for me: D). Whole app is based on 3 parts -  Node app on Raspberry,which checks enviroment  and reacts to changes. In addition it sends (if connected to local network)  Front-End part, which sends information about the system and allow user remote controll in real time (WebSocket Technology), after authentication. Third part is a Back-End app that sholud be deployed on any hosting providing service. It allows the same functionality as the Raspberry app, but via global network. Right now Raspberry App   version  is OFF (RAS rebuild), but You can still check Front-End part. For more information check out Github - i did some kind of basic documentation",
           techstack: [
             { src: "vueBadge.svg", alt: "Vue", dropShadow: "#41b883" },
             { src: "vuexBadge.svg", alt: "Vuex", dropShadow: "#41b883" },
@@ -105,7 +105,7 @@ const store = createStore({
           title: "Taimen Shop",
           images: ["taimenShop.webp"],
           description:
-            "Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical LatinWhere does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin",
+            "MEVN Fullstack project. A simple online shop with fishing equipment and a small CMS for admin, that allows  adding products or accepting orders. BackEnd uses multer and Jimp to process images of uploaded products. I also created 2 Front-End version with diffrent API-s that Vue 3 offers.",
           techstack: [
             { src: "vueBadge.svg", alt: "Vue", dropShadow: "#41b883" },
             { src: "vuexBadge.svg", alt: "Vuex", dropShadow: "#41b883" },
@@ -153,7 +153,6 @@ const store = createStore({
   mutations: {
     setLoadedPage(state, payload) {
       state.loadedPages[payload] = true;
-      console.log(state.loadedPages[payload]);
     },
     isPageLoading(state, payload) {
       state.isPageLoading = payload;
@@ -180,6 +179,9 @@ const store = createStore({
     },
     getSingleProject: (state) => (name) => {
       return state.projects.find((project) => project.name === name);
+    },
+    getSingleProjectIndex: (state) => (name) => {
+      return state.projects.findIndex((project) => project.name === name);
     },
 
     getLoadedPage: (state) => (pageName) => {

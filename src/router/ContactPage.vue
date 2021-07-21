@@ -53,14 +53,20 @@
       </div>
       <base-button><span data-cursor="pointer">Send message</span></base-button>
       <div class="contactPage__loader" v-if="loader">
-        <loader></loader>
+        <contact-loader></contact-loader>
       </div>
     </form>
     <transition name="contactResult">
       <div class="contactPage__requestResult" v-if="requestResult">
-        <p>
-          {{ requestResult }}
+        <p v-if="requestResult === 1">
+          Message sent ! I'll try to respond as quick as possible
+          <font-awesome-icon
+            :icon="['fas', 'smile-beam']"
+            class="contactPage__resultIcon"
+          ></font-awesome-icon>
+          Have a good day !
         </p>
+        <p v-else>'Error occuered. Try again later'</p>
       </div></transition
     >
   </section>
@@ -68,12 +74,12 @@
 <script>
 import { ref, reactive } from "vue";
 import BaseButton from "../components/common/BaseButton.vue";
-import Loader from "../components/common/Loader.vue";
+import ContactLoader from "../components/ContactPage/ContactLoader.vue";
 import emailjs from "emailjs-com";
 export default {
   components: {
     BaseButton,
-    Loader,
+    ContactLoader,
   },
   setup() {
     const emailInput = reactive({ value: "", error: null });
@@ -128,15 +134,14 @@ export default {
 
         if (result) {
           loader.value = false;
-          requestResult.value =
-            "Message sent ! I'll try to respond as quick as possible :) Have a good day !";
+          requestResult.value = 1;
         }
         emailInput.value = "";
         nameInput.value = "";
         textareaInput.value = "";
       } catch (err) {
         loader.value = false;
-        requestResult.value = "Error occured  :( Try again Later";
+        requestResult.value = 0;
       }
     }
     return {
@@ -164,7 +169,7 @@ export default {
     position: relative;
     margin: 2rem 0;
     padding: 2rem 0 8rem 0;
-    width: 35rem;
+    width: 30rem;
     height: 70rem;
     border: 1px solid #63d471;
     border-radius: 20px;
@@ -186,7 +191,7 @@ export default {
     }
     &:focus {
       outline: none;
-      border: 3px solid $main-color;
+      border: 3px solid $neon-green;
     }
   }
 }
@@ -199,9 +204,9 @@ export default {
     font-size: 2rem;
   }
   input {
-    width: 30rem;
+    width: 27rem;
     height: 4rem;
-    border: 1px solid $main-color;
+    border: 1px solid $neon-green;
     border-radius: 20px;
     background: transparent;
     font-size: 2rem;
@@ -209,7 +214,7 @@ export default {
     color: White;
     outline: none;
     &:focus {
-      border: 3px solid $main-color;
+      border: 3px solid $neon-green;
     }
     &:hover {
       cursor: none;
@@ -217,9 +222,9 @@ export default {
   }
   textarea {
     margin-bottom: 3rem;
-    width: 90%;
+    width: 25rem;
     padding: 1rem 2rem;
-    border: 1px solid $main-color;
+    border: 1px solid $neon-green;
     border-radius: 20px;
     background: none;
     font-size: 1.5rem;
@@ -228,7 +233,7 @@ export default {
     outline: none;
     resize: none;
     &:focus {
-      border: 3px solid $main-color;
+      border: 3px solid $neon-green;
     }
     &:hover {
       cursor: none;
@@ -237,12 +242,15 @@ export default {
 }
 .contactPage__errorMsg {
   position: absolute;
+  width: 100%;
   bottom: -2.5rem;
   color: #de1e00;
+  text-align: center;
 }
 .contactPage__errorMsg--name {
   bottom: -2.5rem;
-  width: 32rem;
+  text-align: center;
+  font-size: 1.5rem;
 }
 .contactPage__errorMsg--textarea {
   bottom: 0;
@@ -260,7 +268,7 @@ export default {
   width: 100%;
   height: 7rem;
   border-radius: 15px 15px 0 0;
-  background-color: $main-color;
+  background-color: $neon-green;
   justify-content: space-evenly;
   z-index: 2000;
 
@@ -270,6 +278,26 @@ export default {
     color: black;
     font-size: 2.1rem;
     text-align: center;
+  }
+}
+.contactPage__resultIcon {
+  width: 2rem;
+}
+@media (min-width: 350px) {
+  .contactPage {
+    form {
+      width: 30rem;
+    }
+  }
+  .contactPage__formControl {
+    input {
+      width: 30rem;
+    }
+  }
+  .contactPage__formControl {
+    textarea {
+      width: 90%;
+    }
   }
 }
 @media (min-width: 425px) {
@@ -304,7 +332,7 @@ export default {
     width: 55rem;
     height: 6rem;
     border-radius: 50px 50px 0 0;
-    background-color: $main-color;
+    background-color: $neon-green;
     z-index: 2000;
     p {
       color: black;

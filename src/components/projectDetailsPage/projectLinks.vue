@@ -64,12 +64,6 @@ export default {
       required: true,
     },
   },
-  setup(props) {
-    function kekw() {
-      console.log(props.links);
-    }
-    return { kekw };
-  },
 };
 </script>
 <style lang="scss">
@@ -81,7 +75,7 @@ export default {
     letter-spacing: 3px;
 
     &:hover {
-      color: $main-color;
+      color: $neon-green;
       text-shadow: 0px 0px 5px #7cd0aa;
     }
   }
@@ -89,13 +83,13 @@ export default {
 .detailsProjectView__linkWrapper {
   display: block;
   margin-top: 1rem;
-  width: 15rem;
-  height: 10rem;
+
+  width: 20rem;
+  height: 13rem;
 }
 
 .detailsProjectView__linkWrapper--github {
   @include flexColumn;
-
   width: 15rem;
   height: 10rem;
   &:focus {
@@ -109,14 +103,14 @@ export default {
   }
   &:hover {
     svg {
-      fill: $main-color;
-      filter: drop-shadow(0px 0px 3px $main-color);
+      fill: $neon-green;
+      filter: drop-shadow(0px 0px 3px $neon-green);
     }
   }
 }
 .detailsProjectView__linkWrapper--live {
   @include flexRow;
-  justify-content: space-between;
+  justify-content: center;
   a {
     &:focus {
       @include focusAttribute;
@@ -131,7 +125,7 @@ export default {
   @include flexColumn;
   width: 35rem;
   padding: 1rem 2rem;
-  border: 1px solid $main-color;
+  border: 1px solid $neon-green;
   border-radius: 10px;
   justify-content: space-evenly;
   h4 {
@@ -150,7 +144,7 @@ export default {
   margin: 1rem;
   padding: 1rem 2rem;
   width: 35rem;
-  border: 1px solid $main-color;
+  border: 1px solid $neon-green;
   border-radius: 10px;
   justify-content: space-evenly;
   h4 {
@@ -164,6 +158,8 @@ export default {
   justify-content: space-evenly;
 
   a {
+    padding: 0.2rem;
+    border-radius: 10px;
     display: flex;
     text-decoration: none;
     font-size: 3rem;
@@ -171,9 +167,9 @@ export default {
     color: white;
     letter-spacing: 3px;
     text-align: center;
-
+    cursor: none;
     &:hover {
-      color: $main-color;
+      color: $neon-green;
       text-shadow: 0px 0px 5px #7cd0aa;
     }
     &:focus {
@@ -193,8 +189,8 @@ export default {
   }
   &:hover {
     svg {
-      fill: $main-color;
-      filter: drop-shadow(0px 0px 3px $main-color);
+      fill: $neon-green;
+      filter: drop-shadow(0px 0px 3px $neon-green);
     }
   }
 }
@@ -213,6 +209,8 @@ export default {
   justify-content: space-evenly;
 
   a {
+    padding: 0.5rem;
+    border-radius: 10px;
     display: flex;
     text-decoration: none;
     font-size: 3rem;
@@ -223,7 +221,7 @@ export default {
     cursor: none;
 
     &:hover {
-      color: $main-color;
+      color: $neon-green;
       text-shadow: 0px 0px 5px #7cd0aa;
     }
   }
@@ -245,7 +243,7 @@ export default {
       letter-spacing: 3px;
 
       &:hover {
-        color: $main-color;
+        color: $neon-green;
         text-shadow: 0px 0px 5px #7cd0aa;
       }
     }
@@ -268,8 +266,8 @@ export default {
     }
     &:hover {
       svg {
-        fill: $main-color;
-        filter: drop-shadow(0px 0px 3px $main-color);
+        fill: $neon-green;
+        filter: drop-shadow(0px 0px 3px $neon-green);
       }
     }
   }
@@ -282,7 +280,7 @@ export default {
     @include flexColumn;
     width: 25rem;
     padding: 1rem 2rem;
-    border: 1px solid $main-color;
+    border: 1px solid $neon-green;
     border-radius: 10px;
     justify-content: space-evenly;
     h4 {
@@ -303,7 +301,7 @@ export default {
       text-align: center;
 
       &:hover {
-        color: $main-color;
+        color: $neon-green;
         text-shadow: 0px 0px 5px #7cd0aa;
       }
     }

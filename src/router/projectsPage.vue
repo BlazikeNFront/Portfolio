@@ -15,9 +15,11 @@
       <div class="projectPage__sliderButtons">
         <button
           class="projectPage__sliderButton"
+          :class="{ projectPage__hideButton: firstSlideActive }"
           @click="slideAction(activeSlide - 1)"
         >
           <span
+            v-if="!firstSlideActive"
             class="projectPage__span projectPage__span--leftArrow"
             data-cursor="pointer"
             >&laquo;</span
@@ -25,17 +27,24 @@
         </button>
         <button
           class="projectPage__sliderButton"
+          :class="{ projectPage__hideButton: lastSlideActive }"
           @click="slideAction(activeSlide + 1)"
         >
-          <span class="projectPage__span" data-cursor="pointer">&raquo;</span>
+          <span
+            v-if="!lastSlideActive"
+            class="projectPage__span"
+            data-cursor="pointer"
+            >&raquo;</span
+          >
         </button>
       </div>
     </div>
   </section>
 </template>
 <script>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useStore } from "vuex";
+import { useRoute } from "vue-router";
 import projectCard from "../components/projectsPage/projectCard.vue";
 
 export default {
@@ -44,8 +53,10 @@ export default {
   },
   setup() {
     const store = useStore();
-    const projects = store.getters["getAllProjects"];
+    const route = useRoute();
 
+    const projects = store.getters["getAllProjects"];
+    const routeParamsAcitveSlide = parseInt(route.params.indexOfActive);
     const slideProportional = parseInt(100 / projects.length);
     const activeSlide = ref(0);
     const carousel = ref(null);
@@ -54,7 +65,18 @@ export default {
     const carouselTranslate = computed(() => {
       return `transform:translateX(${listTranslate.value}%)`;
     });
-
+    const firstSlideActive = computed(() => {
+      if (activeSlide.value === 0) {
+        return true;
+      }
+      return false;
+    });
+    const lastSlideActive = computed(() => {
+      if (activeSlide.value === projects.length - 1) {
+        return true;
+      }
+      return false;
+    });
     function slideAction(e) {
       if (e < 0 || e === activeSlide.value || e > projects.length - 1) {
         return;
@@ -68,10 +90,17 @@ export default {
         listTranslate.value += diffrenceBetweenSlides * slideProportional;
       }
     }
+    onMounted(() => {
+      if (routeParamsAcitveSlide) {
+        slideAction(routeParamsAcitveSlide);
+      }
+    });
     return {
       carousel,
       slideAction,
+      firstSlideActive,
       carouselTranslate,
+      lastSlideActive,
       activeSlide,
       projects,
     };
@@ -85,6 +114,9 @@ export default {
   width: 100%;
   justify-content: space-evenly;
   color: White;
+  h2 {
+    margin-top: 4rem;
+  }
 }
 .projectPage__sliderWrapper {
   @include flexRow;
@@ -132,7 +164,7 @@ export default {
 
     &:hover {
       span {
-        color: $main-color;
+        color: $neon-green;
       }
     }
     &:focus {
@@ -140,6 +172,12 @@ export default {
     }
   }
 }
+.projectPage__hideButton {
+  span {
+    display: none;
+  }
+}
+
 .projectPage__span {
   @include flexRow;
   position: absolute;
@@ -147,9 +185,6 @@ export default {
   left: 2px;
   width: inherit;
   height: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .projectPage__span--leftArrow {
   left: 0px;
