@@ -4,24 +4,25 @@
       <h2>About Me</h2>
       <article>
         <p>
-          Hi, my name is Damian. My journey with programming started when i was
-          working at aquaculture object. After some time i realized that almost
-          all of the work can be automated and it would be great to be able to
-          create that types of apps by myself. I decided to start with
-          JavaScript since it actually have good support on Raspberry Pi. So i
+          Hi, my name is Damian. My journey with programming started when I was
+          working at aquaculture object. After spending some time there, I
+          realized that almost all of the work in that kind of place can be
+          automated and it would be great to be able to create that types of
+          apps by myself. From all possible languages, I decided to start with
+          JavaScript, since it actually have good support on Raspberry Pi. So I
           started learning, gaining most of the knowledge from Google. Some time
-          later i realised that i really enjoy it. Therefore i put away my
-          original goal and went deeper into Front-End developement and some
-          time later also Back-End. Main technologies i use, are shown in
-          carousel. In my free time, besides discovering web technologies, i
-          like fishing and play around with Raspberry PI. I'm currently looking
-          for a job, that will allow further development in Web Developement
-          field.
+          later, it turned out that I really like it. Therefore, I put away my
+          original goal to go deeper into Front-End developement and some time
+          later also Back-End. Main technologies I use, are shown in carousel.
+          In my free time, besides discovering web technologies, I like fishing
+          and play around with Raspberry PI. I'm currently looking for a job,
+          which will allow my further development in the field of Web
+          Technologies.
         </p>
       </article>
       <div class="aboutMePage__codewars">
         <p>
-          Some time passed since i last touched codewars kata, but it may have
+          Some time passed since I last touched codewars kata, but it may have
           value to someone...
         </p>
         <a href="https://www.codewars.com/users/BlazikenFront" target="_blank"
