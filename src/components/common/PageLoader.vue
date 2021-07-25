@@ -5,7 +5,7 @@
       <div class="pageLoader__progressBarContainer">
         <div
           class="pageLoader__progressBar"
-          :style="`width:${this.loaderWidth}%`"
+          :style="`width:${loaderWidth}%`"
         ></div>
       </div>
     </div>
@@ -17,56 +17,56 @@
 </template>
 
 <script>
+import { onMounted, ref, computed, watch } from "vue";
+import { useStore } from "vuex";
 export default {
-  mounted() {
-    this.changeBarProgress();
+  setup() {
+    const store = useStore();
+    const loaderWidth = ref(0);
+    const loadingError = ref(false);
 
-    setTimeout(() => {
-      this.loadingError === true;
-    }, 15000);
-  },
-  data() {
-    return {
-      loaderWidth: 0,
-      loadingError: false,
-    };
-  },
-  computed: {
-    isPageLoading() {
-      return this.$store.getters["getIsPageLoading"];
-    },
-  },
-  watch: {
-    isPageLoading(newVal) {
-      if (newVal === false) {
-        this.loaderWidth = 100;
+    const isPageLoading = computed(() => {
+      return store.getters["getIsPageLoading"];
+    });
 
+    watch(isPageLoading, function (newValue) {
+      if (newValue === false) {
+        loaderWidth.value = 100;
         setTimeout(() => {
-          this.$store.dispatch("setShowProgressBar", false);
+          store.dispatch("setShowProgressBar", false);
         }, 500);
       }
-    },
-  },
-  methods: {
-    changeBarProgress() {
+    });
+    function changeWidth(val) {
+      if (loaderWidth.value < val) {
+        loaderWidth.value = val;
+      }
+    }
+    function changeBarProgress() {
       setTimeout(() => {
-        this.changeWidth(10);
-      }, 10);
-      setTimeout(() => {
-        this.changeWidth(35);
+        changeWidth(10);
       }, 50);
       setTimeout(() => {
-        this.changeWidth(60);
+        changeWidth(35);
       }, 100);
       setTimeout(() => {
-        this.changeWidth(90);
-      }, 700);
-    },
-    changeWidth(val) {
-      if (this.loaderWidth < val) {
-        this.loaderWidth = val;
-      }
-    },
+        changeWidth(60);
+      }, 200);
+      setTimeout(() => {
+        changeWidth(90);
+      }, 500);
+    }
+
+    onMounted(() => {
+      changeBarProgress();
+      setTimeout(() => {
+        loadingError.value === true;
+      }, 15000);
+    });
+    return {
+      loadingError,
+      loaderWidth,
+    };
   },
 };
 </script>

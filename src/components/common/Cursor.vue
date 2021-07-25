@@ -35,6 +35,7 @@ export default {
     function moveCursor(e) {
       currentMouseXPos.value = e.clientX;
       currentMouseYPos.value = e.clientY;
+
       if (e.target.dataset.cursor === "pointer") {
         hoverClass.value = true;
         setTimeout(() => {
