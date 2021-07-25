@@ -59,7 +59,7 @@
     <transition name="contactResult">
       <div class="contactPage__requestResult" v-if="requestResult">
         <p v-if="requestResult === 1">
-          Message sent ! I'll try to respond as quick as possible
+          Message sent ! I'll try to respond as quickly as possible
           <font-awesome-icon
             :icon="['fas', 'smile-beam']"
             class="contactPage__resultIcon"
@@ -169,7 +169,7 @@ export default {
     position: relative;
     margin: 2rem 0;
     padding: 2rem 0 8rem 0;
-    width: 30rem;
+    width: 33rem;
     height: 70rem;
     border: 1px solid #63d471;
     border-radius: 20px;
@@ -286,7 +286,7 @@ export default {
 @media (min-width: 350px) {
   .contactPage {
     form {
-      width: 30rem;
+      width: 34rem;
     }
   }
   .contactPage__formControl {

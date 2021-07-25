@@ -2,7 +2,7 @@
   <custom-cursor v-if="allowCustomCursor"></custom-cursor>
   <page-loader v-if="pageIsLoading"></page-loader>
   <the-nav-bar></the-nav-bar>
-  <main class="main">
+  <main id="main" class="main">
     <router-view v-slot="{ Component }">
       <transition mode="out-in" name="pageChange">
         <component :is="Component" />

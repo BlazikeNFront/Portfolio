@@ -47,6 +47,16 @@ const router = createRouter({
       component: contactPage,
     },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      savedPosition.behavior = "smooth";
+      return savedPosition;
+    }
+    return {
+      el: "#main",
+      behavior: "smooth",
+    };
+  },
 });
 router.beforeEach((to, from, next) => {
   const { name } = to;

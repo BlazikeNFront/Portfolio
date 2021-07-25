@@ -4,8 +4,8 @@
       <h2>About Me</h2>
       <article>
         <p>
-          Hi, my name is Damian. My journey with programming started when I was
-          working at aquaculture object. After spending some time there, I
+          Hi, my name is Damian. My adventure with programming began when I was
+          working in an aquaculture facility. After spending some time there, I
           realized that almost all of the work in that kind of place can be
           automated and it would be great to be able to create that types of
           apps by myself. From all possible languages, I decided to start with

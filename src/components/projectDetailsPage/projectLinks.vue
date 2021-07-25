@@ -381,7 +381,7 @@ export default {
   .multipleVersions__singleVersion {
     margin: 0.5rem;
     width: 100%;
-    height: 20rem;
+    height: 19rem;
   }
   .mulitpleVersion__singleLinksWrapper {
     margin-top: 1rem;

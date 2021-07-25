@@ -10,11 +10,12 @@
     </button>
 
     <div class="detailsProjectView__content">
-      <div class="detailsProjectView__imagesAndLink">
+      <div class="detailsProjectView__imagesAndLinks">
         <img
           :src="require('../assets/sliderImages/' + pickedProject.images[0])"
           class="detailsProjectView__image"
         />
+
         <project-links
           class="detailsProjectView__desktopLinks"
           :links="pickedProject.links"
@@ -77,7 +78,6 @@ export default {
       const indexOfCurrentProject = store.getters.getSingleProjectIndex(
         route.params.projectName
       );
-      console.log(indexOfCurrentProject);
       router.push({
         name: "projectsPage",
         params: { indexOfActive: indexOfCurrentProject },
@@ -126,11 +126,13 @@ export default {
   width: 95%;
   justify-content: space-evenly;
 }
-
+.detailsProjectView__imagesAndLinks {
+  @include flexColumn;
+}
 .detailsProjectView__image {
-  margin: 0.5rem;
-  width: 25rem;
-  height: 40rem;
+  margin: 3rem 0;
+  width: 33rem;
+  height: 48rem;
   object-fit: contain;
 }
 .detailsProjectView__desktopLinks {
@@ -184,8 +186,8 @@ export default {
   }
 
   .detailsProjectView__image {
-    width: 33rem;
-    height: 50rem;
+    width: 38rem;
+    height: 57rem;
   }
 }
 @media (min-width: 1440px) {
@@ -205,7 +207,7 @@ export default {
     width: 95%;
     justify-content: space-evenly;
   }
-  .detailsProjectView__imagesAndLink {
+  .detailsProjectView__images {
     @include flexColumn;
     width: 45%;
     height: 100%;
